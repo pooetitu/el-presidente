@@ -21,4 +21,8 @@ public class Population {
     public Faction getFactionByName(String name) {
         return null;
     }
+
+    public String corruptionDisplay() {
+        return null;
+    }
 }

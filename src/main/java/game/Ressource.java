@@ -8,7 +8,9 @@ public class Ressource {
         this.treasury = treasury;
         this.food = food;
     }
+    public void buyFood(int amount){
 
+    }
     public int getTreasury() {
         return treasury;
     }

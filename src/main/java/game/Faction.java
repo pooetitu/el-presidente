@@ -1,6 +1,7 @@
 package game;
 
 public class Faction {
+    private Population population;
     private final String name;
     private final int satisfaction;
     private final int supporter;
@@ -25,5 +26,9 @@ public class Faction {
 
     public int getSupporter() {
         return supporter;
+    }
+
+    public Population getPopulation() {
+        return population;
     }
 }
