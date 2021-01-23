@@ -1,8 +1,13 @@
 package game.event;
 
-import java.util.ArrayList;
+import game.event.effect.EventEffect;
 
 public class EventChoice {
-    private String description;
-    private EventEffect[] effects;
+    private final String description;
+    private final EventEffect[] effects;
+
+    public EventChoice(String description, EventEffect[] effects) {
+        this.description = description;
+        this.effects = effects;
+    }
 }

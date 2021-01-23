@@ -1,10 +1,13 @@
 package game.event;
 
-import java.util.ArrayList;
-
 public class Event {
-    private String description;
-    private Event nextEvent;
-    private EventChoice[] choices;
+    private final String description;
+    private final Event nextEvent;
+    private final EventChoice[] choices;
 
+    public Event(String description, Event nextEvent, EventChoice[] choices) {
+        this.description = description;
+        this.nextEvent = nextEvent;
+        this.choices = choices;
+    }
 }
