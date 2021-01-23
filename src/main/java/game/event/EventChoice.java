@@ -10,4 +10,8 @@ public class EventChoice {
         this.description = description;
         this.effects = effects;
     }
+
+    public String display() {
+        return null;
+    }
 }

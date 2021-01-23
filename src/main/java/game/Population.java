@@ -1,10 +1,18 @@
 package game;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Population {
-    private HashMap<String, Faction> factions;
-    private Island island;
+    private Map<String, Faction> factions;
+
+    public Population() {
+        factions = new HashMap<>();
+    }
+
+    public void addFaction(Faction faction){
+
+    }
 
     public int getTotalPopulation() {
         return 0;

@@ -10,4 +10,8 @@ public class Event {
         this.nextEvent = nextEvent;
         this.choices = choices;
     }
+
+    public String display() {
+        return null;
+    }
 }
