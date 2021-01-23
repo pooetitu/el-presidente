@@ -6,11 +6,11 @@ import game.Ressource;
 import junit.framework.TestCase;
 
 public class EventEffectFoodTest extends TestCase {
-    Island islandEasy;
-    Island islandNormal;
-    Island islandHard;
-    EventEffect eventEffectPositive;
-    EventEffect eventEffectNegative;
+    private Island islandEasy;
+    private Island islandNormal;
+    private Island islandHard;
+    private EventEffect eventEffectPositive;
+    private EventEffect eventEffectNegative;
 
     @Override
     protected void setUp() throws Exception {

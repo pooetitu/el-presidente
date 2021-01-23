@@ -1,9 +1,9 @@
 package game;
 
 public class Faction {
-    private String name;
-    private int satisfaction;
-    private int supporter;
+    private final String name;
+    private final int satisfaction;
+    private final int supporter;
 
     public Faction(String name, int satisfaction, int supporter) {
         this.name = name;

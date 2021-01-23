@@ -15,7 +15,8 @@ public class EventEffectFactionPartisan extends EventEffect {
     public void applyEffect(Island island) {
 
     }
-    public void addFaction(String name){
+
+    public void addFaction(String name) {
 
     }
 }

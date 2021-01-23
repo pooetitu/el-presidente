@@ -6,11 +6,11 @@ import game.Ressource;
 import junit.framework.TestCase;
 
 public class EventEffectMoneyTest extends TestCase {
-    Island islandEasy;
-    Island islandNormal;
-    Island islandHard;
-    EventEffect eventEffectPositive;
-    EventEffect eventEffectNegative;
+    private Island islandEasy;
+    private Island islandNormal;
+    private Island islandHard;
+    private EventEffect eventEffectPositive;
+    private EventEffect eventEffectNegative;
 
     @Override
     protected void setUp() throws Exception {
@@ -27,6 +27,7 @@ public class EventEffectMoneyTest extends TestCase {
         eventEffectPositive.applyEffect(islandEasy);
         assertEquals(300, islandEasy.getRessources().getTreasury());
     }
+
 
     public void testEffectNegativeEasyDifficulty() {
         eventEffectNegative.applyEffect(islandEasy);

@@ -7,14 +7,14 @@ import game.Ressource;
 import junit.framework.TestCase;
 
 public class EventEffectFactionPartisanTest extends TestCase {
-    Island islandEasy;
-    Island islandNormal;
-    Island islandHard;
-    EventEffectFactionInfluence eventEffectPositive;
-    EventEffectFactionInfluence eventEffectNegative;
-    EventEffectFactionInfluence eventEffectGreaterThanHundred;
-    EventEffectFactionInfluence eventEffectSmallerThanZero;
-    EventEffectFactionInfluence eventEffectMultipleFactions;
+    private Island islandEasy;
+    private Island islandNormal;
+    private Island islandHard;
+    private EventEffectFactionInfluence eventEffectPositive;
+    private EventEffectFactionInfluence eventEffectNegative;
+    private EventEffectFactionInfluence eventEffectGreaterThanHundred;
+    private EventEffectFactionInfluence eventEffectSmallerThanZero;
+    private EventEffectFactionInfluence eventEffectMultipleFactions;
 
     @Override
     protected void setUp() throws Exception {
@@ -40,8 +40,10 @@ public class EventEffectFactionPartisanTest extends TestCase {
 
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
         islandNormal.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
-        islandNormal.getPopulation().addFaction(new Faction("libéraux", 0, 50));
-        islandNormal.getPopulation().addFaction(new Faction("communistes", 100, 50));
+        islandNormal.getPopulation().addFaction(new Faction("écologistes", 50, 50));
+        islandNormal.getPopulation().addFaction(new Faction("religieux", 50, 50));
+        islandNormal.getPopulation().addFaction(new Faction("libéraux", 0, 0));
+        islandNormal.getPopulation().addFaction(new Faction("communistes", 100, 100));
 
         islandHard = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
         islandHard.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
@@ -80,7 +82,17 @@ public class EventEffectFactionPartisanTest extends TestCase {
 
     public void testMultipleFaction() {
         eventEffectMultipleFactions.applyEffect(islandNormal);
-        assertEquals(42, islandEasy.getPopulation().getFactionByName("libéraux").getSupporter());
-        assertEquals(42, islandEasy.getPopulation().getFactionByName("communistes").getSupporter());
+        assertEquals(42, islandNormal.getPopulation().getFactionByName("religieux").getSatisfaction());
+        assertEquals(42, islandNormal.getPopulation().getFactionByName("écologistes").getSatisfaction());
+    }
+
+    public void testEffectPositiveNotGreaterThanHundred() {
+        eventEffectGreaterThanHundred.applyEffect(islandNormal);
+        assertTrue(islandNormal.getPopulation().getFactionByName("communistes").getSatisfaction() <= 100);
+    }
+
+    public void testEffectNegativeNotSmallerThanZero() {
+        eventEffectGreaterThanHundred.applyEffect(islandNormal);
+        assertTrue(islandNormal.getPopulation().getFactionByName("libéraux").getSatisfaction() >= 0);
     }
 }

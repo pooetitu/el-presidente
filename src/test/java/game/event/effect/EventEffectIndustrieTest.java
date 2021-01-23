@@ -6,13 +6,13 @@ import game.Ressource;
 import junit.framework.TestCase;
 
 public class EventEffectIndustrieTest extends TestCase {
-    Island islandEasy;
-    Island islandNormal;
-    Island islandHard;
-    Island islandNormalHundred;
-    Island islandNormalZero;
-    EventEffect eventEffectPositive;
-    EventEffect eventEffectNegative;
+    private Island islandEasy;
+    private Island islandNormal;
+    private Island islandHard;
+    private Island islandNormalHundred;
+    private Island islandNormalZero;
+    private EventEffect eventEffectPositive;
+    private EventEffect eventEffectNegative;
 
     @Override
     protected void setUp() throws Exception {
@@ -60,7 +60,8 @@ public class EventEffectIndustrieTest extends TestCase {
         eventEffectPositive.applyEffect(islandNormalHundred);
         assertTrue(islandNormalHundred.getIndustrie() + islandNormalHundred.getIndustrie() <= 100);
     }
-    public void testEffectPositiveNotSmallerThanZero() {
+
+    public void testEffectNegativeNotSmallerThanZero() {
         eventEffectNegative.applyEffect(islandNormalZero);
         assertTrue(islandNormalZero.getIndustrie() + islandNormalZero.getIndustrie() >= 0);
     }

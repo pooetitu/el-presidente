@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Population {
-    private Map<String, Faction> factions;
+    private final Map<String, Faction> factions;
 
     public Population() {
         factions = new HashMap<>();
     }
 
-    public void addFaction(Faction faction){
+    public void addFaction(Faction faction) {
 
     }
 

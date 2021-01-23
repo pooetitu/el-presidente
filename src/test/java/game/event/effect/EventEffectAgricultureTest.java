@@ -60,7 +60,8 @@ public class EventEffectAgricultureTest extends TestCase {
         eventEffectPositive.applyEffect(islandNormalHundred);
         assertTrue(islandNormalHundred.getAgriculture() + islandNormalHundred.getIndustrie() <= 100);
     }
-    public void testEffectPositiveNotSmallerThanZero() {
+
+    public void testEffectNegativeNotSmallerThanZero() {
         eventEffectNegative.applyEffect(islandNormalZero);
         assertTrue(islandNormalZero.getAgriculture() + islandNormalZero.getIndustrie() >= 0);
     }
