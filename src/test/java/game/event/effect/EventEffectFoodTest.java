@@ -15,11 +15,11 @@ public class EventEffectFoodTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectFood("-15% nourriture", -0.15);
-        eventEffectPositive = new EventEffectMoney("+15% nourriture", 0.15);
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
+        eventEffectNegative = new EventEffectFood("-100 nourriture", -100);
+        eventEffectPositive = new EventEffectMoney("+100 nourriture", 100);
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(100, 100));
+        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(100, 100));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(100, 100));
     }
 
 

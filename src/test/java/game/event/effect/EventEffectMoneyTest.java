@@ -15,11 +15,11 @@ public class EventEffectMoneyTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectMoney("-15% trésorerie", -0.15);
-        eventEffectPositive = new EventEffectMoney("+15% trésorerie", 0.15);
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
+        eventEffectNegative = new EventEffectMoney("-100 trésorerie", -100);
+        eventEffectPositive = new EventEffectMoney("+100 trésorerie", 100);
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(100, 100));
+        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(100, 100));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(100, 100));
     }
 
 
