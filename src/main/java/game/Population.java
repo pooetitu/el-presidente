@@ -15,7 +15,7 @@ public class Population {
     }
 
     public int getTotalPopulation() {
-        return 0;
+        return factions.values().stream().mapToInt(Faction::getSupporter).sum();
     }
 
     public Faction getFactionByName(String name) {
@@ -23,6 +23,12 @@ public class Population {
     }
 
     public String corruptionDisplay() {
-        return null;
+        StringBuilder display = new StringBuilder("0. Retour");
+        int count = 1;
+        for (Faction faction : factions.values()) {
+            display.append("\n").append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost());
+            count++;
+        }
+        return display.toString();
     }
 }

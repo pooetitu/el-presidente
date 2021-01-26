@@ -1,6 +1,7 @@
 package game;
 
 public class Faction {
+    private static final int CORRUPTION_COST = 15;
     private Population population;
     private final String name;
     private int satisfaction;
@@ -41,5 +42,9 @@ public class Faction {
 
     public void setSupporter(int supporter) {
         this.supporter = supporter;
+    }
+
+    public int getCorruptionCost() {
+        return CORRUPTION_COST * supporter;
     }
 }

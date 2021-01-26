@@ -11,7 +11,7 @@ public class PopulationTest extends TestCase {
     protected void setUp() throws Exception {
         population = new Population();
         capitalistes = new Faction("capitalistes", 15, 15);
-        communistes = new Faction("communistes", 15, 15);
+        communistes = new Faction("communistes", 15, 16);
         population.addFaction(communistes);
     }
 
@@ -22,11 +22,26 @@ public class PopulationTest extends TestCase {
     public void testAddFaction() {
         population.addFaction(capitalistes);
         assertEquals(capitalistes, population.getFactionByName(capitalistes.getName()));
-        assertEquals(population, capitalistes.getPopulation());
     }
 
-    public void testCorruptionDisplay() {
+    public void testGetTotalPopulationOneFaction(){
+        assertEquals(16, population.getTotalPopulation());
+    }
+
+    public void testGetTotalPopulationMultipleFaction(){
+        population.addFaction(capitalistes);
+        assertEquals(31, population.getTotalPopulation());
+    }
+
+    public void testCorruptionDisplayOneFaction() {
         assertEquals("0. Retour\n" +
-                "1. communistes - 225", population.corruptionDisplay());
+                "1. communistes - 240", population.corruptionDisplay());
+    }
+
+    public void testCorruptionDisplayMultipleFaction() {
+        population.addFaction(capitalistes);
+        assertEquals("0. Retour\n" +
+                "1. communistes - 240\n" +
+                "2. capitalistes - 225", population.corruptionDisplay());
     }
 }
