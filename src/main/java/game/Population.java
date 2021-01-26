@@ -11,7 +11,7 @@ public class Population {
     }
 
     public void addFaction(Faction faction) {
-
+        factions.put(faction.getName(), faction);
     }
 
     public int getTotalPopulation() {
@@ -19,7 +19,7 @@ public class Population {
     }
 
     public Faction getFactionByName(String name) {
-        return null;
+        return factions.get(name);
     }
 
     public String corruptionDisplay() {

@@ -47,7 +47,10 @@ public class Island {
     }
 
     public void setAgriculture(int agriculture) {
-        this.agriculture = agriculture;
+        if (this.industrie + agriculture >= 100)
+            this.agriculture = 100 - this.industrie;
+        else
+            this.agriculture = agriculture;
     }
 
     public int getIndustrie() {
@@ -55,7 +58,10 @@ public class Island {
     }
 
     public void setIndustrie(int industrie) {
-        this.industrie = industrie;
+        if (this.agriculture + industrie >= 100)
+            this.industrie = 100 - this.agriculture;
+        else
+            this.industrie = industrie;
     }
 
     public Population getPopulation() {

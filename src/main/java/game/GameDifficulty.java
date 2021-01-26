@@ -9,4 +9,12 @@ public enum GameDifficulty {
         this.effectRatio = effectRatio;
         this.satisfactionThreshold = satisfactionThreshold;
     }
+
+    public double getEffectRatio() {
+        return effectRatio;
+    }
+
+    public int getSatisfactionThreshold() {
+        return satisfactionThreshold;
+    }
 }
