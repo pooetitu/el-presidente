@@ -2,6 +2,7 @@ package game.event;
 
 import game.event.effect.EventEffect;
 import game.event.effect.EventEffectFactionInfluence;
+import game.event.effect.calculation.CalculatePercentage;
 import junit.framework.TestCase;
 
 public class EventTest extends TestCase {
@@ -11,8 +12,8 @@ public class EventTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         EventEffect[] eventEffects = new EventEffect[2];
-        eventEffects[0] = new EventEffectFactionInfluence("-15 % de satisfaction pour les religieux,", 0.85);
-        eventEffects[1] = new EventEffectFactionInfluence(" -15 % de satisfaction pour les libéraux", 0.85);
+        eventEffects[0] = new EventEffectFactionInfluence("-15 % de satisfaction pour les religieux,", 0.85, new CalculatePercentage());
+        eventEffects[1] = new EventEffectFactionInfluence(" -15 % de satisfaction pour les libéraux", 0.85, new CalculatePercentage());
 
         EventChoice[] choices = new EventChoice[1];
         choices[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffects);

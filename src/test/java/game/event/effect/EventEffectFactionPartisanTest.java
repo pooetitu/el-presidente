@@ -4,6 +4,7 @@ import game.Faction;
 import game.GameDifficulty;
 import game.Island;
 import game.Ressource;
+import game.event.effect.calculation.CalculatePercentage;
 import junit.framework.TestCase;
 
 public class EventEffectFactionPartisanTest extends TestCase {
@@ -19,19 +20,19 @@ public class EventEffectFactionPartisanTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectFactionInfluence("-15% influence capitalistes", -0.15);
+        eventEffectNegative = new EventEffectFactionInfluence("-15% influence capitalistes", -0.15, new CalculatePercentage());
         eventEffectNegative.addFaction("capitalistes");
 
-        eventEffectPositive = new EventEffectFactionInfluence("+15% influence capitalistes", 0.15);
+        eventEffectPositive = new EventEffectFactionInfluence("+15% influence capitalistes", 0.15, new CalculatePercentage());
         eventEffectPositive.addFaction("capitalistes");
 
-        eventEffectSmallerThanZero = new EventEffectFactionInfluence("-15% influence libéraux", -0.15);
+        eventEffectSmallerThanZero = new EventEffectFactionInfluence("-15% influence libéraux", -0.15, new CalculatePercentage());
         eventEffectSmallerThanZero.addFaction("libéraux");
 
-        eventEffectGreaterThanHundred = new EventEffectFactionInfluence("+15% influence communistes", 0.15);
+        eventEffectGreaterThanHundred = new EventEffectFactionInfluence("+15% influence communistes", 0.15, new CalculatePercentage());
         eventEffectGreaterThanHundred.addFaction("communistes");
 
-        eventEffectMultipleFactions = new EventEffectFactionInfluence("+15% influence communistes et communistes", 0.15);
+        eventEffectMultipleFactions = new EventEffectFactionInfluence("+15% influence communistes et communistes", 0.15, new CalculatePercentage());
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("communistes");
 

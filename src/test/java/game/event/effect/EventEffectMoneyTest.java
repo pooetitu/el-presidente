@@ -3,6 +3,7 @@ package game.event.effect;
 import game.GameDifficulty;
 import game.Island;
 import game.Ressource;
+import game.event.effect.calculation.CalculateFixed;
 import junit.framework.TestCase;
 
 public class EventEffectMoneyTest extends TestCase {
@@ -15,8 +16,8 @@ public class EventEffectMoneyTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectMoney("-100 trésorerie", -100);
-        eventEffectPositive = new EventEffectMoney("+100 trésorerie", 100);
+        eventEffectNegative = new EventEffectMoney("-100 trésorerie", -100, new CalculateFixed());
+        eventEffectPositive = new EventEffectMoney("+100 trésorerie", 100, new CalculateFixed());
         islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(100, 100));
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(100, 100));
         islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(100, 100));
@@ -46,11 +47,11 @@ public class EventEffectMoneyTest extends TestCase {
 
     public void testEffectPositiveHardDifficulty() {
         eventEffectPositive.applyEffect(islandHard);
-        assertEquals(-100, islandHard.getRessources().getTreasury());
+        assertEquals(150, islandHard.getRessources().getTreasury());
     }
 
     public void testEffectNegativeHardDifficulty() {
         eventEffectNegative.applyEffect(islandHard);
-        assertEquals(150, islandHard.getRessources().getTreasury());
+        assertEquals(-100, islandHard.getRessources().getTreasury());
     }
 }

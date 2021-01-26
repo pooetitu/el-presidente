@@ -3,6 +3,7 @@ package game.event.effect;
 import game.GameDifficulty;
 import game.Island;
 import game.Ressource;
+import game.event.effect.calculation.CalculatePercentage;
 import junit.framework.TestCase;
 
 public class EventEffectAgricultureTest extends TestCase {
@@ -17,8 +18,8 @@ public class EventEffectAgricultureTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectAgriculture("-15% agriculture", -0.15);
-        eventEffectPositive = new EventEffectAgriculture("+15% agriculture", 0.15);
+        eventEffectNegative = new EventEffectAgriculture("-15% agriculture", -0.15, new CalculatePercentage());
+        eventEffectPositive = new EventEffectAgriculture("+15% agriculture", 0.15, new CalculatePercentage());
         islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
         islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));

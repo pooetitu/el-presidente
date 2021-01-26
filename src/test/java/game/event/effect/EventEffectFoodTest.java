@@ -3,6 +3,7 @@ package game.event.effect;
 import game.GameDifficulty;
 import game.Island;
 import game.Ressource;
+import game.event.effect.calculation.CalculateFixed;
 import junit.framework.TestCase;
 
 public class EventEffectFoodTest extends TestCase {
@@ -15,8 +16,8 @@ public class EventEffectFoodTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectFood("-100 nourriture", -100);
-        eventEffectPositive = new EventEffectMoney("+100 nourriture", 100);
+        eventEffectNegative = new EventEffectFood("-100 nourriture", -100, new CalculateFixed());
+        eventEffectPositive = new EventEffectMoney("+100 nourriture", 100, new CalculateFixed());
         islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(100, 100));
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(100, 100));
         islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(100, 100));
