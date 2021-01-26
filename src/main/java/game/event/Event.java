@@ -12,6 +12,9 @@ public class Event {
     }
 
     public String display() {
-        return null;
+        StringBuilder display = new StringBuilder(description);
+        for (EventChoice choice : choices)
+            display.append("\n").append(choice.display());
+        return display.toString();
     }
 }

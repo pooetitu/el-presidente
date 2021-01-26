@@ -3,6 +3,7 @@ package game.event.effect;
 import game.Island;
 
 public abstract class EventEffect {
+    // TODO description can be generated dynamically for each EventEffect type
     private final String description;
     private final double amount;
 
@@ -14,6 +15,6 @@ public abstract class EventEffect {
     public abstract void applyEffect(Island island);
 
     public String display() {
-        return null;
+        return description;
     }
 }

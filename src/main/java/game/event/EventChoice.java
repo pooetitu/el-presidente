@@ -12,6 +12,9 @@ public class EventChoice {
     }
 
     public String display() {
-        return null;
+        StringBuilder display = new StringBuilder(description);
+        for (EventEffect effect : effects)
+            display.append("\n").append(effect.display());
+        return display.toString();
     }
 }
