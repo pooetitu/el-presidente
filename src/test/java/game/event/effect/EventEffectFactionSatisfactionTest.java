@@ -4,37 +4,41 @@ import game.Faction;
 import game.GameDifficulty;
 import game.Island;
 import game.Ressource;
-import game.event.effect.calculation.CalculatePercentage;
+import game.event.effect.calculation.CalculationFixed;
 import junit.framework.TestCase;
 
-public class EventEffectFactionInfluenceTest extends TestCase {
+public class EventEffectFactionSatisfactionTest extends TestCase {
     private Island islandEasy;
     private Island islandNormal;
     private Island islandHard;
-    private EventEffectFactionInfluence eventEffectPositive;
-    private EventEffectFactionInfluence eventEffectNegative;
-    private EventEffectFactionInfluence eventEffectGreaterThanHundred;
-    private EventEffectFactionInfluence eventEffectSmallerThanZero;
-    private EventEffectFactionInfluence eventEffectMultipleFactions;
+    private EventEffectFactionSatisfaction eventEffectPositive;
+    private EventEffectFactionSatisfaction eventEffectNegative;
+    private EventEffectFactionSatisfaction eventEffectGreaterThanHundred;
+    private EventEffectFactionSatisfaction eventEffectSmallerThanZero;
+    private EventEffectFactionSatisfaction eventEffectPositiveOnZero;
+    private EventEffectFactionSatisfaction eventEffectMultipleFactions;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectFactionInfluence("-15% influence capitalistes", -0.15, new CalculatePercentage());
+        eventEffectNegative = new EventEffectFactionSatisfaction("-15% influence capitalistes", -15, new CalculationFixed());
         eventEffectNegative.addFaction("capitalistes");
 
-        eventEffectPositive = new EventEffectFactionInfluence("+15% influence capitalistes", 0.15, new CalculatePercentage());
+        eventEffectPositive = new EventEffectFactionSatisfaction("+15% influence capitalistes", 15, new CalculationFixed());
         eventEffectPositive.addFaction("capitalistes");
 
-        eventEffectSmallerThanZero = new EventEffectFactionInfluence("-15% influence libéraux", -0.15, new CalculatePercentage());
+        eventEffectPositiveOnZero = new EventEffectFactionSatisfaction("+15% influence libéraux", 15, new CalculationFixed());
+        eventEffectPositiveOnZero.addFaction("libéraux");
+
+        eventEffectSmallerThanZero = new EventEffectFactionSatisfaction("-15% influence libéraux", 15, new CalculationFixed());
         eventEffectSmallerThanZero.addFaction("libéraux");
 
-        eventEffectGreaterThanHundred = new EventEffectFactionInfluence("+15% influence communistes", 0.15, new CalculatePercentage());
+        eventEffectGreaterThanHundred = new EventEffectFactionSatisfaction("+15% influence communistes", 15, new CalculationFixed());
         eventEffectGreaterThanHundred.addFaction("communistes");
 
-        eventEffectMultipleFactions = new EventEffectFactionInfluence("+15% influence communistes et communistes", 0.15, new CalculatePercentage());
+        eventEffectMultipleFactions = new EventEffectFactionSatisfaction("+15% influence communistes et communistes", 15, new CalculationFixed());
         eventEffectMultipleFactions.addFaction("capitalistes");
-        eventEffectMultipleFactions.addFaction("communistes");
+        eventEffectMultipleFactions.addFaction("religieux");
 
         islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
         islandEasy.getPopulation().addFaction(new Faction("capitalistes", 50, 15));
@@ -53,38 +57,38 @@ public class EventEffectFactionInfluenceTest extends TestCase {
 
     public void testEffectPositiveEasyDifficulty() {
         eventEffectPositive.applyEffect(islandEasy);
-        assertEquals(65, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(80, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
     }
 
     public void testEffectNegativeEasyDifficulty() {
         eventEffectNegative.applyEffect(islandEasy);
-        assertEquals(46, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(42, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
     }
 
     public void testEffectPositiveNormalDifficulty() {
         eventEffectPositive.applyEffect(islandNormal);
-        assertEquals(57, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(65, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());
     }
 
     public void testEffectNegativeNormalDifficulty() {
         eventEffectNegative.applyEffect(islandNormal);
-        assertEquals(42, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(35, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());
     }
 
     public void testEffectPositiveHardDifficulty() {
         eventEffectPositive.applyEffect(islandHard);
-        assertEquals(53, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(57, islandHard.getPopulation().getFactionByName("capitalistes").getSatisfaction());
     }
 
     public void testEffectNegativeHardDifficulty() {
         eventEffectNegative.applyEffect(islandHard);
-        assertEquals(35, islandEasy.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(20, islandHard.getPopulation().getFactionByName("capitalistes").getSatisfaction());
     }
 
     public void testMultipleFaction() {
         eventEffectMultipleFactions.applyEffect(islandNormal);
-        assertEquals(42, islandNormal.getPopulation().getFactionByName("religieux").getSatisfaction());
-        assertEquals(42, islandNormal.getPopulation().getFactionByName("écologistes").getSatisfaction());
+        assertEquals(65, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());
+        assertEquals(65, islandNormal.getPopulation().getFactionByName("religieux").getSatisfaction());
     }
 
     public void testEffectPositiveNotGreaterThanHundred() {
@@ -93,7 +97,12 @@ public class EventEffectFactionInfluenceTest extends TestCase {
     }
 
     public void testEffectNegativeNotSmallerThanZero() {
-        eventEffectGreaterThanHundred.applyEffect(islandNormal);
+        eventEffectSmallerThanZero.applyEffect(islandNormal);
         assertTrue(islandNormal.getPopulation().getFactionByName("libéraux").getSatisfaction() >= 0);
+    }
+
+    public void testEffectPositiveOnZeroInfluence() {
+        eventEffectPositiveOnZero.applyEffect(islandNormal);
+        assertEquals(0, islandNormal.getPopulation().getFactionByName("libéraux").getSatisfaction());
     }
 }
