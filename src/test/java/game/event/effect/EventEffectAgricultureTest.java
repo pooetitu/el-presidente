@@ -19,9 +19,9 @@ public class EventEffectAgricultureTest extends TestCase {
         super.setUp();
         eventEffectNegative = new EventEffectAgriculture("-15% agriculture", -0.15);
         eventEffectPositive = new EventEffectAgriculture("+15% agriculture", 0.15);
-        islandEasy = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
-        islandHard = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
         islandNormalHundred = new Island(100, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
         islandNormalZero = new Island(0, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
     }

@@ -17,9 +17,9 @@ public class EventEffectFoodTest extends TestCase {
         super.setUp();
         eventEffectNegative = new EventEffectFood("-15% nourriture", -0.15);
         eventEffectPositive = new EventEffectMoney("+15% nourriture", 0.15);
-        islandEasy = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
-        islandHard = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
     }
 
 

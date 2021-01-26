@@ -35,7 +35,7 @@ public class EventEffectFactionPartisanTest extends TestCase {
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("communistes");
 
-        islandEasy = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
         islandEasy.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
 
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
@@ -45,7 +45,7 @@ public class EventEffectFactionPartisanTest extends TestCase {
         islandNormal.getPopulation().addFaction(new Faction("libéraux", 0, 0));
         islandNormal.getPopulation().addFaction(new Faction("communistes", 100, 100));
 
-        islandHard = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
         islandHard.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
 
     }
