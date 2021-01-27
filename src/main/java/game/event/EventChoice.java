@@ -10,4 +10,11 @@ public class EventChoice {
         this.description = description;
         this.effects = effects;
     }
+
+    public String display() {
+        StringBuilder display = new StringBuilder(description).append("\neffets: ");
+        for (EventEffect effect : effects)
+            display.append(effect.display());
+        return display.toString();
+    }
 }

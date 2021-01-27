@@ -1,6 +1,5 @@
 package state;
 
-import game.Faction;
 import game.Island;
 
 public class GameState extends State {

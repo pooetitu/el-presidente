@@ -14,7 +14,6 @@ public class Island {
     private int agriculture;
     private int industrie;
 
-
     // New sandbox game constructor
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) {
         this.agriculture = agriculture;
@@ -25,7 +24,6 @@ public class Island {
         this.population = new Population();
         this.seasons = new Season[4];
     }
-
 
     // Load game from save or scenario constructor
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource, Queue<Event> eventsQueue, Population population) {
@@ -42,12 +40,21 @@ public class Island {
         return null;
     }
 
+    public void corruptFaction(int factionIndex) {
+        if (ressource.getTreasury() <= 0) return;
+        int corruptCost = ressource.getTreasury() - population.corruptFaction(factionIndex);
+        ressource.setTreasury(corruptCost);
+    }
+
     public int getAgriculture() {
         return agriculture;
     }
 
     public void setAgriculture(int agriculture) {
-        this.agriculture = agriculture;
+        if (this.industrie + agriculture >= 100)
+            this.agriculture = 100 - this.industrie;
+        else
+            this.agriculture = agriculture;
     }
 
     public int getIndustrie() {
@@ -55,7 +62,10 @@ public class Island {
     }
 
     public void setIndustrie(int industrie) {
-        this.industrie = industrie;
+        if (this.agriculture + industrie >= 100)
+            this.industrie = 100 - this.agriculture;
+        else
+            this.industrie = industrie;
     }
 
     public Population getPopulation() {
