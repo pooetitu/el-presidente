@@ -21,17 +21,17 @@ public class FactionTest extends TestCase {
     }
 
     public void testCorruption() {
-        capitalistes.takeCorruption(island);
+        island.corruptFaction(0);
         assertEquals(60, capitalistes.getSatisfaction());
     }
 
     public void testCorruptionWithoutMoney() {
-        capitalistes.takeCorruption(islandWithoutMoney);
+        islandWithoutMoney.corruptFaction(0);
         assertEquals(50, capitalistes.getSatisfaction());
     }
 
     public void testLoyalistSatisfactionAfterCorruption() {
-        capitalistes.takeCorruption(island);
-        assertEquals(38, loyalistes.getSatisfaction());
+        island.corruptFaction(0);
+        assertEquals(28, loyalistes.getSatisfaction());
     }
 }

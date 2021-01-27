@@ -36,6 +36,7 @@ public class EventTest extends TestCase {
                 "1. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
                 "effets: -15 % de satisfaction pour les religieux, -15 % de satisfaction pour les libéraux", eventOneChoice.display());
     }
+
     public void testDisplayEventMultipleChoices() {
         assertEquals("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région\n" +
                 "1. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +

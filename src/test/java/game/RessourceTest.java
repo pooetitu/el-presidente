@@ -19,7 +19,7 @@ public class RessourceTest extends TestCase {
     }
 
     public void testPayForCorruption() {
-        capitalistes.takeCorruption(island);
+        island.corruptFaction(0);
         assertEquals(275, island.getRessources().getTreasury());
     }
 

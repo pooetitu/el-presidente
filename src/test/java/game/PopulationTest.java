@@ -29,6 +29,7 @@ public class PopulationTest extends TestCase {
     public void testGlobalSatisfactionOneFaction() {
         assertEquals(65, population.getGlobalSatisfaction());
     }
+
     public void testGlobalSatisfactionMultipleFaction() {
         population.addFaction(capitalistes);
         population.addFaction(liberaux);

@@ -1,17 +1,23 @@
 package game;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class Population {
-    private final Map<String, Faction> factions;
+    private final LinkedHashMap<String, Faction> factions;
 
     public Population() {
-        factions = new HashMap<>();
+        factions = new LinkedHashMap<String, Faction>();
     }
 
     public void addFaction(Faction faction) {
         factions.put(faction.getName(), faction);
+    }
+
+    public int corruptFaction(int index) {
+        Faction faction = (Faction) factions.values().toArray()[index];
+        int corruptionCost = faction.corrupt();
+        getFactionByName("loyalistes").setSatisfaction(getFactionByName("loyalistes").getSatisfaction() - corruptionCost / 10);
+        return corruptionCost;
     }
 
     public int getTotalPopulation() {
