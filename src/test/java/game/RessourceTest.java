@@ -20,7 +20,7 @@ public class RessourceTest extends TestCase {
 
     public void testPayForCorruption() {
         island.corruptFaction(0);
-        assertEquals(275, island.getRessources().getTreasury());
+        assertEquals(350, island.getRessources().getTreasury());
     }
 
     public void testPayForFood() {
