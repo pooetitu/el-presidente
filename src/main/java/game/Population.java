@@ -18,6 +18,16 @@ public class Population {
         return factions.values().stream().mapToInt(Faction::getSupporter).sum();
     }
 
+    public int getGlobalSatisfaction() {
+        int totalSupporter = 0;
+        int totalSatisfaction = 0;
+        for (Faction faction : factions.values()) {
+            totalSatisfaction += faction.getSupporter() * faction.getSatisfaction();
+            totalSupporter += faction.getSupporter();
+        }
+        return (totalSatisfaction) / totalSupporter;
+    }
+
     public Faction getFactionByName(String name) {
         return factions.get(name);
     }
@@ -26,7 +36,7 @@ public class Population {
         StringBuilder display = new StringBuilder("0. Retour");
         int count = 1;
         for (Faction faction : factions.values()) {
-            display.append("\n").append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost());
+            display.append("\n").append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$");
             count++;
         }
         return display.toString();

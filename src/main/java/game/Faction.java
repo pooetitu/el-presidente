@@ -14,7 +14,7 @@ public class Faction {
     }
 
     public void takeCorruption(Island island) {
-
+        setSatisfaction(satisfaction + 10);
     }
 
     public String getName() {
