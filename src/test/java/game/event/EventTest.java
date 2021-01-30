@@ -62,6 +62,7 @@ public class EventTest extends TestCase {
     }
 
     public void testChooseInSingleChoice() {
+        eventOneChoice.applyChoice(islandNormal, 0);
         assertEquals(65, islandNormal.getPopulation().getFactionByName("religieux").getSatisfaction());
     }
 
@@ -73,7 +74,7 @@ public class EventTest extends TestCase {
     public void testChooseSecondInMultipleChoice() {
         eventMultipleChoice.applyChoice(islandNormal, 1);
         assertEquals(65, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());
-        assertEquals(35, islandNormal.getPopulation().getFactionByName("libéraux").getSatisfaction());
+        assertEquals(35, islandNormal.getPopulation().getFactionByName("loyalistes").getSatisfaction());
     }
 
 }
