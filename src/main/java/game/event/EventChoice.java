@@ -1,5 +1,6 @@
 package game.event;
 
+import game.Island;
 import game.event.effect.EventEffect;
 
 public class EventChoice {
@@ -16,5 +17,8 @@ public class EventChoice {
         for (EventEffect effect : effects)
             display.append(effect.display());
         return display.toString();
+    }
+
+    public void applyEffects(Island island) {
     }
 }
