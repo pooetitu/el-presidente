@@ -6,7 +6,19 @@ public class Population {
     private final LinkedHashMap<String, Faction> factions;
 
     public Population() {
-        factions = new LinkedHashMap<String, Faction>();
+        factions = new LinkedHashMap<>();
+        populate();
+    }
+
+    private void populate() {
+        addFaction(new Faction("capitalistes", 50, 15));
+        addFaction(new Faction("communistes", 50, 15));
+        addFaction(new Faction("libéraux", 50, 15));
+        addFaction(new Faction("religieux", 50, 15));
+        addFaction(new Faction("militaristes", 50, 15));
+        addFaction(new Faction("écologistes", 50, 15));
+        addFaction(new Faction("nationalistes", 50, 15));
+        addFaction(new Faction("loyalistes", 50, 15));
     }
 
     public void addFaction(Faction faction) {
