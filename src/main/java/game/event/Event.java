@@ -24,7 +24,9 @@ public class Event {
     }
 
     public void applyChoice(Island island, int choiceIndex) {
-
+        if (choiceIndex >= 0 && choiceIndex < choices.length) {
+            choices[choiceIndex].applyEffects(island);
+        }
     }
 
     public Event getNextEvent() {

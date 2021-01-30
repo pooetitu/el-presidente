@@ -20,5 +20,8 @@ public class EventChoice {
     }
 
     public void applyEffects(Island island) {
+        for (EventEffect effect : effects) {
+            effect.applyEffect(island);
+        }
     }
 }
