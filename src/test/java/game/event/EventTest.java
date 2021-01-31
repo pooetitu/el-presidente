@@ -17,7 +17,6 @@ public class EventTest extends TestCase {
         super.setUp();
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
 
-
         EventEffectFactionSatisfaction[] eventEffectsMultipleChoice = new EventEffectFactionSatisfaction[2];
         eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15, new CalculationFixed());
         eventEffectsMultipleChoice[0].addFaction("religieux");
@@ -71,6 +70,7 @@ public class EventTest extends TestCase {
         assertEquals(65, islandNormal.getPopulation().getFactionByName("religieux").getSatisfaction());
         assertEquals(35, islandNormal.getPopulation().getFactionByName("libéraux").getSatisfaction());
     }
+
     public void testChooseSecondInMultipleChoice() {
         eventMultipleChoice.applyChoice(islandNormal, 1);
         assertEquals(65, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());

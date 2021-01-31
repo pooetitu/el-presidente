@@ -6,13 +6,15 @@ public class GameState extends State {
     private Island island;
     private int turn;
 
-    @Override
-    public void update() {
-
+    public GameState(int id) {
+        super(id);
+        turn = 0;
     }
 
     @Override
-    public void display() {
+    public void run() {
 
+        turn++;
     }
+
 }

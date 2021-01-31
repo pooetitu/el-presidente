@@ -27,7 +27,6 @@ public class EventChoiceTest extends TestCase {
 
         EventEffectFactionSatisfaction[] eventEffectsOneChoice = new EventEffectFactionSatisfaction[1];
         eventEffectsOneChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15, new CalculationFixed());
-
         eventEffectsOneChoice[0].addFaction("religieux");
         choiceOneEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice);
     }
