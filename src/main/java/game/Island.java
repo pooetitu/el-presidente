@@ -22,6 +22,7 @@ public class Island {
         this.ressource = ressource;
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
+        this.population.populate();
         this.seasons = new Season[4];
     }
 
