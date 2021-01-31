@@ -7,10 +7,9 @@ public class Population {
 
     public Population() {
         factions = new LinkedHashMap<>();
-        populate();
     }
 
-    private void populate() {
+    public void populate() {
         addFaction(new Faction("capitalistes", 50, 15));
         addFaction(new Faction("communistes", 50, 15));
         addFaction(new Faction("libéraux", 50, 15));
