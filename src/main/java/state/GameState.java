@@ -16,12 +16,13 @@ public class GameState extends State {
     }
 
     public void initGame(Island island) {
-
+        island = island;
+        System.out.println("init game state");
     }
 
     @Override
     public void run() {
-
+        System.out.println(turn);
         turn++;
     }
 

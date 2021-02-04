@@ -28,6 +28,7 @@ public abstract class State {
 
     public static void setActiveStateId(int activeStateId) {
         State.activeStateId = activeStateId;
+        getActiveState().init();
     }
 
     public abstract void init();
