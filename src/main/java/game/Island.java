@@ -44,7 +44,6 @@ public class Island {
     }
 
 
-
     // Load game from save or scenario constructor
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource, Queue<Event> eventsQueue, Population population) {
         this.agriculture = agriculture;
