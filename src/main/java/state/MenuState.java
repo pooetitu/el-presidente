@@ -2,6 +2,7 @@ package state;
 
 
 import display.MainMenuDisplay;
+import main.Main;
 
 public class MenuState extends State {
     public MenuState(int id) {
@@ -19,7 +20,7 @@ public class MenuState extends State {
         MainMenuDisplay mmd = new MainMenuDisplay("0. Commencer une nouvelle partie\n1. Charger une partie\n2. Quitter le jeux");
         boolean running = true;
         while (running) {
-            running = mmd.displayMenu(scanner);
+            running = mmd.displayMenu(Main.SCANNER);
         }
     }
 

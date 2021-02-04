@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Season {
-    private String name;
     private final ArrayList<Event> events;
+    private String name;
 
     public Season() {
         events = new ArrayList<>();

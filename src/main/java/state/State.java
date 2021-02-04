@@ -1,12 +1,10 @@
 package state;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 public abstract class State {
     public static final int MENU_STATE_ID = 0;
     public static final int GAME_STATE_ID = 1;
-    protected final static Scanner scanner = new Scanner(System.in);
     private static final HashMap<Integer, State> states = new HashMap<>();
     private static int activeStateId = 0;
     private final int id;
