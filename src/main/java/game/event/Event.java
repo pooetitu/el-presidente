@@ -1,5 +1,7 @@
 package game.event;
 
+import game.Island;
+
 public class Event {
     private final String description;
     private final Event nextEvent;
@@ -19,5 +21,15 @@ public class Event {
             counter++;
         }
         return display.toString();
+    }
+
+    public void applyChoice(Island island, int choiceIndex) {
+        if (choiceIndex >= 0 && choiceIndex < choices.length) {
+            choices[choiceIndex].applyEffects(island);
+        }
+    }
+
+    public Event getNextEvent() {
+        return nextEvent;
     }
 }
