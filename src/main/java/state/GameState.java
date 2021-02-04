@@ -8,7 +8,15 @@ public class GameState extends State {
 
     public GameState(int id) {
         super(id);
+    }
+
+    @Override
+    public void init() {
         turn = 0;
+    }
+
+    public void initGame(Island island) {
+
     }
 
     @Override
