@@ -122,14 +122,8 @@ public class Island {
 
     @Override
     public String toString() {
-        return "Island{" +
-                "eventsQueue=" + eventsQueue +
-                ", difficulty=" + difficulty +
-                ", ressource=" + ressource +
-                ", population=" + population +
-                ", seasons=" + seasons +
-                ", agriculture=" + agriculture +
-                ", industrie=" + industrie +
-                '}';
+        return ressource + "\n" +
+                String.format("%-21s%s", "agriculture: " + agriculture + "%",
+                        "industrie: " + industrie + "%") + "\n" + "global satisfaction: " + population.getGlobalSatisfaction();
     }
 }

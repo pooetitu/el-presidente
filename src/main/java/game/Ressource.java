@@ -34,4 +34,9 @@ public class Ressource {
     public void setFood(int food) {
         this.food = food;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-21s%s", "treasury: " + treasury, "food: " + food);
+    }
 }

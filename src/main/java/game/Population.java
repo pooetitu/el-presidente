@@ -63,4 +63,13 @@ public class Population {
         }
         return display.toString();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder display = new StringBuilder();
+        for (Faction faction : factions.values()) {
+            display.append(faction).append("\n");
+        }
+        return display.toString();
+    }
 }

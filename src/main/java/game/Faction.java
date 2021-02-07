@@ -47,4 +47,11 @@ public class Faction {
     public int getCorruptionCost() {
         return CORRUPTION_COST * supporter;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-18s%-20s%s", name + ":",
+                "\tsatisfaction:" + satisfaction,
+                "\tsupporter:" + supporter);
+    }
 }
