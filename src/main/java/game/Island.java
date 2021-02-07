@@ -31,7 +31,7 @@ public class Island {
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = new GameLoader().loadSeasons();
+        this.seasons = GameLoader.getGameLoaderInstance().loadSeasons();
     }
 
 
@@ -45,7 +45,7 @@ public class Island {
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = new GameLoader().loadSeasons();
+        this.seasons = GameLoader.getGameLoaderInstance().loadSeasons();
     }
 
 
@@ -57,7 +57,7 @@ public class Island {
         this.ressource = ressource;
         this.eventsQueue = eventsQueue;
         this.population = population;
-        this.seasons = new GameLoader().loadSeasons();
+        this.seasons = GameLoader.getGameLoaderInstance().loadSeasons();
     }
 
     private GameDifficulty displayDifficultySelection() throws IOException {

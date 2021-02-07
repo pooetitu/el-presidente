@@ -21,11 +21,12 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class GameLoader {
+    private static GameLoader gameLoader;
     private final XStream xstream;
     private String savePath;
     private LinkedList<File> saveFileList;
 
-    public GameLoader() {
+    private GameLoader() {
         xstream = new XStream(new JettisonMappedXmlDriver());
         xstream.setMode(XStream.NO_REFERENCES);
         xstream.autodetectAnnotations(true);
@@ -48,6 +49,13 @@ public class GameLoader {
         saveFileList = new LinkedList<>();
         savePath = "./";
         loadSaveList();
+    }
+
+    public static GameLoader getGameLoaderInstance() {
+        if (gameLoader == null) {
+            gameLoader = new GameLoader();
+        }
+        return gameLoader;
     }
 
     private void loadSaveList() {
