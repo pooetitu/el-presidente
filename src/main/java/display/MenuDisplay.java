@@ -1,5 +1,6 @@
 package display;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class MenuDisplay {
@@ -15,12 +16,12 @@ public abstract class MenuDisplay {
         System.out.println(choicesDisplay);
     }
 
-    public boolean displayMenu(Scanner scanner) {
+    public boolean displayMenu(Scanner scanner) throws IOException {
         display();
         return execute(getChoice(scanner));
     }
 
-    protected abstract boolean execute(int choice);
+    protected abstract boolean execute(int choice) throws IOException;
 
     private int getChoice(Scanner scanner) {
         scanner.hasNextInt();

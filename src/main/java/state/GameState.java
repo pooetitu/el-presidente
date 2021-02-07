@@ -16,7 +16,7 @@ public class GameState extends State {
     }
 
     public void initGame(Island island) {
-        island = island;
+        this.island = island;
         System.out.println("init game state");
     }
 

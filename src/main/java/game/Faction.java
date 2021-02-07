@@ -1,9 +1,11 @@
 package game;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("faction")
 public class Faction {
     private static final int CORRUPTION_COST = 15;
     private final String name;
-    private Population population;
     private int satisfaction;
     private int supporter;
 
@@ -40,10 +42,6 @@ public class Faction {
 
     public void setSupporter(int supporter) {
         this.supporter = supporter;
-    }
-
-    public Population getPopulation() {
-        return population;
     }
 
     public int getCorruptionCost() {

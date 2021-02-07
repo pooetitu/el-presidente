@@ -1,10 +1,13 @@
 package game;
 
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import display.DifficultyMenuDisplay;
 import game.event.Event;
 import main.Main;
+import utils.GameLoader;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -13,12 +16,14 @@ public class Island {
     private final GameDifficulty difficulty;
     private final Ressource ressource;
     private final Population population;
-    private final Season[] seasons;
+
+    @XStreamImplicit(itemFieldName = "season")
+    private ArrayList<Season> seasons;
     private int agriculture;
     private int industrie;
 
     // New sandbox game constructor with selection of difficulty
-    public Island(int agriculture, int industrie, Ressource ressource) {
+    public Island(int agriculture, int industrie, Ressource ressource) throws IOException {
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.ressource = ressource;
@@ -26,13 +31,13 @@ public class Island {
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = new Season[4];
-        System.out.println(this);
+        this.seasons = new GameLoader().loadSeasons();
     }
 
 
     // New sandbox game constructor with predefined difficulty
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) {
+    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
+
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.ressource = ressource;
@@ -40,29 +45,25 @@ public class Island {
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = new Season[4];
+        this.seasons = new GameLoader().loadSeasons();
     }
 
 
     // Load game from save or scenario constructor
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource, Queue<Event> eventsQueue, Population population) {
+    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource, Queue<Event> eventsQueue, Population population) throws IOException {
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.difficulty = difficulty;
         this.ressource = ressource;
         this.eventsQueue = eventsQueue;
         this.population = population;
-        this.seasons = createSeasons();
+        this.seasons = new GameLoader().loadSeasons();
     }
 
-    private GameDifficulty displayDifficultySelection() {
+    private GameDifficulty displayDifficultySelection() throws IOException {
         DifficultyMenuDisplay dmd = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
         dmd.displayMenu(Main.SCANNER);
         return dmd.getGameDifficulty();
-    }
-
-    public Season[] createSeasons() {
-        return null;
     }
 
     public void corruptFaction(int factionIndex) {
@@ -93,6 +94,13 @@ public class Island {
             this.industrie = industrie;
     }
 
+    public Event getNextEvent(int currentSeasonIndex) {
+        if (!eventsQueue.isEmpty()) {
+            return eventsQueue.remove();
+        }
+        return seasons.get(currentSeasonIndex).getRandomEvent();
+    }
+
     public Population getPopulation() {
         return population;
     }
@@ -105,7 +113,7 @@ public class Island {
         return difficulty;
     }
 
-    public Season[] getSeasons() {
+    public ArrayList<Season> getSeasons() {
         return seasons;
     }
 
@@ -120,7 +128,7 @@ public class Island {
                 ", difficulty=" + difficulty +
                 ", ressource=" + ressource +
                 ", population=" + population +
-                ", seasons=" + Arrays.toString(seasons) +
+                ", seasons=" + seasons +
                 ", agriculture=" + agriculture +
                 ", industrie=" + industrie +
                 '}';

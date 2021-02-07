@@ -4,6 +4,8 @@ package state;
 import display.MainMenuDisplay;
 import main.Main;
 
+import java.io.IOException;
+
 public class MenuState extends State {
     public MenuState(int id) {
         super(id);
@@ -16,7 +18,7 @@ public class MenuState extends State {
 
 
     @Override
-    public void run() {
+    public void run() throws IOException {
         MainMenuDisplay mmd = new MainMenuDisplay("0. Commencer une nouvelle partie\n1. Charger une partie\n2. Quitter le jeux");
         mmd.displayMenu(Main.SCANNER);
 

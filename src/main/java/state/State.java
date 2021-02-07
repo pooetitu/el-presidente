@@ -1,5 +1,6 @@
 package state;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public abstract class State {
@@ -33,7 +34,7 @@ public abstract class State {
 
     public abstract void init();
 
-    public abstract void run();
+    public abstract void run() throws IOException;
 
     public int getId() {
         return id;

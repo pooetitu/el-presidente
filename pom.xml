@@ -26,5 +26,12 @@
             <artifactId>xstream</artifactId>
             <version>1.4.15</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.jettison/jettison -->
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+
     </dependencies>
 </project>

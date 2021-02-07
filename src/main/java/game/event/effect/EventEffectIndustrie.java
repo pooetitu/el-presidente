@@ -1,8 +1,10 @@
 package game.event.effect;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import game.Island;
 import game.event.effect.calculation.Calculation;
 
+@XStreamAlias("effect-industrie")
 public class EventEffectIndustrie extends EventEffect {
 
     public EventEffectIndustrie(String description, double amount, Calculation calculationMethod) {
