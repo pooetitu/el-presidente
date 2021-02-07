@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -23,8 +22,8 @@ import java.util.Objects;
 public class GameLoader {
     private static GameLoader gameLoader;
     private final XStream xstream;
-    private String savePath;
-    private LinkedList<File> saveFileList;
+    private final String savePath;
+    private final LinkedList<File> saveFileList;
 
     private GameLoader() {
         xstream = new XStream(new JettisonMappedXmlDriver());
@@ -93,8 +92,12 @@ public class GameLoader {
         return island;
     }
 
-    public ArrayList<Season> loadSeasons() throws IOException {
-        String saveJson = Files.readString(Paths.get(savePath + "/seasons.data"), StandardCharsets.UTF_8);
-        return (ArrayList<Season>) xstream.fromXML(saveJson);
+    public Season[] loadSeasons() {
+        Season[] seasons = new Season[4];
+        for (int i = 0; i < 4; i++) {
+            String saveJson = RessourceReader.getContentStringFromRessource("data/season_" + i + ".data");
+            seasons[i] = (Season) xstream.fromXML(saveJson);
+        }
+        return seasons;
     }
 }

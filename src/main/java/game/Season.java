@@ -10,7 +10,7 @@ import java.util.Random;
 @XStreamAlias("season")
 public class Season {
     @XStreamImplicit(itemFieldName = "event")
-    private ArrayList<Event> events;
+    private final ArrayList<Event> events;
 
     public Season() {
         events = new ArrayList<>();

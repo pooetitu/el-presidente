@@ -7,7 +7,6 @@ import main.Main;
 import utils.GameLoader;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -18,7 +17,7 @@ public class Island {
     private final Population population;
 
     @XStreamImplicit(itemFieldName = "season")
-    private ArrayList<Season> seasons;
+    private final Season[] seasons;
     private int agriculture;
     private int industrie;
 
@@ -98,7 +97,7 @@ public class Island {
         if (!eventsQueue.isEmpty()) {
             return eventsQueue.remove();
         }
-        return seasons.get(currentSeasonIndex).getRandomEvent();
+        return seasons[currentSeasonIndex].getRandomEvent();
     }
 
     public Population getPopulation() {
@@ -113,7 +112,7 @@ public class Island {
         return difficulty;
     }
 
-    public ArrayList<Season> getSeasons() {
+    public Season[] getSeasons() {
         return seasons;
     }
 
