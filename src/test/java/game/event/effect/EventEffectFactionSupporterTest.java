@@ -18,13 +18,13 @@ public class EventEffectFactionSupporterTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectFactionSupporter("-15% influence capitalistes", -0.15, new CalculationPercentage());
+        eventEffectNegative = new EventEffectFactionSupporter("-15% influence capitalistes", -0.15, false, new CalculationPercentage());
         eventEffectNegative.addFaction("capitalistes");
 
-        eventEffectPositive = new EventEffectFactionSupporter("+15% influence capitalistes", 0.15, new CalculationPercentage());
+        eventEffectPositive = new EventEffectFactionSupporter("+15% influence capitalistes", 0.15, false, new CalculationPercentage());
         eventEffectPositive.addFaction("capitalistes");
 
-        eventEffectMultipleFactions = new EventEffectFactionSupporter("+15% influence communistes et communistes", 0.15, new CalculationPercentage());
+        eventEffectMultipleFactions = new EventEffectFactionSupporter("+15% influence communistes et communistes", 0.15, false, new CalculationPercentage());
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("écologistes");
 

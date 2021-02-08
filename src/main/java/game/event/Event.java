@@ -20,7 +20,7 @@ public class Event {
 
     public String display() {
         StringBuilder display = new StringBuilder(description);
-        int counter = 1;
+        int counter = 0;
         for (EventChoice choice : choices) {
             display.append("\n").append(counter).append(". ").append(choice.display());
             counter++;
