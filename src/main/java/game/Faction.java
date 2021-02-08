@@ -42,6 +42,7 @@ public class Faction {
 
     public void setSupporter(int supporter) {
         this.supporter = supporter;
+        if (this.supporter < 0) this.supporter = 0;
     }
 
     public int getCorruptionCost() {

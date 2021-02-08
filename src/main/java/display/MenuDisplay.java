@@ -17,19 +17,20 @@ public abstract class MenuDisplay {
     }
 
     public boolean displayMenu(Scanner scanner) throws IOException {
-        display();
         return execute(getChoice(scanner));
     }
 
     protected abstract boolean execute(int choice) throws IOException;
 
     private int getChoice(Scanner scanner) {
-        scanner.hasNextInt();
-        int choice = scanner.nextInt();
+        int choice = -1;
         while (choice < 0 || choice > switchSize) {
             display();
-            scanner.hasNextInt();
-            choice = scanner.nextInt();
+            while (!scanner.hasNextInt()) {
+                display();
+                scanner.next();
+            }
+                choice = scanner.nextInt();
         }
         return choice;
     }

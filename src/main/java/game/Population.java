@@ -3,6 +3,7 @@ package game;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 
 @XStreamAlias("population")
@@ -47,6 +48,7 @@ public class Population {
             totalSatisfaction += faction.getSupporter() * faction.getSatisfaction();
             totalSupporter += faction.getSupporter();
         }
+        if (totalSatisfaction == 0 || totalSupporter == 0) return 0;
         return (totalSatisfaction) / totalSupporter;
     }
 
@@ -62,6 +64,10 @@ public class Population {
             count++;
         }
         return display.toString();
+    }
+
+    public Collection<game.Faction> getFactions() {
+        return factions.values();
     }
 
     @Override

@@ -21,6 +21,29 @@ public class Season {
         return events.get(rand.nextInt(events.size()));
     }
 
+    public static String getSeason(int index) {
+        String season = "";
+        switch (index) {
+            case 0: {
+                season = "printemps";
+                break;
+            }
+            case 1: {
+                season = "été";
+                break;
+            }
+            case 2: {
+                season = "automne";
+                break;
+            }
+            case 3: {
+                season = "hiver";
+                break;
+            }
+        }
+        return season;
+    }
+
     public void addEvent(Event newEvent) {
         events.add(newEvent);
     }
