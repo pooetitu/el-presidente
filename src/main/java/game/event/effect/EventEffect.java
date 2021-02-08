@@ -4,25 +4,29 @@ import game.Island;
 import game.event.effect.calculation.Calculation;
 
 public abstract class EventEffect {
-    // TODO description can be generated dynamically for each EventEffect type
-    private final String description;
     private final double amount;
     private final Calculation calculationMethod;
 
-    public EventEffect(String description, double amount, Calculation calculationMethod) {
-        this.description = description;
+    public EventEffect(double amount, Calculation calculationMethod) {
         this.amount = amount;
         this.calculationMethod = calculationMethod;
     }
 
     public abstract void applyEffect(Island island);
 
-    public String display() {
-        return description;
-    }
+    public abstract String display(double effectRatio);
 
     protected int calculateNewValue(int value, double effectRatio) {
-        return calculationMethod.calculateNewValue(amount, value, effectRatio);
+        return calculationMethod.calculateNewValue(calculateAmountWithEffectRatio(effectRatio), value);
+    }
+
+    protected double calculateAmountWithEffectRatio(double effectRatio) {
+        if (amount > 0) {
+            System.out.println(amount+" "+ effectRatio+" "+ amount/effectRatio);
+            return amount / effectRatio;
+        } else {
+            return amount * effectRatio;
+        }
     }
 
     public double getAmount() {

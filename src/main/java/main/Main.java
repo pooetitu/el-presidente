@@ -1,8 +1,5 @@
 package main;
 
-import game.GameDifficulty;
-import game.Island;
-import game.Ressource;
 import state.GameState;
 import state.MenuState;
 import state.State;
@@ -18,8 +15,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        Island island = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(1000, 10));
-        System.out.println(island);
         initStates();
         while (true) {
             State.getActiveState().run();

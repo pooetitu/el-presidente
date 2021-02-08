@@ -37,8 +37,8 @@ public class GameState extends State {
     }
 
     private void startEvent() {
-        Event event = island.getSeasons()[turn % 4].getRandomEvent();
-        event.applyChoice(island, getUserChoice(event.display(), event.getChoicesCount()));
+        Event event = island.getNextEvent(turn % 4);
+        event.applyChoice(island, getUserChoice(event.display(island.getDifficulty().getEffectRatio()), event.getChoicesCount()));
     }
 
     private int getUserChoice(String display, int limit) {

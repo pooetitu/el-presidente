@@ -8,6 +8,7 @@ import game.Island;
 import game.event.effect.calculation.Calculation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @XStreamAlias("effect-faction-satisfaction")
 public class EventEffectFactionSatisfaction extends EventEffect {
@@ -15,8 +16,8 @@ public class EventEffectFactionSatisfaction extends EventEffect {
     private final ArrayList<String> factions;
     private final boolean applyToAll;
 
-    public EventEffectFactionSatisfaction(String description, double amount, boolean applyToAll, Calculation calculationMethod) {
-        super(description, amount, calculationMethod);
+    public EventEffectFactionSatisfaction(double amount, boolean applyToAll, Calculation calculationMethod) {
+        super(amount, calculationMethod);
         this.factions = new ArrayList<>();
         this.applyToAll = applyToAll;
     }
@@ -32,6 +33,20 @@ public class EventEffectFactionSatisfaction extends EventEffect {
             Faction faction = island.getPopulation().getFactionByName(factionName);
             applyChangement(faction, island.getDifficulty());
         }
+    }
+
+    @Override
+    public String display(double effectRatio) {
+        if (applyToAll) {
+            return String.format("%+d%s", (int) calculateAmountWithEffectRatio(effectRatio), " % de satisfaction pour toutes les factions");
+        }
+        StringBuilder display = new StringBuilder(String.format("%+d%s", (int) calculateAmountWithEffectRatio(effectRatio), " % de satisfaction pour les "));
+        Iterator<String> factionIterator = factions.iterator();
+        while (factionIterator.hasNext()) {
+            display.append(factionIterator.next());
+            if (factionIterator.hasNext()) display.append(" ");
+        }
+        return display.toString();
     }
 
     private void applyToAll(Island island) {

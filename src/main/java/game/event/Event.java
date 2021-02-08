@@ -18,11 +18,11 @@ public class Event {
         this.choices = choices;
     }
 
-    public String display() {
+    public String display(double effectRatio) {
         StringBuilder display = new StringBuilder(description);
         int counter = 0;
         for (EventChoice choice : choices) {
-            display.append("\n").append(counter).append(". ").append(choice.display());
+            display.append("\n").append(counter).append(". ").append(choice.display(effectRatio));
             counter++;
         }
         return display.toString();

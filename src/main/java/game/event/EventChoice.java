@@ -4,6 +4,9 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import game.Island;
 import game.event.effect.EventEffect;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class EventChoice {
     private final String description;
     @XStreamImplicit(itemFieldName = "effect")
@@ -14,10 +17,15 @@ public class EventChoice {
         this.effects = effects;
     }
 
-    public String display() {
+    public String display(double effectRatio) {
         StringBuilder display = new StringBuilder(description).append("\neffets: ");
-        for (EventEffect effect : effects)
-            display.append(effect.display());
+        Iterator<EventEffect> eventEffectIterator = Arrays.stream(effects).iterator();
+        while (eventEffectIterator.hasNext()) {
+            display.append(eventEffectIterator.next().display(effectRatio));
+            if (eventEffectIterator.hasNext()) {
+                display.append(", ");
+            }
+        }
         return display.toString();
     }
 

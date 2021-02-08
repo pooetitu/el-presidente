@@ -7,8 +7,8 @@ import game.event.effect.calculation.Calculation;
 @XStreamAlias("effect-food")
 public class EventEffectFood extends EventEffect {
 
-    public EventEffectFood(String description, double amount, Calculation calculationMethod) {
-        super(description, amount, calculationMethod);
+    public EventEffectFood(double amount, Calculation calculationMethod) {
+        super(amount, calculationMethod);
     }
 
     @Override
@@ -16,5 +16,10 @@ public class EventEffectFood extends EventEffect {
         int result = calculateNewValue(island.getRessources().getFood(), island.getDifficulty().getEffectRatio());
         island.getRessources().setFood(result);
         System.out.println(island.getRessources().getFood());
+    }
+
+    @Override
+    public String display(double effectRatio) {
+        return String.format("%+d%s", (int) calculateAmountWithEffectRatio(effectRatio), "% nourriture");
     }
 }
