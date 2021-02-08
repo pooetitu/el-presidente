@@ -14,7 +14,6 @@ public class EventEffectAgriculture extends EventEffect {
     @Override
     public void applyEffect(Island island) {
         int result = this.calculateNewValue(island.getAgriculture(), island.getDifficulty().getEffectRatio());
-        System.out.println("Setting new agriculture value " + result);
         island.setAgriculture(result);
     }
 }

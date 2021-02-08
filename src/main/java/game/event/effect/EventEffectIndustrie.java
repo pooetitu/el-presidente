@@ -14,7 +14,6 @@ public class EventEffectIndustrie extends EventEffect {
     @Override
     public void applyEffect(Island island) {
         int result = calculateNewValue(island.getIndustrie(), island.getDifficulty().getEffectRatio());
-        System.out.println("Setting new industrie value " + result);
         island.setIndustrie(result);
     }
 }

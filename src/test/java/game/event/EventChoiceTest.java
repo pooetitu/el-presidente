@@ -18,15 +18,15 @@ public class EventChoiceTest extends TestCase {
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
 
         EventEffectFactionSatisfaction[] eventEffectsMultipleChoice = new EventEffectFactionSatisfaction[2];
-        eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15, new CalculationFixed());
+        eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15,false, new CalculationFixed());
         eventEffectsMultipleChoice[0].addFaction("religieux");
-        eventEffectsMultipleChoice[1] = new EventEffectFactionSatisfaction(" -15 % de satisfaction pour les libéraux", -15, new CalculationFixed());
+        eventEffectsMultipleChoice[1] = new EventEffectFactionSatisfaction(" -15 % de satisfaction pour les libéraux", -15,false, new CalculationFixed());
         eventEffectsMultipleChoice[1].addFaction("libéraux");
 
         choiceMultipleEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice);
 
         EventEffectFactionSatisfaction[] eventEffectsOneChoice = new EventEffectFactionSatisfaction[1];
-        eventEffectsOneChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15, new CalculationFixed());
+        eventEffectsOneChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15,false, new CalculationFixed());
         eventEffectsOneChoice[0].addFaction("religieux");
         choiceOneEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice);
     }
