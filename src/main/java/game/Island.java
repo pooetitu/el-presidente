@@ -36,7 +36,6 @@ public class Island {
 
     // New sandbox game constructor with predefined difficulty
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
-
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.ressource = ressource;
@@ -97,7 +96,16 @@ public class Island {
         if (!eventsQueue.isEmpty()) {
             return eventsQueue.remove();
         }
-        return seasons[currentSeasonIndex].getRandomEvent();
+        Event event = seasons[currentSeasonIndex].getRandomEvent();
+        addNextEventToQueue(event.getNextEvent());
+        return event;
+    }
+
+    private void addNextEventToQueue(Event event) {
+        if (event != null) {
+            eventsQueue.add(event);
+            addNextEventToQueue(event.getNextEvent());
+        }
     }
 
     public Population getPopulation() {
@@ -110,14 +118,6 @@ public class Island {
 
     public GameDifficulty getDifficulty() {
         return difficulty;
-    }
-
-    public Season[] getSeasons() {
-        return seasons;
-    }
-
-    public Queue<Event> getEventsQueue() {
-        return eventsQueue;
     }
 
     @Override
