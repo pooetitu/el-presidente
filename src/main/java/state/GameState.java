@@ -26,6 +26,7 @@ public class GameState extends State {
     public void run() {
         startEvent();
         displayIsland();
+        checkGameOver();
         turn++;
     }
 
@@ -34,6 +35,15 @@ public class GameState extends State {
         System.out.printf("%-20s%s%n%n", "Saison: " + Season.getSeason(turn % 4), "Année: " + turn / 4);
         System.out.println("Appuyer sur une touche pour poursuivre");
         Main.SCANNER.nextLine();
+    }
+
+    private void checkGameOver() {
+        if (island.isGameOver()) {
+            System.out.println("Game Over!\nVous n'avez malheureusement pas réussi à maintenir votre règne presidente.\nLa partie a duré " + turn / 4 + " années");
+            System.out.println("Appuyer sur une touche pour retourner au menu principal");
+            Main.SCANNER.nextLine();
+            State.setActiveStateId(State.MENU_STATE_ID);
+        }
     }
 
     private void startEvent() {

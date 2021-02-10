@@ -7,7 +7,6 @@ import utils.ScenarioLoader;
 
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Queue;
 
 @XStreamAlias("island")
 public class Island {
@@ -49,6 +48,10 @@ public class Island {
         }
     }
 
+    public boolean isGameOver() {
+        return population.getGlobalSatisfaction() < difficulty.getSatisfactionThreshold();
+    }
+
     public void corruptFaction(int factionIndex) {
         if (ressource.getTreasury() <= 0) return;
         int corruptCost = ressource.getTreasury() - population.corruptFaction(factionIndex);
@@ -60,10 +63,10 @@ public class Island {
     }
 
     public void setAgriculture(int agriculture) {
-        if (this.industrie + agriculture >= 100)
+        this.agriculture = agriculture;
+        if (this.agriculture < 0) this.agriculture = 0;
+        if (this.industrie + this.agriculture >= 100)
             this.agriculture = 100 - this.industrie;
-        else
-            this.agriculture = agriculture;
     }
 
     public int getIndustrie() {
@@ -71,10 +74,10 @@ public class Island {
     }
 
     public void setIndustrie(int industrie) {
-        if (this.agriculture + industrie >= 100)
+        this.industrie = industrie;
+        if (this.industrie < 0) this.industrie = 0;
+        if (this.agriculture + this.industrie >= 100)
             this.industrie = 100 - this.agriculture;
-        else
-            this.industrie = industrie;
     }
 
     public Event getNextEvent(int currentSeasonIndex) {
