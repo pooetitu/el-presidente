@@ -19,8 +19,10 @@ public class Island {
     private Season[] seasons;
     private int agriculture;
     private int industrie;
+    private int turn;
 
     public Island(int agriculture, int industrie, Ressource ressource) throws IOException {
+        this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.ressource = ressource;
@@ -31,6 +33,7 @@ public class Island {
     }
 
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
+        this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.difficulty = difficulty;
@@ -80,11 +83,11 @@ public class Island {
             this.industrie = 100 - this.agriculture;
     }
 
-    public Event getNextEvent(int currentSeasonIndex) {
+    public Event getNextEvent() {
         if (!eventsQueue.isEmpty()) {
             return eventsQueue.remove();
         }
-        Event event = seasons[currentSeasonIndex].getRandomEvent();
+        Event event = seasons[turn % 4].getRandomEvent();
         addNextEventToQueue(event.getNextEvent());
         return event;
     }
@@ -94,6 +97,10 @@ public class Island {
             eventsQueue.add(event);
             addNextEventToQueue(event.getNextEvent());
         }
+    }
+
+    public void newTurn() {
+        turn++;
     }
 
     public Population getPopulation() {
@@ -110,6 +117,10 @@ public class Island {
 
     public void setDifficulty(GameDifficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public int getTurn() {
+        return turn;
     }
 
     @Override
