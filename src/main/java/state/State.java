@@ -1,5 +1,7 @@
 package state;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 
 public abstract class State {
@@ -33,7 +35,7 @@ public abstract class State {
 
     public abstract void init();
 
-    public abstract void run();
+    public abstract void run() throws IOException, URISyntaxException;
 
     public int getId() {
         return id;

@@ -18,15 +18,15 @@ public class EventTest extends TestCase {
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
 
         EventEffectFactionSatisfaction[] eventEffectsMultipleChoice = new EventEffectFactionSatisfaction[2];
-        eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux,", 15, new CalculationFixed());
+        eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectsMultipleChoice[0].addFaction("religieux");
-        eventEffectsMultipleChoice[1] = new EventEffectFactionSatisfaction(" -15 % de satisfaction pour les libéraux", -15, new CalculationFixed());
+        eventEffectsMultipleChoice[1] = new EventEffectFactionSatisfaction(-15, false, new CalculationFixed());
         eventEffectsMultipleChoice[1].addFaction("libéraux");
 
         EventEffectFactionSatisfaction[] eventEffectsMultipleChoice2 = new EventEffectFactionSatisfaction[2];
-        eventEffectsMultipleChoice2[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les capitalistes,", 15, new CalculationFixed());
+        eventEffectsMultipleChoice2[0] = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectsMultipleChoice2[0].addFaction("capitalistes");
-        eventEffectsMultipleChoice2[1] = new EventEffectFactionSatisfaction(" -15 % de satisfaction pour les loyalistes", -15, new CalculationFixed());
+        eventEffectsMultipleChoice2[1] = new EventEffectFactionSatisfaction(-15, false, new CalculationFixed());
         eventEffectsMultipleChoice2[1].addFaction("loyalistes");
 
         EventChoice[] multipleChoices = new EventChoice[2];
@@ -36,7 +36,7 @@ public class EventTest extends TestCase {
 
 
         EventEffectFactionSatisfaction[] eventEffectsOneChoice = new EventEffectFactionSatisfaction[1];
-        eventEffectsOneChoice[0] = new EventEffectFactionSatisfaction("+15 % de satisfaction pour les religieux", 15, new CalculationFixed());
+        eventEffectsOneChoice[0] = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectsOneChoice[0].addFaction("religieux");
 
         EventChoice[] eventSingleChoice = new EventChoice[1];
@@ -48,16 +48,16 @@ public class EventTest extends TestCase {
 
     public void testDisplayEventOneChoice() {
         assertEquals("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région\n" +
-                "1. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
-                "effets: +15 % de satisfaction pour les religieux", eventOneChoice.display());
+                "0. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
+                "effets: +15 % de satisfaction pour les religieux", eventOneChoice.display(islandNormal.getDifficulty().getEffectRatio()));
     }
 
     public void testDisplayEventMultipleChoices() {
         assertEquals("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région\n" +
-                "1. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
+                "0. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
                 "effets: +15 % de satisfaction pour les religieux, -15 % de satisfaction pour les libéraux\n" +
-                "2. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
-                "effets: +15 % de satisfaction pour les capitalistes, -15 % de satisfaction pour les loyalistes", eventMultipleChoice.display());
+                "1. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
+                "effets: +15 % de satisfaction pour les capitalistes, -15 % de satisfaction pour les loyalistes", eventMultipleChoice.display(islandNormal.getDifficulty().getEffectRatio()));
     }
 
     public void testChooseInSingleChoice() {

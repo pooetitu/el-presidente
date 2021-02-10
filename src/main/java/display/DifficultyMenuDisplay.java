@@ -31,7 +31,5 @@ public class DifficultyMenuDisplay extends MenuDisplay {
             }
         }
         return true;
-
     }
-
 }

@@ -21,22 +21,22 @@ public class EventEffectFactionSatisfactionTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectFactionSatisfaction("-15% influence capitalistes", -15, new CalculationFixed());
+        eventEffectNegative = new EventEffectFactionSatisfaction(-15, false, new CalculationFixed());
         eventEffectNegative.addFaction("capitalistes");
 
-        eventEffectPositive = new EventEffectFactionSatisfaction("+15% influence capitalistes", 15, new CalculationFixed());
+        eventEffectPositive = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectPositive.addFaction("capitalistes");
 
-        eventEffectPositiveOnZero = new EventEffectFactionSatisfaction("+15% influence libéraux", 15, new CalculationFixed());
+        eventEffectPositiveOnZero = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectPositiveOnZero.addFaction("libéraux");
 
-        eventEffectSmallerThanZero = new EventEffectFactionSatisfaction("-15% influence libéraux", 15, new CalculationFixed());
+        eventEffectSmallerThanZero = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectSmallerThanZero.addFaction("libéraux");
 
-        eventEffectGreaterThanHundred = new EventEffectFactionSatisfaction("+15% influence communistes", 15, new CalculationFixed());
+        eventEffectGreaterThanHundred = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectGreaterThanHundred.addFaction("communistes");
 
-        eventEffectMultipleFactions = new EventEffectFactionSatisfaction("+15% influence communistes et communistes", 15, new CalculationFixed());
+        eventEffectMultipleFactions = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("religieux");
 

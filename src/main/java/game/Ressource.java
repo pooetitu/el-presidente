@@ -1,5 +1,8 @@
 package game;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("ressource")
 public class Ressource {
     private static final int FOOD_UNIT_COST = 8;
     private int treasury;
@@ -30,5 +33,10 @@ public class Ressource {
 
     public void setFood(int food) {
         this.food = food;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-21s%s", "treasury: " + treasury, "food: " + food);
     }
 }

@@ -1,7 +1,10 @@
 package game;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("difficulty")
 public enum GameDifficulty {
-    EASY(0.5, 0), NORMAL(1, 10), HARD(2, 50);
+    EASY(0.5, 10), NORMAL(1, 25), HARD(2, 50);
     private final double effectRatio;
     private final int satisfactionThreshold;
 

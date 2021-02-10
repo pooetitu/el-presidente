@@ -1,68 +1,58 @@
 package game;
 
-import display.DifficultyMenuDisplay;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import game.event.Event;
-import main.Main;
+import utils.ScenarioLoader;
 
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Queue;
 
+@XStreamAlias("island")
 public class Island {
-    private final Queue<Event> eventsQueue;
-    private final GameDifficulty difficulty;
     private final Ressource ressource;
     private final Population population;
-    private final Season[] seasons;
+    @XStreamImplicit(itemFieldName = "event")
+    private LinkedList<Event> eventsQueue;
+    private GameDifficulty difficulty;
+    @XStreamImplicit(itemFieldName = "season")
+    private Season[] seasons;
     private int agriculture;
     private int industrie;
+    private int turn;
 
-    // New sandbox game constructor with selection of difficulty
-    public Island(int agriculture, int industrie, Ressource ressource) {
+    public Island(int agriculture, int industrie, Ressource ressource) throws IOException {
+        this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.ressource = ressource;
-        this.difficulty = displayDifficultySelection();
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = new Season[4];
-        System.out.println(this);
+        this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-
-    // New sandbox game constructor with predefined difficulty
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) {
-        this.agriculture = agriculture;
-        this.industrie = industrie;
-        this.ressource = ressource;
-        this.difficulty = difficulty;
-        this.eventsQueue = new LinkedList<>();
-        this.population = new Population();
-        this.population.populate();
-        this.seasons = new Season[4];
-    }
-
-
-    // Load game from save or scenario constructor
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource, Queue<Event> eventsQueue, Population population) {
+    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
+        this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.difficulty = difficulty;
         this.ressource = ressource;
-        this.eventsQueue = eventsQueue;
-        this.population = population;
-        this.seasons = createSeasons();
+        this.eventsQueue = new LinkedList<>();
+        this.population = new Population();
+        this.population.populate();
+        this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-    private GameDifficulty displayDifficultySelection() {
-        DifficultyMenuDisplay dmd = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
-        dmd.displayMenu(Main.SCANNER);
-        return dmd.getGameDifficulty();
+    public void init() {
+        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        if (eventsQueue == null) {
+            eventsQueue = new LinkedList<>();
+        }
     }
 
-    public Season[] createSeasons() {
-        return null;
+    public boolean isGameOver() {
+        return population.getGlobalSatisfaction() < difficulty.getSatisfactionThreshold();
     }
 
     public void corruptFaction(int factionIndex) {
@@ -76,10 +66,10 @@ public class Island {
     }
 
     public void setAgriculture(int agriculture) {
-        if (this.industrie + agriculture >= 100)
+        this.agriculture = agriculture;
+        if (this.agriculture < 0) this.agriculture = 0;
+        if (this.industrie + this.agriculture >= 100)
             this.agriculture = 100 - this.industrie;
-        else
-            this.agriculture = agriculture;
     }
 
     public int getIndustrie() {
@@ -87,10 +77,30 @@ public class Island {
     }
 
     public void setIndustrie(int industrie) {
-        if (this.agriculture + industrie >= 100)
+        this.industrie = industrie;
+        if (this.industrie < 0) this.industrie = 0;
+        if (this.agriculture + this.industrie >= 100)
             this.industrie = 100 - this.agriculture;
-        else
-            this.industrie = industrie;
+    }
+
+    public Event getNextEvent() {
+        if (!eventsQueue.isEmpty()) {
+            return eventsQueue.remove();
+        }
+        Event event = seasons[turn % 4].getRandomEvent();
+        addNextEventToQueue(event.getNextEvent());
+        return event;
+    }
+
+    private void addNextEventToQueue(Event event) {
+        if (event != null) {
+            eventsQueue.add(event);
+            addNextEventToQueue(event.getNextEvent());
+        }
+    }
+
+    public void newTurn() {
+        turn++;
     }
 
     public Population getPopulation() {
@@ -105,24 +115,18 @@ public class Island {
         return difficulty;
     }
 
-    public Season[] getSeasons() {
-        return seasons;
+    public void setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
-    public Queue<Event> getEventsQueue() {
-        return eventsQueue;
+    public int getTurn() {
+        return turn;
     }
 
     @Override
     public String toString() {
-        return "Island{" +
-                "eventsQueue=" + eventsQueue +
-                ", difficulty=" + difficulty +
-                ", ressource=" + ressource +
-                ", population=" + population +
-                ", seasons=" + Arrays.toString(seasons) +
-                ", agriculture=" + agriculture +
-                ", industrie=" + industrie +
-                '}';
+        return ressource + "\n" +
+                String.format("%-21s%s", "agriculture: " + agriculture + "%", "industrie: " + industrie + "%") + "\n" +
+                "global satisfaction: " + population.getGlobalSatisfaction();
     }
 }
