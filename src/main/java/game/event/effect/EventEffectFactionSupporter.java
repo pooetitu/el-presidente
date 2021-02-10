@@ -56,7 +56,6 @@ public class EventEffectFactionSupporter extends EventEffect {
     }
 
     private void applyChangement(Faction faction, GameDifficulty difficulty) {
-        System.out.println(faction);
         int result = calculateNewValue(faction.getSupporter(), difficulty.getEffectRatio());
         faction.setSupporter(result);
     }

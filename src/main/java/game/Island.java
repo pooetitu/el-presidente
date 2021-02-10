@@ -1,5 +1,6 @@
 package game;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import game.event.Event;
 import utils.ScenarioLoader;
@@ -8,18 +9,18 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@XStreamAlias("island")
 public class Island {
     private final Ressource ressource;
     private final Population population;
     @XStreamImplicit(itemFieldName = "event")
-    private Queue<Event> eventsQueue;
+    private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
     @XStreamImplicit(itemFieldName = "season")
     private Season[] seasons;
     private int agriculture;
     private int industrie;
 
-    // New sandbox game constructor
     public Island(int agriculture, int industrie, Ressource ressource) throws IOException {
         this.agriculture = agriculture;
         this.industrie = industrie;
@@ -30,7 +31,6 @@ public class Island {
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-    // New sandbox game constructor with predefined difficulty
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
         this.agriculture = agriculture;
         this.industrie = industrie;
@@ -109,11 +109,10 @@ public class Island {
         this.difficulty = difficulty;
     }
 
-
     @Override
     public String toString() {
         return ressource + "\n" +
-                String.format("%-21s%s", "agriculture: " + agriculture + "%",
-                        "industrie: " + industrie + "%") + "\n" + "global satisfaction: " + population.getGlobalSatisfaction();
+                String.format("%-21s%s", "agriculture: " + agriculture + "%", "industrie: " + industrie + "%") + "\n" +
+                "global satisfaction: " + population.getGlobalSatisfaction();
     }
 }

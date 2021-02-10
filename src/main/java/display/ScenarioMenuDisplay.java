@@ -17,4 +17,8 @@ public class ScenarioMenuDisplay extends MenuDisplay {
         island = ScenarioLoader.getScenarioLoader().loadScenario(choice);
         return true;
     }
+
+    public Island getIsland() {
+        return island;
+    }
 }

@@ -43,7 +43,7 @@ public class GameState extends State {
 
     private int getUserChoice(String display, int limit) {
         int choice = -1;
-        while (choice < 0 || choice > limit) {
+        while (choice < 0 || choice >= limit) {
             System.out.println(display);
             while (!Main.SCANNER.hasNextInt()) {
                 System.out.println(display);
