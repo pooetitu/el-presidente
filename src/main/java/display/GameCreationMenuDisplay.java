@@ -2,15 +2,19 @@ package display;
 
 import game.Island;
 import game.Ressource;
+import main.Main;
 import state.GameState;
 import state.State;
+import utils.ScenarioLoader;
 
 import java.io.IOException;
 
 public class GameCreationMenuDisplay extends MenuDisplay {
+    DifficultyMenuDisplay dmd;
 
     public GameCreationMenuDisplay(String choicesDisplay) {
         super(choicesDisplay, 2);
+        dmd = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
     }
 
     @Override
@@ -18,7 +22,9 @@ public class GameCreationMenuDisplay extends MenuDisplay {
         Island island = null;
         switch (choice) {
             case 0: {
-                island = new Island(15, 15, new Ressource(15, 15));
+                dmd.displayMenu(Main.SCANNER);
+                island = ScenarioLoader.getScenarioLoader().loadIslandSandboxConfig();
+                island.setDifficulty(dmd.getGameDifficulty());
                 break;
             }
             case 1: {
@@ -27,7 +33,6 @@ public class GameCreationMenuDisplay extends MenuDisplay {
         }
         State.setActiveStateId(State.GAME_STATE_ID);
         ((GameState) State.getActiveState()).initGame(island);
-        State.getActiveState().run();
         return true;
     }
 }

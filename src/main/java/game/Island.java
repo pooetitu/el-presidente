@@ -1,10 +1,8 @@
 package game;
 
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
-import display.DifficultyMenuDisplay;
 import game.event.Event;
-import main.Main;
-import utils.GameLoader;
+import utils.ScenarioLoader;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -12,57 +10,44 @@ import java.util.Queue;
 
 public class Island {
     @XStreamImplicit(itemFieldName = "event")
-    private final Queue<Event> eventsQueue;
-    private final GameDifficulty difficulty;
+    private Queue<Event> eventsQueue;
+    private GameDifficulty difficulty;
     private final Ressource ressource;
     private final Population population;
 
     @XStreamImplicit(itemFieldName = "season")
-    private final Season[] seasons;
+    private Season[] seasons;
     private int agriculture;
     private int industrie;
 
-    // New sandbox game constructor with selection of difficulty
+    // New sandbox game constructor
     public Island(int agriculture, int industrie, Ressource ressource) throws IOException {
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.ressource = ressource;
-        this.difficulty = displayDifficultySelection();
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = GameLoader.getGameLoaderInstance().loadSeasons();
+        this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
-
 
     // New sandbox game constructor with predefined difficulty
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
         this.agriculture = agriculture;
         this.industrie = industrie;
-        this.ressource = ressource;
         this.difficulty = difficulty;
+        this.ressource = ressource;
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = GameLoader.getGameLoaderInstance().loadSeasons();
+        this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-
-    // Load game from save or scenario constructor
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource, Queue<Event> eventsQueue, Population population) throws IOException {
-        this.agriculture = agriculture;
-        this.industrie = industrie;
-        this.difficulty = difficulty;
-        this.ressource = ressource;
-        this.eventsQueue = eventsQueue;
-        this.population = population;
-        this.seasons = GameLoader.getGameLoaderInstance().loadSeasons();
-    }
-
-    private GameDifficulty displayDifficultySelection() throws IOException {
-        DifficultyMenuDisplay dmd = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
-        dmd.displayMenu(Main.SCANNER);
-        return dmd.getGameDifficulty();
+    public void init() {
+        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        if (eventsQueue == null) {
+            eventsQueue = new LinkedList<>();
+        }
     }
 
     public void corruptFaction(int factionIndex) {
@@ -120,6 +105,11 @@ public class Island {
     public GameDifficulty getDifficulty() {
         return difficulty;
     }
+
+    public void setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
 
     @Override
     public String toString() {
