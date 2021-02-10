@@ -9,12 +9,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Island {
+    private final Ressource ressource;
+    private final Population population;
     @XStreamImplicit(itemFieldName = "event")
     private Queue<Event> eventsQueue;
     private GameDifficulty difficulty;
-    private final Ressource ressource;
-    private final Population population;
-
     @XStreamImplicit(itemFieldName = "season")
     private Season[] seasons;
     private int agriculture;

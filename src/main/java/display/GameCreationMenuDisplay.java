@@ -1,33 +1,37 @@
 package display;
 
 import game.Island;
-import game.Ressource;
 import main.Main;
 import state.GameState;
 import state.State;
 import utils.ScenarioLoader;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class GameCreationMenuDisplay extends MenuDisplay {
-    DifficultyMenuDisplay dmd;
+    DifficultyMenuDisplay difficultyMenuDisplay;
+    ScenarioMenuDisplay scenarioMenuDisplay;
 
     public GameCreationMenuDisplay(String choicesDisplay) {
         super(choicesDisplay, 2);
-        dmd = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
+        difficultyMenuDisplay = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException {
+    protected boolean execute(int choice) throws IOException, URISyntaxException {
         Island island = null;
         switch (choice) {
             case 0: {
-                dmd.displayMenu(Main.SCANNER);
+                difficultyMenuDisplay.displayMenu(Main.SCANNER);
                 island = ScenarioLoader.getScenarioLoader().loadIslandSandboxConfig();
-                island.setDifficulty(dmd.getGameDifficulty());
+                island.setDifficulty(difficultyMenuDisplay.getGameDifficulty());
                 break;
             }
             case 1: {
+                scenarioMenuDisplay = new ScenarioMenuDisplay(ScenarioLoader.getScenarioLoader().showScenarioList());
+                scenarioMenuDisplay.setSwitchSize(ScenarioLoader.getScenarioLoader().getScenarioListCount());
+                if (!scenarioMenuDisplay.displayMenu(Main.SCANNER)) return false;
                 break;
             }
         }

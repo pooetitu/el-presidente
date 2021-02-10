@@ -3,7 +3,6 @@ package main;
 import state.GameState;
 import state.MenuState;
 import state.State;
-import utils.ScenarioLoader;
 
 import java.util.Scanner;
 

@@ -16,11 +16,6 @@ public class Season {
         events = new ArrayList<>();
     }
 
-    public Event getRandomEvent() {
-        Random rand = new Random();
-        return events.get(rand.nextInt(events.size()));
-    }
-
     public static String getSeason(int index) {
         String season = "";
         switch (index) {
@@ -42,6 +37,11 @@ public class Season {
             }
         }
         return season;
+    }
+
+    public Event getRandomEvent() {
+        Random rand = new Random();
+        return events.get(rand.nextInt(events.size()));
     }
 
     public void addEvent(Event newEvent) {

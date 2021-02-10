@@ -4,7 +4,11 @@ import game.Island;
 import game.Season;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,6 +50,12 @@ public class ScenarioLoader {
             scenarioFileList.clear();
             scenarioFileList.addAll(files);
         }
+    }
+
+    public Island loadScenario(int index) throws IOException {
+        Island island = (Island) gameFileParser.parseData(Files.readString(Paths.get(scenarioFileList.get(index).getPath()), StandardCharsets.UTF_8));
+        island.init();
+        return island;
     }
 
     public Season[] loadSeasons() {

@@ -22,7 +22,6 @@ public abstract class EventEffect {
 
     protected double calculateAmountWithEffectRatio(double effectRatio) {
         if (amount > 0) {
-            System.out.println(amount+" "+ effectRatio+" "+ amount/effectRatio);
             return amount / effectRatio;
         } else {
             return amount * effectRatio;
