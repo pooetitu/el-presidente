@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Island {
+    @XStreamImplicit(itemFieldName = "event")
     private final Queue<Event> eventsQueue;
     private final GameDifficulty difficulty;
     private final Ressource ressource;
