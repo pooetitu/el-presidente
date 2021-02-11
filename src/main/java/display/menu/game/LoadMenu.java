@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LoadMenu extends MenuDisplay {
     public LoadMenu(String choicesDisplay, int switchSize) {
-        super(choicesDisplay, switchSize);
+        super(choicesDisplay, switchSize + 1);
     }
 
     @Override
@@ -19,8 +19,7 @@ public class LoadMenu extends MenuDisplay {
         if (island != null) {
             ((GameState) State.getStateById(State.GAME_STATE_ID)).initGame(island);
             State.setActiveStateId(State.GAME_STATE_ID);
-            return true;
         }
-        return false;
+        return true;
     }
 }

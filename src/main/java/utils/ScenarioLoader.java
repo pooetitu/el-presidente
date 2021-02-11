@@ -34,9 +34,12 @@ public class ScenarioLoader {
     public String showScenarioList() throws URISyntaxException {
         loadScenarioList();
         StringBuilder display = new StringBuilder();
-        for (int i = 0; i < scenarioFileList.size(); i++) {
-            display.append(i).append(". ").append(scenarioFileList.get(i).getName().replaceFirst("[.][^.]+$", "")).append("\n");
+        int counter = 0;
+        for (File file: scenarioFileList) {
+            display.append(counter).append(". ").append(file.getName().replaceFirst("[.][^.]+$", "")).append("\n");
+            counter++;
         }
+        display.append(counter).append(". ").append(" Retour");
         return display.toString();
     }
 
@@ -53,6 +56,9 @@ public class ScenarioLoader {
     }
 
     public Island loadScenario(int index) throws IOException {
+        if (index < 0 || index >= scenarioFileList.size()) {
+            return null;
+        }
         Island island = (Island) gameFileParser.parseData(Files.readString(Paths.get(scenarioFileList.get(index).getPath()), StandardCharsets.UTF_8));
         island.init();
         return island;

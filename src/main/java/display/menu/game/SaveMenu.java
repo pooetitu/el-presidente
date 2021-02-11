@@ -14,7 +14,7 @@ public class SaveMenu extends MenuDisplay {
     private final ChooseSaveMenu saveMenu;
 
     public SaveMenu(Island island) {
-        super("0. Créer une nouvelle sauvegarde\n1. Écraser une ancienne sauvegarde", 3);
+        super("0. Créer une nouvelle sauvegarde\n1. Écraser une ancienne sauvegarde\n2. Retour", 3);
         gameSaver = GameSaver.getGameSaver();
         this.island = island;
         this.saveMenu = new ChooseSaveMenu(gameSaver.showSaveList(), gameSaver.getSaveListCount(), island);

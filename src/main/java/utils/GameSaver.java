@@ -46,6 +46,9 @@ public class GameSaver {
     }
 
     public void saveGame(Island island, int index) throws IOException {
+        if (index < 0 || index >= saveFileList.size()) {
+            return;
+        }
         FileWriter fileWriter = new FileWriter(saveFileList.get(index));
         fileWriter.write(gameFileParser.dataToJson(island));
         fileWriter.flush();
@@ -55,9 +58,12 @@ public class GameSaver {
     public String showSaveList() {
         loadSaveList();
         StringBuilder display = new StringBuilder();
-        for (int i = 0; i < saveFileList.size(); i++) {
-            display.append(i).append(". ").append(saveFileList.get(i).getName().replaceFirst("[.][^.]+$", "")).append("\n");
+        int counter = 0;
+        for (File file: saveFileList) {
+            display.append(counter).append(". ").append(file.getName().replaceFirst("[.][^.]+$", "")).append("\n");
+            counter++;
         }
+        display.append(counter).append(". ").append(" Retour");
         return display.toString();
     }
 
@@ -66,6 +72,9 @@ public class GameSaver {
     }
 
     public Island loadGame(int index) throws IOException {
+        if (index < 0 || index >= saveFileList.size()) {
+            return null;
+        }
         String saveJson = Files.readString(Paths.get(saveFileList.get(index).getPath()), StandardCharsets.UTF_8);
         Island island = (Island) gameFileParser.parseData(saveJson);
         System.out.println(island.getRessources().getFood());

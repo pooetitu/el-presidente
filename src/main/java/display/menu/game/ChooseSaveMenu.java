@@ -10,7 +10,7 @@ public class ChooseSaveMenu extends MenuDisplay {
     private final Island island;
 
     public ChooseSaveMenu(String choicesDisplay, int switchSize, Island island) {
-        super(choicesDisplay, switchSize);
+        super(choicesDisplay, switchSize + 1);
         this.island = island;
     }
 
