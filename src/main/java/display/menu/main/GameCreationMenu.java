@@ -1,7 +1,7 @@
-package display;
+package display.menu.main;
 
+import display.MenuDisplay;
 import game.Island;
-import main.Main;
 import state.GameState;
 import state.State;
 import utils.ScenarioLoader;
@@ -9,14 +9,14 @@ import utils.ScenarioLoader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class GameCreationMenuDisplay extends MenuDisplay {
-    private final DifficultyMenuDisplay difficultyMenuDisplay;
-    private final ScenarioMenuDisplay scenarioMenuDisplay;
+public class GameCreationMenu extends MenuDisplay {
+    private final DifficultyMenu difficultyMenuDisplay;
+    private final ScenarioMenu scenarioMenuDisplay;
 
-    public GameCreationMenuDisplay(String choicesDisplay) throws URISyntaxException {
+    public GameCreationMenu(String choicesDisplay) throws URISyntaxException {
         super(choicesDisplay, 2);
-        difficultyMenuDisplay = new DifficultyMenuDisplay("0. Facile\n1. Normal\n2. Difficile");
-        scenarioMenuDisplay = new ScenarioMenuDisplay(ScenarioLoader.getScenarioLoader().showScenarioList());
+        difficultyMenuDisplay = new DifficultyMenu("0. Facile\n1. Normal\n2. Difficile");
+        scenarioMenuDisplay = new ScenarioMenu(ScenarioLoader.getScenarioLoader().showScenarioList());
         scenarioMenuDisplay.setSwitchSize(ScenarioLoader.getScenarioLoader().getScenarioListCount());
     }
 
@@ -29,12 +29,12 @@ public class GameCreationMenuDisplay extends MenuDisplay {
                 break;
             }
             case 1: {
-                scenarioMenuDisplay.displayMenu(Main.SCANNER);
+                scenarioMenuDisplay.displayMenu();
                 island = scenarioMenuDisplay.getIsland();
                 break;
             }
         }
-        difficultyMenuDisplay.displayMenu(Main.SCANNER);
+        difficultyMenuDisplay.displayMenu();
         if (island == null) {
             return false;
         }

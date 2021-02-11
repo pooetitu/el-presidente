@@ -1,8 +1,7 @@
 package state;
 
 
-import display.MainMenuDisplay;
-import main.Main;
+import display.menu.main.MainMenu;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,8 +19,8 @@ public class MenuState extends State {
 
     @Override
     public void run() throws IOException, URISyntaxException {
-        MainMenuDisplay mmd = new MainMenuDisplay("0. Commencer une nouvelle partie\n1. Charger une partie\n2. Quitter le jeux");
-        mmd.displayMenu(Main.SCANNER);
+        MainMenu mmd = new MainMenu("0. Commencer une nouvelle partie\n1. Charger une partie\n2. Quitter le jeux");
+        mmd.displayMenu();
 
     }
 

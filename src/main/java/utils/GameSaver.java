@@ -34,11 +34,11 @@ public class GameSaver {
 
     private void loadSaveList() {
         saveFileList.clear();
-        saveFileList.addAll(Arrays.asList(Objects.requireNonNull(new File(savePath).listFiles((dir, name) -> name.toLowerCase().endsWith(".sav")))));
+        saveFileList.addAll(Arrays.asList(Objects.requireNonNull(new File(savePath).listFiles((dir, name) -> name.toLowerCase().endsWith(".json")))));
     }
 
     public void createSaveFile(String fileName, Island island) throws IOException {
-        File newFile = new File(savePath + fileName + ".sav");
+        File newFile = new File(savePath + fileName + ".json");
         if (newFile.createNewFile()) {
             saveFileList.add(newFile);
         }
@@ -49,6 +49,7 @@ public class GameSaver {
         FileWriter fileWriter = new FileWriter(saveFileList.get(index));
         fileWriter.write(gameFileParser.dataToJson(island));
         fileWriter.flush();
+        fileWriter.close();
     }
 
     public String showSaveList() {
@@ -58,6 +59,10 @@ public class GameSaver {
             display.append(i).append(". ").append(saveFileList.get(i).getName().replaceFirst("[.][^.]+$", "")).append("\n");
         }
         return display.toString();
+    }
+
+    public int getSaveListCount() {
+        return saveFileList.size();
     }
 
     public Island loadGame(int index) throws IOException {

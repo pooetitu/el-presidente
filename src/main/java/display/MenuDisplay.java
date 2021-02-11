@@ -1,8 +1,9 @@
 package display;
 
+import main.Main;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Scanner;
 
 public abstract class MenuDisplay {
     private final String choicesDisplay;
@@ -17,22 +18,22 @@ public abstract class MenuDisplay {
         System.out.println(choicesDisplay);
     }
 
-    public boolean displayMenu(Scanner scanner) throws IOException, URISyntaxException {
+    public boolean displayMenu() throws IOException, URISyntaxException {
         if (switchSize <= 0) return false;
-        return execute(getChoice(scanner));
+        return execute(getChoice());
     }
 
     protected abstract boolean execute(int choice) throws IOException, URISyntaxException;
 
-    private int getChoice(Scanner scanner) {
+    private int getChoice() {
         int choice = -1;
         while (choice < 0 || choice >= switchSize) {
             display();
-            while (!scanner.hasNextInt()) {
+            while (!Main.SCANNER.hasNextInt()) {
                 display();
-                scanner.next();
+                Main.SCANNER.next();
             }
-            choice = scanner.nextInt();
+            choice = Main.SCANNER.nextInt();
         }
         return choice;
     }
