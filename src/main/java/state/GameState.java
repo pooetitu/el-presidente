@@ -1,12 +1,17 @@
 package state;
 
+import display.menu.game.GameMenu;
 import game.Island;
 import game.Season;
 import game.event.Event;
 import main.Main;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 public class GameState extends State {
     private Island island;
+    private GameMenu gameMenuDisplay;
 
     public GameState(int id) {
         super(id);
@@ -18,14 +23,17 @@ public class GameState extends State {
 
     public void initGame(Island island) {
         this.island = island;
+        island.init();
+        gameMenuDisplay = new GameMenu(island);
     }
 
     @Override
-    public void run() {
+    public void run() throws IOException, URISyntaxException {
         startEvent();
         displayIsland();
         checkGameOver();
         island.newTurn();
+        gameMenuDisplay.displayMenu();
     }
 
     private void displayIsland() {
@@ -62,5 +70,4 @@ public class GameState extends State {
         }
         return choice;
     }
-
 }

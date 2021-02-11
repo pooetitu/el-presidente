@@ -34,11 +34,11 @@ public class GameSaver {
 
     private void loadSaveList() {
         saveFileList.clear();
-        saveFileList.addAll(Arrays.asList(Objects.requireNonNull(new File(savePath).listFiles((dir, name) -> name.toLowerCase().endsWith(".sav")))));
+        saveFileList.addAll(Arrays.asList(Objects.requireNonNull(new File(savePath).listFiles((dir, name) -> name.toLowerCase().endsWith(".json")))));
     }
 
     public void createSaveFile(String fileName, Island island) throws IOException {
-        File newFile = new File(savePath + fileName + ".sav");
+        File newFile = new File(savePath + fileName + ".json");
         if (newFile.createNewFile()) {
             saveFileList.add(newFile);
         }
@@ -46,21 +46,35 @@ public class GameSaver {
     }
 
     public void saveGame(Island island, int index) throws IOException {
+        if (index < 0 || index >= saveFileList.size()) {
+            return;
+        }
         FileWriter fileWriter = new FileWriter(saveFileList.get(index));
         fileWriter.write(gameFileParser.dataToJson(island));
         fileWriter.flush();
+        fileWriter.close();
     }
 
     public String showSaveList() {
         loadSaveList();
         StringBuilder display = new StringBuilder();
-        for (int i = 0; i < saveFileList.size(); i++) {
-            display.append(i).append(". ").append(saveFileList.get(i).getName().replaceFirst("[.][^.]+$", "")).append("\n");
+        int counter = 0;
+        for (File file: saveFileList) {
+            display.append(counter).append(". ").append(file.getName().replaceFirst("[.][^.]+$", "")).append("\n");
+            counter++;
         }
+        display.append(counter).append(". ").append(" Retour");
         return display.toString();
     }
 
+    public int getSaveListCount() {
+        return saveFileList.size();
+    }
+
     public Island loadGame(int index) throws IOException {
+        if (index < 0 || index >= saveFileList.size()) {
+            return null;
+        }
         String saveJson = Files.readString(Paths.get(saveFileList.get(index).getPath()), StandardCharsets.UTF_8);
         Island island = (Island) gameFileParser.parseData(saveJson);
         System.out.println(island.getRessources().getFood());

@@ -1,12 +1,13 @@
-package display;
+package display.menu.main;
 
+import display.MenuDisplay;
 import game.GameDifficulty;
 
-public class DifficultyMenuDisplay extends MenuDisplay {
+public class DifficultyMenu extends MenuDisplay {
 
     private GameDifficulty gameDifficulty;
 
-    public DifficultyMenuDisplay(String choicesDisplay) {
+    public DifficultyMenu(String choicesDisplay) {
         super(choicesDisplay, 3);
     }
 

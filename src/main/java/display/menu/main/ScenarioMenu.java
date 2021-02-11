@@ -1,14 +1,15 @@
-package display;
+package display.menu.main;
 
+import display.MenuDisplay;
 import game.Island;
 import utils.ScenarioLoader;
 
 import java.io.IOException;
 
-public class ScenarioMenuDisplay extends MenuDisplay {
+public class ScenarioMenu extends MenuDisplay {
     private Island island;
 
-    public ScenarioMenuDisplay(String choicesDisplay) {
+    public ScenarioMenu(String choicesDisplay) {
         super(choicesDisplay, 0);
     }
 
