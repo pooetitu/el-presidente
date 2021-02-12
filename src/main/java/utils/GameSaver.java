@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Objects;
 
 public class GameSaver {
     private static GameSaver gameSaver;
@@ -21,7 +20,7 @@ public class GameSaver {
     private GameSaver() {
         gameFileParser = GameFileParser.getGameFileParser();
         saveFileList = new LinkedList<>();
-        savePath = "./";
+        savePath = "./save/";
         loadSaveList();
     }
 
@@ -34,7 +33,11 @@ public class GameSaver {
 
     private void loadSaveList() {
         saveFileList.clear();
-        saveFileList.addAll(Arrays.asList(Objects.requireNonNull(new File(savePath).listFiles((dir, name) -> name.toLowerCase().endsWith(".json")))));
+        File[] files = new File(savePath).listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+        if (files != null && files.length > 0) {
+            saveFileList.clear();
+            saveFileList.addAll(Arrays.asList(files));
+        }
     }
 
     public void createSaveFile(String fileName, Island island) throws IOException {
@@ -59,11 +62,11 @@ public class GameSaver {
         loadSaveList();
         StringBuilder display = new StringBuilder();
         int counter = 0;
-        for (File file: saveFileList) {
+        for (File file : saveFileList) {
             display.append(counter).append(". ").append(file.getName().replaceFirst("[.][^.]+$", "")).append("\n");
             counter++;
         }
-        display.append(counter).append(". ").append(" Retour");
+        display.append(counter).append(". ").append("Retour");
         return display.toString();
     }
 

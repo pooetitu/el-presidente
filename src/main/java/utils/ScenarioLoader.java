@@ -3,25 +3,21 @@ package utils;
 import game.Island;
 import game.Season;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 public class ScenarioLoader {
     private static ScenarioLoader scenarioLoader;
     private final String scenarioPath;
-    private final LinkedList<File> scenarioFileList;
+    private final LinkedList<String> scenariosPathList;
     private final GameFileParser gameFileParser;
 
     private ScenarioLoader() {
         gameFileParser = GameFileParser.getGameFileParser();
-        this.scenarioFileList = new LinkedList<>();
-        this.scenarioPath = "data/scenario";
+        this.scenariosPathList = new LinkedList<>();
+        this.scenarioPath = "data/scenario/";
     }
 
     public static ScenarioLoader getScenarioLoader() {
@@ -31,35 +27,35 @@ public class ScenarioLoader {
         return scenarioLoader;
     }
 
-    public String showScenarioList() throws URISyntaxException {
+    public String showScenarioList() throws URISyntaxException, IOException {
         loadScenarioList();
         StringBuilder display = new StringBuilder();
         int counter = 0;
-        for (File file: scenarioFileList) {
-            display.append(counter).append(". ").append(file.getName().replaceFirst("[.][^.]+$", "")).append("\n");
+        for (String path : scenariosPathList) {
+            display.append(counter).append(". ").append(path.replaceFirst("[.][^.]+$", "")).append("\n");
             counter++;
         }
-        display.append(counter).append(". ").append(" Retour");
+        display.append(counter).append(". ").append("Retour");
         return display.toString();
     }
 
     public int getScenarioListCount() {
-        return scenarioFileList.size();
+        return scenariosPathList.size();
     }
 
-    private void loadScenarioList() throws URISyntaxException {
-        List<File> files = RessourceReader.getFilesList(scenarioPath);
-        if (files != null && !files.isEmpty()) {
-            scenarioFileList.clear();
-            scenarioFileList.addAll(files);
+    private void loadScenarioList() throws URISyntaxException, IOException {
+        String[] files = ResourceReader.getFilesList(scenarioPath);
+        if (files != null && files.length > 0) {
+            scenariosPathList.clear();
+            scenariosPathList.addAll(Arrays.asList(files));
         }
     }
 
-    public Island loadScenario(int index) throws IOException {
-        if (index < 0 || index >= scenarioFileList.size()) {
+    public Island loadScenario(int index) {
+        if (index < 0 || index >= scenariosPathList.size()) {
             return null;
         }
-        Island island = (Island) gameFileParser.parseData(Files.readString(Paths.get(scenarioFileList.get(index).getPath()), StandardCharsets.UTF_8));
+        Island island = (Island) gameFileParser.parseData(ResourceReader.getContentStringFromResource(scenarioPath + scenariosPathList.get(index)));
         island.init();
         return island;
     }
@@ -67,14 +63,14 @@ public class ScenarioLoader {
     public Season[] loadSeasons() {
         Season[] seasons = new Season[4];
         for (int i = 0; i < 4; i++) {
-            String saveJson = RessourceReader.getContentStringFromRessource("data/seasons/season_" + i + ".json");
+            String saveJson = ResourceReader.getContentStringFromResource("data/seasons/season_" + i + ".json");
             seasons[i] = (Season) gameFileParser.parseData(saveJson);
         }
         return seasons;
     }
 
     public Island loadIslandSandboxConfig() {
-        Island island = (Island) gameFileParser.parseData(RessourceReader.getContentStringFromRessource("data/sandbox.json"));
+        Island island = (Island) gameFileParser.parseData(ResourceReader.getContentStringFromResource("data/sandbox.json"));
         island.init();
         return island;
     }

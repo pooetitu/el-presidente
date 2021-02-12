@@ -4,8 +4,6 @@ import display.MenuDisplay;
 import game.Island;
 import utils.ScenarioLoader;
 
-import java.io.IOException;
-
 public class ScenarioMenu extends MenuDisplay {
     private Island island;
 
@@ -14,7 +12,7 @@ public class ScenarioMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException {
+    protected boolean execute(int choice) {
         island = ScenarioLoader.getScenarioLoader().loadScenario(choice);
         return true;
     }

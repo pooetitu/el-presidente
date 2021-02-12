@@ -13,7 +13,7 @@ public class GameCreationMenu extends MenuDisplay {
     private final DifficultyMenu difficultyMenuDisplay;
     private final ScenarioMenu scenarioMenuDisplay;
 
-    public GameCreationMenu(String choicesDisplay) throws URISyntaxException {
+    public GameCreationMenu(String choicesDisplay) throws URISyntaxException, IOException {
         super(choicesDisplay, 2);
         difficultyMenuDisplay = new DifficultyMenu("0. Facile\n1. Normal\n2. Difficile");
         scenarioMenuDisplay = new ScenarioMenu(ScenarioLoader.getScenarioLoader().showScenarioList());
