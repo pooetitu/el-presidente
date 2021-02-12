@@ -2,6 +2,7 @@ package game;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import game.event.Event;
 import utils.ScenarioLoader;
 
@@ -15,7 +16,7 @@ public class Island {
     @XStreamImplicit(itemFieldName = "event")
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
-    @XStreamImplicit(itemFieldName = "season")
+    @XStreamOmitField
     private Season[] seasons;
     private int agriculture;
     private int industrie;
