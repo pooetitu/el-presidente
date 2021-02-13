@@ -65,7 +65,7 @@ public class Island {
     }
 
     public int getMaximumPurchasableCorruption(int factionIndex) {
-        return population.getFactionCorruptionCost(factionIndex, 1) / resource.getTreasury();
+        return resource.getTreasury() / population.getFactionCorruptionCost(factionIndex, 1);
     }
 
     public int getAgriculture() {
@@ -89,6 +89,11 @@ public class Island {
             return true;
         }
         return false;
+    }
+
+    public void endTheYear() {
+        int foodRest = resource.consumeFood(population.getTotalPopulation());
+        population.calculateNewPeopleCount(foodRest, agriculture);
     }
 
     public int getIndustrie() {

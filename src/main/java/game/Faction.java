@@ -43,6 +43,14 @@ public class Faction {
         if (this.supporter < 0) this.supporter = 0;
     }
 
+    public void removePeople(int count) {
+        supporter -= count;
+        satisfaction -= count * 2;
+    }
+    public void addPeople(int count) {
+        supporter += count;
+    }
+
     public int getCorruptionCost() {
         return CORRUPTION_COST * supporter;
     }

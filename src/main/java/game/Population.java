@@ -5,6 +5,7 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.Random;
 
 @XStreamAlias("population")
 public class Population {
@@ -28,6 +29,31 @@ public class Population {
 
     public void addFaction(Faction faction) {
         factions.put(faction.getName(), faction);
+    }
+
+    private void addPeople() {
+        Random rand = new Random();
+        int peopleToAdd = rand.nextInt(11) / (100 * getTotalPopulation());
+        int percentPerFaction = 100 / factions.size();
+        for (Faction faction : factions.values()) {
+            faction.addPeople(peopleToAdd * percentPerFaction);
+        }
+    }
+
+    private void reducePeople(int agricultureProduction) {
+        int peopleToRemove = getTotalPopulation() - agricultureProduction / 4;
+        int percentPerFaction = 100 / factions.size();
+        for (Faction faction : factions.values()) {
+            faction.removePeople(peopleToRemove * percentPerFaction);
+        }
+    }
+
+    public void calculateNewPeopleCount(int foodRest, int agriculture) {
+        if (foodRest >= 0) {
+            addPeople();
+        } else {
+            reducePeople(agriculture * 40);
+        }
     }
 
     public void corruptFaction(int index, int amount) {
@@ -56,12 +82,13 @@ public class Population {
     }
 
     public String corruptionDisplay() {
-        StringBuilder display = new StringBuilder("0. Retour");
-        int count = 1;
+        StringBuilder display = new StringBuilder();
+        int count = 0;
         for (Faction faction : factions.values()) {
-            display.append("\n").append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$");
+            display.append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$").append("\n");
             count++;
         }
+        display.append(count).append(". ").append("Retour");
         return display.toString();
     }
 
@@ -73,7 +100,7 @@ public class Population {
         return ((Faction) factions.values().toArray()[index]).getCorruptionCost() * amount;
     }
 
-    public Collection<game.Faction> getFactions() {
+    public Collection<Faction> getFactions() {
         return factions.values();
     }
 

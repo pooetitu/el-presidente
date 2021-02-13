@@ -10,7 +10,7 @@ public class BuyFoodMenu extends MenuDisplay {
     private final Resource resource;
 
     public BuyFoodMenu(Resource resource) {
-        super("Saisir la quantité de nourriture à acheter", resource.purchasableMaximumFoodAmount() + 1);
+        super("Saisir la quantité de nourriture à acheter (Achetable: " + resource.purchasableMaximumFoodAmount() + ")", resource.purchasableMaximumFoodAmount() + 1);
         this.resource = resource;
     }
 

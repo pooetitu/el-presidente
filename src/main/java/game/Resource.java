@@ -5,6 +5,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("ressource")
 public class Resource {
     private static final int FOOD_UNIT_COST = 8;
+    private static final int FOOD_CONSUMPTION_PER_PERSON = 4;
     private int treasury;
     private int food;
 
@@ -27,6 +28,12 @@ public class Resource {
         food += agriculture * 40;
     }
 
+    public int consumeFood(int population) {
+        int tooConsume = population * FOOD_CONSUMPTION_PER_PERSON;
+        int rest = food - tooConsume;
+        food -= tooConsume;
+        return rest;
+    }
 
     public int purchasableMaximumFoodAmount() {
         return treasury / FOOD_UNIT_COST;
@@ -46,6 +53,9 @@ public class Resource {
 
     public void setFood(int food) {
         this.food = food;
+        if (this.food < 0) {
+            this.food = 0;
+        }
     }
 
     @Override

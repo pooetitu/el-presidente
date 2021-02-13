@@ -28,7 +28,7 @@ public class EndYearMenu extends MenuDisplay {
                 break;
             }
             case 2: {
-                break;
+                return false;
             }
         }
         return true;

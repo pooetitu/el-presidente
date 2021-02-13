@@ -32,13 +32,20 @@ public class GameState extends State {
 
     @Override
     public void run() throws IOException, URISyntaxException {
+        boolean displaying = true;
         startEvent();
         displayIsland();
         checkGameOver();
         island.newTurn();
-        gameMenuDisplay.displayMenu();
-        if(island.isEndOfYear()){
-            endYearMenu.displayMenu();
+        if (island.isEndOfYear()) {
+            while (displaying) {
+                displaying = endYearMenu.displayMenu();
+            }
+            island.endTheYear();
+        }
+        displaying = true;
+        while (displaying) {
+            displaying = gameMenuDisplay.displayMenu();
         }
     }
 
