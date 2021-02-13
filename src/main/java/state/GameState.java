@@ -1,5 +1,6 @@
 package state;
 
+import display.menu.game.EndYearMenu;
 import display.menu.game.GameMenu;
 import game.Island;
 import game.Season;
@@ -12,6 +13,7 @@ import java.net.URISyntaxException;
 public class GameState extends State {
     private Island island;
     private GameMenu gameMenuDisplay;
+    private EndYearMenu endYearMenu;
 
     public GameState(int id) {
         super(id);
@@ -25,6 +27,7 @@ public class GameState extends State {
         this.island = island;
         island.init();
         gameMenuDisplay = new GameMenu(island);
+        endYearMenu = new EndYearMenu(island);
     }
 
     @Override
@@ -34,6 +37,9 @@ public class GameState extends State {
         checkGameOver();
         island.newTurn();
         gameMenuDisplay.displayMenu();
+        if(island.isEndOfYear()){
+            endYearMenu.displayMenu();
+        }
     }
 
     private void displayIsland() {

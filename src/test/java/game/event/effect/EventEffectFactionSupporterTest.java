@@ -3,7 +3,7 @@ package game.event.effect;
 import game.Faction;
 import game.GameDifficulty;
 import game.Island;
-import game.Ressource;
+import game.Resource;
 import game.event.effect.calculation.CalculationPercentage;
 import junit.framework.TestCase;
 
@@ -28,14 +28,14 @@ public class EventEffectFactionSupporterTest extends TestCase {
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("écologistes");
 
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(10, 10));
         islandEasy.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
 
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10, 10));
         islandNormal.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
         islandNormal.getPopulation().addFaction(new Faction("écologistes", 50, 50));
 
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(10, 10));
         islandHard.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
 
     }

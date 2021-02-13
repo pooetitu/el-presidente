@@ -3,7 +3,7 @@ package game.event.effect;
 import game.Faction;
 import game.GameDifficulty;
 import game.Island;
-import game.Ressource;
+import game.Resource;
 import game.event.effect.calculation.CalculationFixed;
 import junit.framework.TestCase;
 
@@ -40,17 +40,17 @@ public class EventEffectFactionSatisfactionTest extends TestCase {
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("religieux");
 
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Ressource(10, 10));
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(10, 10));
         islandEasy.getPopulation().addFaction(new Faction("capitalistes", 50, 15));
 
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Ressource(10, 10));
+        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10, 10));
         islandNormal.getPopulation().addFaction(new Faction("capitalistes", 50, 15));
         islandNormal.getPopulation().addFaction(new Faction("écologistes", 50, 15));
         islandNormal.getPopulation().addFaction(new Faction("religieux", 50, 15));
         islandNormal.getPopulation().addFaction(new Faction("libéraux", 0, 15));
         islandNormal.getPopulation().addFaction(new Faction("communistes", 100, 15));
 
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Ressource(10, 10));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(10, 10));
         islandHard.getPopulation().addFaction(new Faction("capitalistes", 50, 15));
 
     }

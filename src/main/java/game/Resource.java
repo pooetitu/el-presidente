@@ -3,20 +3,33 @@ package game;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("ressource")
-public class Ressource {
+public class Resource {
     private static final int FOOD_UNIT_COST = 8;
     private int treasury;
     private int food;
 
-    public Ressource(int treasury, int food) {
+    public Resource(int treasury, int food) {
         this.treasury = treasury;
         this.food = food;
     }
 
     public void buyFood(int amount) {
-        if (treasury <= 0) return;
+        if (purchasableMaximumFoodAmount() < amount) return;
         food += amount;
         treasury -= amount * FOOD_UNIT_COST;
+    }
+
+    public void addIndustriePayoff(int industrie) {
+        treasury += industrie * 10;
+    }
+
+    public void addAgriculturePayoff(int agriculture) {
+        food += agriculture * 40;
+    }
+
+
+    public int purchasableMaximumFoodAmount() {
+        return treasury / FOOD_UNIT_COST;
     }
 
     public int getTreasury() {
@@ -37,6 +50,6 @@ public class Ressource {
 
     @Override
     public String toString() {
-        return String.format("%-21s%s", "treasury: " + treasury, "food: " + food);
+        return String.format("%-21s%s", "Argent: " + treasury, "Nourriture: " + food);
     }
 }

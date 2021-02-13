@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -78,10 +77,8 @@ public class GameSaver {
         if (index < 0 || index >= saveFileList.size()) {
             return null;
         }
-        String saveJson = Files.readString(Paths.get(saveFileList.get(index).getPath()), StandardCharsets.UTF_8);
-        Island island = (Island) gameFileParser.parseData(saveJson);
-        System.out.println(island.getRessources().getFood());
-        return island;
+        String saveJson = Files.readString(saveFileList.get(index).toPath(), StandardCharsets.UTF_8);
+        return (Island) gameFileParser.parseData(saveJson);
     }
 
 }

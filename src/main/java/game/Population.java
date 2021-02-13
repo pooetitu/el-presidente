@@ -30,11 +30,10 @@ public class Population {
         factions.put(faction.getName(), faction);
     }
 
-    public int corruptFaction(int index) {
+    public void corruptFaction(int index, int amount) {
         Faction faction = (Faction) factions.values().toArray()[index];
-        int corruptionCost = faction.corrupt();
-        getFactionByName("loyalistes").setSatisfaction(getFactionByName("loyalistes").getSatisfaction() - corruptionCost / 10);
-        return corruptionCost;
+        faction.corrupt(amount);
+        getFactionByName("loyalistes").setSatisfaction((getFactionByName("loyalistes").getSatisfaction() - faction.getCorruptionCost() / 10) * amount);
     }
 
     public int getTotalPopulation() {
@@ -64,6 +63,14 @@ public class Population {
             count++;
         }
         return display.toString();
+    }
+
+    public int getFactionCount() {
+        return factions.size();
+    }
+
+    public int getFactionCorruptionCost(int index, int amount) {
+        return ((Faction) factions.values().toArray()[index]).getCorruptionCost() * amount;
     }
 
     public Collection<game.Faction> getFactions() {
