@@ -156,4 +156,8 @@ public class Island {
                 String.format("%-21s%s", "Agriculture: " + agriculture + "%", "Industrie: " + industrie + "%") + "\n" +
                 "Satisfaction globale: " + population.getGlobalSatisfaction();
     }
+
+    public String advancedDisplay() {
+        return population + toString();
+    }
 }
