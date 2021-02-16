@@ -23,18 +23,21 @@ public class GameMenu extends MenuDisplay {
             case 0: {
                 SaveMenu saveMenu = new SaveMenu(island);
                 saveMenu.displayMenu();
-                break;
+                return false;
             }
             case 1: {
                 LoadMenu loadMenu = new LoadMenu(gameSaver.showSaveList(), gameSaver.getSaveListCount());
                 loadMenu.displayMenu();
-                break;
+                return false;
             }
             case 2: {
                 System.out.println("print détailler de l'ile");
                 break;
             }
+            case 3:{
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }

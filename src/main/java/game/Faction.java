@@ -15,10 +15,8 @@ public class Faction {
         this.supporter = supporter;
     }
 
-    public int corrupt() {
-        int corruptionCost = CORRUPTION_COST * supporter;
-        setSatisfaction(getSatisfaction() + 10);
-        return corruptionCost;
+    public void corrupt(int amount) {
+        setSatisfaction(getSatisfaction() + 10 * amount);
     }
 
     public String getName() {
@@ -43,6 +41,14 @@ public class Faction {
     public void setSupporter(int supporter) {
         this.supporter = supporter;
         if (this.supporter < 0) this.supporter = 0;
+    }
+
+    public void removePeople(int count) {
+        supporter -= count;
+        satisfaction -= count * 2;
+    }
+    public void addPeople(int count) {
+        supporter += count;
     }
 
     public int getCorruptionCost() {

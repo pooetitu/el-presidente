@@ -13,8 +13,8 @@ public class EventEffectMoney extends EventEffect {
 
     @Override
     public void applyEffect(Island island) {
-        int result = calculateNewValue(island.getRessources().getTreasury(), island.getDifficulty().getEffectRatio());
-        island.getRessources().setTreasury(result);
+        int result = calculateNewValue(island.getResource().getTreasury(), island.getDifficulty().getEffectRatio());
+        island.getResource().setTreasury(result);
     }
 
     @Override

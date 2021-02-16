@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public abstract class MenuDisplay {
-    private final String choicesDisplay;
+    private String choicesDisplay;
     private int switchSize;
 
     public MenuDisplay(String choicesDisplay, int switchSize) {
@@ -25,7 +25,7 @@ public abstract class MenuDisplay {
 
     protected abstract boolean execute(int choice) throws IOException, URISyntaxException;
 
-    private int getChoice() {
+    protected int getChoice() {
         int choice = -1;
         while (choice < 0 || choice >= switchSize) {
             display();
@@ -36,6 +36,14 @@ public abstract class MenuDisplay {
             choice = Main.SCANNER.nextInt();
         }
         return choice;
+    }
+
+    public int getSwitchSize() {
+        return switchSize;
+    }
+
+    public void setChoicesDisplay(String choicesDisplay) {
+        this.choicesDisplay = choicesDisplay;
     }
 
     public void setSwitchSize(int switchSize) {

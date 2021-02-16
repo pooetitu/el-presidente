@@ -32,7 +32,7 @@ public class GameFileParser {
         xstream.processAnnotations(Population.class);
         xstream.processAnnotations(Faction.class);
         xstream.processAnnotations(Island.class);
-        xstream.processAnnotations(Ressource.class);
+        xstream.processAnnotations(Resource.class);
 
     }
 
