@@ -1,1 +1,286 @@
-{"island":{"ressource":{"treasury":200,"food":300},"population":{"faction":[{"name":"capitalistes","satisfaction":50,"supporter":15},{"name":"communistes","satisfaction":50,"supporter":15},{"name":"libéraux","satisfaction":50,"supporter":15},{"name":"religieux","satisfaction":50,"supporter":15},{"name":"militaristes","satisfaction":50,"supporter":15},{"name":"écologistes","satisfaction":50,"supporter":15},{"name":"nationalistes","satisfaction":50,"supporter":15},{"name":"loyalistes","satisfaction":50,"supporter":15}]},"event":[{"description":"L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région","choice":{"description":"Décliner poliment au motif que vous n’avez pas les infrastructures pour eux","effect":{"@class":"effect-faction-satisfaction","amount":15,"calculationMethod":{"@class":"calculation-fixed"},"faction":"religieux","applyToAll":false}}},{"description":"L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région","choice":[{"description":"Décliner poliment au motif que vous n’avez pas les infrastructures pour eux","effect":[{"@class":"effect-faction-satisfaction","amount":15,"calculationMethod":{"@class":"calculation-fixed"},"faction":"religieux","applyToAll":false},{"@class":"effect-faction-satisfaction","amount":-15,"calculationMethod":{"@class":"calculation-fixed"},"faction":"libéraux","applyToAll":false}]},{"description":"Décliner poliment au motif que vous n’avez pas les infrastructures pour eux","effect":[{"@class":"effect-faction-satisfaction","amount":15,"calculationMethod":{"@class":"calculation-fixed"},"faction":"capitalistes","applyToAll":false},{"@class":"effect-faction-satisfaction","amount":-15,"calculationMethod":{"@class":"calculation-fixed"},"faction":"loyalistes","applyToAll":false}]}]}],"agriculture":15,"industrie":15}}
+{
+  "island": {
+    "ressource": {
+      "treasury": 200,
+      "food": 300
+    },
+    "population": {
+      "faction": [
+        {
+          "name": "capitalistes",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "communistes",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "libéraux",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "religieux",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "militaristes",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "écologistes",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "nationalistes",
+          "satisfaction": 50,
+          "supporter": 15
+        },
+        {
+          "name": "loyalistes",
+          "satisfaction": 100,
+          "supporter": 15
+        }
+      ]
+    },
+    "event": [
+      {
+        "description": "La première guerre Mondiale éclate entre le Triple Alliance (Allemagne, l’Autriche-Hongrie et l’Italie) et la Triple Entente (le Royaume-Uni, la France et l’Empire Russe)",
+        "choice": [
+          {
+            "description": "Se faire discret face à cette guerre",
+            "effect": []
+          },
+          {
+            "description": "Préparer ses défenses par précautions",
+            "effect": [
+              {
+                "@class": "effect-faction-supporter",
+                "amount": 20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -100,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Déclarer la guerre contre ces Alliances",
+            "effect": [
+              {
+                "@class": "effect-faction-supporter",
+                "amount": 30,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -150,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Hisser le drapeau blanc sur Tropico",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 30,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Cause de vos choix, la triple Alliance et la triple Entente sont arrivés jusqu'à Tropico",
+        "choice": [
+          {
+            "description": "Se ranger du coter de la triple Alliance et envoyer les militaristes de leur coter",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-supporter",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              }
+            ]
+          },
+          {
+            "description": "Se ranger du coter de la triple Entente et envoyer les militaristes de leur coter",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-supporter",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              }
+            ]
+          },
+          {
+            "description": "Attaquer les deux Alliances en réunissant toutes les forces de Tropico",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              },
+              {
+                "@class": "effect-faction-supporter",
+                "amount": -5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          },
+          {
+            "description": "Hisser le drapeau blanc sur Tropico",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "L'île s'est retrouvée au centre du champ de bataille de nombreux dégâts ont été causés",
+        "choice": [
+          {
+            "description": "Abandonner Tropico à son sort et fuir",
+            "effect": [
+              {
+                "@class": "effect-faction-supporter",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          },
+          {
+            "description": "Soutenir l'île et tenir bon malgré tout",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          },
+          {
+            "description": "Se soumettre aux Alliances et attendre la fin de la guerre",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -100,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Abandonner le statut de El Presidente",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              },
+              {
+                "@class": "effect-faction-supporter",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "agriculture": 15,
+    "industrie": 15
+  }
+}
