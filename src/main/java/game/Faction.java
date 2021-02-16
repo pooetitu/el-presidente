@@ -16,7 +16,7 @@ public class Faction {
     }
 
     public void corrupt(int amount) {
-        setSatisfaction(getSatisfaction() + 10 * amount);
+        setSatisfaction(satisfaction + 10 * amount);
     }
 
     public String getName() {

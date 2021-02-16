@@ -59,7 +59,8 @@ public class Population {
     public void corruptFaction(int index, int amount) {
         Faction faction = (Faction) factions.values().toArray()[index];
         faction.corrupt(amount);
-        getFactionByName("loyalistes").setSatisfaction((getFactionByName("loyalistes").getSatisfaction() - faction.getCorruptionCost() / 10) * amount);
+        Faction loyalist = getFactionByName("loyalistes");
+        loyalist.setSatisfaction((loyalist.getSatisfaction() - faction.getCorruptionCost() / 10) * amount);
     }
 
     public int getTotalPopulation() {
