@@ -20,6 +20,13 @@ public class GameFileParser {
         initXStreamAliases(xstream);
     }
 
+    public static GameFileParser getGameFileParser() {
+        if (gameFileParser == null) {
+            gameFileParser = new GameFileParser();
+        }
+        return gameFileParser;
+    }
+
     private void initXStreamAliases(XStream xstream) {
         xstream.autodetectAnnotations(true);
         xstream.processAnnotations(Season.class);
@@ -45,13 +52,6 @@ public class GameFileParser {
                 EventEffectAgriculture.class, EventEffectMoney.class, EventEffectFood.class, CalculationPercentage.class, CalculationFixed.class};
         XStream.setupDefaultSecurity(xstream);
         xstream.allowTypes(classes);
-    }
-
-    public static GameFileParser getGameFileParser() {
-        if (gameFileParser == null) {
-            gameFileParser = new GameFileParser();
-        }
-        return gameFileParser;
     }
 
     public Object parseData(String data) {

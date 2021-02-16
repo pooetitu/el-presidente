@@ -3,11 +3,8 @@ package display.menu.game;
 import display.MenuDisplay;
 import game.Island;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class EndYearMenu extends MenuDisplay {
-    public Island island;
+    public final Island island;
 
     public EndYearMenu(Island island) {
         super("0. Acheter de la nourriture\n1. Soudoyer une faction\n2. Continuer la partie", 3);
@@ -15,7 +12,7 @@ public class EndYearMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException, URISyntaxException {
+    protected boolean execute(int choice) {
         switch (choice) {
             case 0: {
                 BuyFoodMenu buyFoodMenu = new BuyFoodMenu(island.getResource());

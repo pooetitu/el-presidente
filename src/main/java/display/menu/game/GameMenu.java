@@ -4,9 +4,6 @@ import display.MenuDisplay;
 import game.Island;
 import utils.GameSaver;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class GameMenu extends MenuDisplay {
     private final Island island;
     private final GameSaver gameSaver;
@@ -18,7 +15,7 @@ public class GameMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException, URISyntaxException {
+    protected boolean execute(int choice) {
         switch (choice) {
             case 0: {
                 SaveMenu saveMenu = new SaveMenu(island);

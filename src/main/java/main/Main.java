@@ -14,7 +14,7 @@ public class Main {
         State.addState(new GameState(State.GAME_STATE_ID));
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         initStates();
         while (true) {
             State.getActiveState().run();

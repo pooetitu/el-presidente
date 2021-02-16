@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import game.event.Event;
 import utils.ScenarioLoader;
 
-import java.io.IOException;
 import java.util.LinkedList;
 
 @XStreamAlias("island")
@@ -22,7 +21,7 @@ public class Island {
     private int industrie;
     private int turn;
 
-    public Island(int agriculture, int industrie, Resource resource) throws IOException {
+    public Island(int agriculture, int industrie, Resource resource) {
         this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
@@ -33,7 +32,7 @@ public class Island {
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) throws IOException {
+    public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) {
         this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;

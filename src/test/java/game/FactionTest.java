@@ -9,7 +9,7 @@ public class FactionTest extends TestCase {
     private Island islandWithoutMoney;
 
     @Override
-    protected void setUp() throws Exception {
+    protected void setUp() {
         capitalistes = new Faction("capitalistes", 50, 15);
         loyalistes = new Faction("loyalistes", 50, 15);
         island = new Island(15, 15, GameDifficulty.NORMAL, new Resource(1000, 10));

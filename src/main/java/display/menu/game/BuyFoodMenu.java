@@ -3,9 +3,6 @@ package display.menu.game;
 import display.MenuDisplay;
 import game.Resource;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class BuyFoodMenu extends MenuDisplay {
     private final Resource resource;
 
@@ -15,7 +12,7 @@ public class BuyFoodMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException, URISyntaxException {
+    protected boolean execute(int choice) {
         resource.buyFood(choice);
         return false;
     }

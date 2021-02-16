@@ -6,14 +6,11 @@ import state.GameState;
 import state.State;
 import utils.ScenarioLoader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class GameCreationMenu extends MenuDisplay {
     private final DifficultyMenu difficultyMenuDisplay;
     private final ScenarioMenu scenarioMenuDisplay;
 
-    public GameCreationMenu(String choicesDisplay) throws URISyntaxException, IOException {
+    public GameCreationMenu(String choicesDisplay) {
         super(choicesDisplay, 2);
         difficultyMenuDisplay = new DifficultyMenu("0. Facile\n1. Normal\n2. Difficile");
         scenarioMenuDisplay = new ScenarioMenu(ScenarioLoader.getScenarioLoader().showScenarioList());
@@ -21,7 +18,7 @@ public class GameCreationMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException, URISyntaxException {
+    protected boolean execute(int choice) {
         Island island = null;
         switch (choice) {
             case 0: {
@@ -41,7 +38,7 @@ public class GameCreationMenu extends MenuDisplay {
         island.setDifficulty(difficultyMenuDisplay.getGameDifficulty());
         island.init();
         State.setActiveStateId(State.GAME_STATE_ID);
-        ((GameState) State.getActiveState()).initGame(island);
+        ((GameState) State.getActiveState()).init(island);
         return true;
     }
 }

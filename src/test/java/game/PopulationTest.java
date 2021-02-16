@@ -9,7 +9,7 @@ public class PopulationTest extends TestCase {
     private Faction liberaux;
 
     @Override
-    protected void setUp() throws Exception {
+    protected void setUp() {
         population = new Population();
         capitalistes = new Faction("capitalistes", 15, 15);
         communistes = new Faction("communistes", 65, 35);

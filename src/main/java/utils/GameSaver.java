@@ -39,22 +39,30 @@ public class GameSaver {
         }
     }
 
-    public void createSaveFile(String fileName, Island island) throws IOException {
-        File newFile = new File(savePath + fileName + ".json");
-        if (newFile.createNewFile()) {
-            saveFileList.add(newFile);
+    public void createSaveFile(String fileName, Island island) {
+        try {
+            File newFile = new File(savePath + fileName + ".json");
+            if (newFile.createNewFile()) {
+                saveFileList.add(newFile);
+            }
+            saveGame(island, saveFileList.indexOf(newFile));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        saveGame(island, saveFileList.indexOf(newFile));
     }
 
-    public void saveGame(Island island, int index) throws IOException {
-        if (index < 0 || index >= saveFileList.size()) {
-            return;
+    public void saveGame(Island island, int index) {
+        try {
+            if (index < 0 || index >= saveFileList.size()) {
+                return;
+            }
+            FileWriter fileWriter = new FileWriter(saveFileList.get(index));
+            fileWriter.write(gameFileParser.dataToJson(island));
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        FileWriter fileWriter = new FileWriter(saveFileList.get(index));
-        fileWriter.write(gameFileParser.dataToJson(island));
-        fileWriter.flush();
-        fileWriter.close();
     }
 
     public String showSaveList() {
@@ -73,11 +81,16 @@ public class GameSaver {
         return saveFileList.size();
     }
 
-    public Island loadGame(int index) throws IOException {
+    public Island loadGame(int index) {
         if (index < 0 || index >= saveFileList.size()) {
             return null;
         }
-        String saveJson = Files.readString(saveFileList.get(index).toPath(), StandardCharsets.UTF_8);
+        String saveJson = null;
+        try {
+            saveJson = Files.readString(saveFileList.get(index).toPath(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return (Island) gameFileParser.parseData(saveJson);
     }
 

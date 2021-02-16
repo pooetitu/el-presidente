@@ -5,14 +5,12 @@ import junit.framework.TestCase;
 public class ResourceTest extends TestCase {
     private Island island;
     private Resource resource;
-    private Faction capitalistes;
-    private Faction loyalistes;
 
     @Override
-    protected void setUp() throws Exception {
+    protected void setUp() {
         resource = new Resource(500, 0);
-        capitalistes = new Faction("capitalistes", 15, 10);
-        loyalistes = new Faction("loyalistes", 15, 10);
+        Faction capitalistes = new Faction("capitalistes", 15, 10);
+        Faction loyalistes = new Faction("loyalistes", 15, 10);
         island = new Island(15, 15, GameDifficulty.NORMAL, resource);
         island.getPopulation().addFaction(capitalistes);
         island.getPopulation().addFaction(loyalistes);
