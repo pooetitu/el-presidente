@@ -47,6 +47,7 @@ public class Faction {
         supporter -= count;
         satisfaction -= count * 2;
     }
+
     public void addPeople(int count) {
         supporter += count;
     }

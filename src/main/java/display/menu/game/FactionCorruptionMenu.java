@@ -16,7 +16,7 @@ public class FactionCorruptionMenu extends MenuDisplay {
 
     @Override
     protected boolean execute(int choice) throws IOException, URISyntaxException {
-        if (choice < getSwitchSize() - 1 ) {
+        if (choice < getSwitchSize() - 1) {
             setChoicesDisplay("Combien de fois voulez-vous les corrompre ? (Achetable: " + island.getMaximumPurchasableCorruption(choice) + " )");
             setSwitchSize(island.getMaximumPurchasableCorruption(choice));
             int amount = getChoice();

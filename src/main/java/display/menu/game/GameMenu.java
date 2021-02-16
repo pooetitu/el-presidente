@@ -34,7 +34,7 @@ public class GameMenu extends MenuDisplay {
                 System.out.println("print détailler de l'ile");
                 break;
             }
-            case 3:{
+            case 3: {
                 return false;
             }
         }
