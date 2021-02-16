@@ -42,11 +42,11 @@ public abstract class MenuDisplay {
         return switchSize;
     }
 
-    public void setChoicesDisplay(String choicesDisplay) {
-        this.choicesDisplay = choicesDisplay;
-    }
-
     public void setSwitchSize(int switchSize) {
         this.switchSize = switchSize;
+    }
+
+    public void setChoicesDisplay(String choicesDisplay) {
+        this.choicesDisplay = choicesDisplay;
     }
 }

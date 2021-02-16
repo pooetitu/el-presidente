@@ -51,6 +51,6 @@ public class EventEffectFoodTest extends TestCase {
 
     public void testEffectNegativeHardDifficulty() {
         eventEffectNegative.applyEffect(islandHard);
-        assertEquals(-100, islandHard.getResource().getFood());
+        assertEquals(0, islandHard.getResource().getFood());
     }
 }
