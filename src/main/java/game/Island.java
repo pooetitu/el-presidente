@@ -57,7 +57,7 @@ public class Island {
     }
 
     public void corruptFaction(int factionIndex, int amount) {
-        if (amount < getMaximumPurchasableCorruption(factionIndex)) {
+        if (amount > getMaximumPurchasableCorruption(factionIndex)) {
             return;
         }
         population.corruptFaction(factionIndex, amount);
