@@ -1,9 +1,14 @@
 module com.presidente {
     requires xstream;
-    opens com.presidente.game;
-    opens com.presidente.game.event;
-    opens com.presidente.game.event.effect;
-    opens com.presidente.game.event.effect.calculation;
+    requires javafx.controls;
+    requires javafx.fxml;
+
+    opens com.presidente.game to xstream;
+    opens com.presidente.game.event to xstream;
+    opens com.presidente.game.event.effect to xstream;
+    opens com.presidente.game.event.effect.calculation to xstream;
+
+    opens com.presidente.display to javafx.fxml;
 
     exports com.presidente.display;
 }
