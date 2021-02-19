@@ -4,9 +4,6 @@ import display.MenuDisplay;
 import game.Island;
 import utils.GameSaver;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class GameMenu extends MenuDisplay {
     private final Island island;
     private final GameSaver gameSaver;
@@ -18,23 +15,26 @@ public class GameMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException, URISyntaxException {
+    protected boolean execute(int choice) {
         switch (choice) {
             case 0: {
                 SaveMenu saveMenu = new SaveMenu(island);
                 saveMenu.displayMenu();
-                break;
+                return false;
             }
             case 1: {
                 LoadMenu loadMenu = new LoadMenu(gameSaver.showSaveList(), gameSaver.getSaveListCount());
                 loadMenu.displayMenu();
-                break;
+                return false;
             }
             case 2: {
-                System.out.println("print détailler de l'ile");
+                System.out.println(island.advancedDisplay());
                 break;
             }
+            case 3: {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }

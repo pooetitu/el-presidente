@@ -5,9 +5,6 @@ import game.Island;
 import main.Main;
 import utils.GameSaver;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class SaveMenu extends MenuDisplay {
     private final Island island;
     private final GameSaver gameSaver;
@@ -21,7 +18,7 @@ public class SaveMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException, URISyntaxException {
+    protected boolean execute(int choice) {
         switch (choice) {
             case 0: {
                 System.out.print("Saisissez le nom de la sauvegarde: ");

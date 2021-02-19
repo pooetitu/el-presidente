@@ -2,42 +2,42 @@ package game;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import game.event.Event;
 import utils.ScenarioLoader;
 
-import java.io.IOException;
 import java.util.LinkedList;
 
 @XStreamAlias("island")
 public class Island {
-    private final Ressource ressource;
+    private final Resource resource;
     private final Population population;
     @XStreamImplicit(itemFieldName = "event")
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
-    @XStreamImplicit(itemFieldName = "season")
+    @XStreamOmitField
     private Season[] seasons;
     private int agriculture;
     private int industrie;
     private int turn;
 
-    public Island(int agriculture, int industrie, Ressource ressource) throws IOException {
+    public Island(int agriculture, int industrie, Resource resource) {
         this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
-        this.ressource = ressource;
+        this.resource = resource;
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Ressource ressource) throws IOException {
+    public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) {
         this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
         this.difficulty = difficulty;
-        this.ressource = ressource;
+        this.resource = resource;
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
@@ -55,10 +55,15 @@ public class Island {
         return population.getGlobalSatisfaction() < difficulty.getSatisfactionThreshold();
     }
 
-    public void corruptFaction(int factionIndex) {
-        if (ressource.getTreasury() <= 0) return;
-        int corruptCost = ressource.getTreasury() - population.corruptFaction(factionIndex);
-        ressource.setTreasury(corruptCost);
+    public void corruptFaction(int factionIndex, int amount) {
+        if (amount <= getMaximumPurchasableCorruption(factionIndex)) {
+            population.corruptFaction(factionIndex, amount);
+            resource.setTreasury(resource.getTreasury() - population.getFactionCorruptionCost(factionIndex, amount));
+        }
+    }
+
+    public int getMaximumPurchasableCorruption(int factionIndex) {
+        return resource.getTreasury() / population.getFactionCorruptionCost(factionIndex, 1);
     }
 
     public int getAgriculture() {
@@ -67,9 +72,26 @@ public class Island {
 
     public void setAgriculture(int agriculture) {
         this.agriculture = agriculture;
-        if (this.agriculture < 0) this.agriculture = 0;
-        if (this.industrie + this.agriculture >= 100)
+        if (this.agriculture < 0) {
+            this.agriculture = 0;
+        }
+        if (this.industrie + this.agriculture >= 100) {
             this.agriculture = 100 - this.industrie;
+        }
+    }
+
+    public boolean isEndOfYear() {
+        if (turn % 4 == 0) {
+            resource.addIndustriePayoff(industrie);
+            resource.addAgriculturePayoff(agriculture);
+            return true;
+        }
+        return false;
+    }
+
+    public void endTheYear() {
+        int foodRest = resource.consumeFood(population.getTotalPopulation());
+        population.calculateNewPeopleCount(foodRest, agriculture);
     }
 
     public int getIndustrie() {
@@ -78,9 +100,12 @@ public class Island {
 
     public void setIndustrie(int industrie) {
         this.industrie = industrie;
-        if (this.industrie < 0) this.industrie = 0;
-        if (this.agriculture + this.industrie >= 100)
+        if (this.industrie < 0) {
+            this.industrie = 0;
+        }
+        if (this.agriculture + this.industrie >= 100) {
             this.industrie = 100 - this.agriculture;
+        }
     }
 
     public Event getNextEvent() {
@@ -107,8 +132,8 @@ public class Island {
         return population;
     }
 
-    public Ressource getRessources() {
-        return ressource;
+    public Resource getResource() {
+        return resource;
     }
 
     public GameDifficulty getDifficulty() {
@@ -125,8 +150,12 @@ public class Island {
 
     @Override
     public String toString() {
-        return ressource + "\n" +
-                String.format("%-21s%s", "agriculture: " + agriculture + "%", "industrie: " + industrie + "%") + "\n" +
-                "global satisfaction: " + population.getGlobalSatisfaction();
+        return resource + "\n" +
+                String.format("%-21s%s", "Agriculture: " + agriculture + "%", "Industrie: " + industrie + "%") + "\n" +
+                "Satisfaction globale: " + population.getGlobalSatisfaction();
+    }
+
+    public String advancedDisplay() {
+        return population + toString();
     }
 }

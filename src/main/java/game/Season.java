@@ -43,8 +43,4 @@ public class Season {
         Random rand = new Random();
         return events.get(rand.nextInt(events.size()));
     }
-
-    public void addEvent(Event newEvent) {
-        events.add(newEvent);
-    }
 }

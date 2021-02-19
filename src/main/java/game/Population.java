@@ -5,6 +5,7 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.Random;
 
 @XStreamAlias("population")
 public class Population {
@@ -30,11 +31,36 @@ public class Population {
         factions.put(faction.getName(), faction);
     }
 
-    public int corruptFaction(int index) {
+    private void addPeople() {
+        Random rand = new Random();
+        int peopleToAdd = rand.nextInt(11) / (100 * getTotalPopulation());
+        int percentPerFaction = 100 / factions.size();
+        for (Faction faction : factions.values()) {
+            faction.addPeople(peopleToAdd * percentPerFaction);
+        }
+    }
+
+    private void reducePeople(int agricultureProduction) {
+        int peopleToRemove = getTotalPopulation() - agricultureProduction / 4;
+        int percentPerFaction = 100 / factions.size();
+        for (Faction faction : factions.values()) {
+            faction.removePeople(peopleToRemove * percentPerFaction);
+        }
+    }
+
+    public void calculateNewPeopleCount(int foodRest, int agriculture) {
+        if (foodRest >= 0) {
+            addPeople();
+        } else {
+            reducePeople(agriculture * 40);
+        }
+    }
+
+    public void corruptFaction(int index, int amount) {
         Faction faction = (Faction) factions.values().toArray()[index];
-        int corruptionCost = faction.corrupt();
-        getFactionByName("loyalistes").setSatisfaction(getFactionByName("loyalistes").getSatisfaction() - corruptionCost / 10);
-        return corruptionCost;
+        faction.corrupt(amount);
+        Faction loyalist = getFactionByName("loyalistes");
+        loyalist.setSatisfaction((loyalist.getSatisfaction() - faction.getCorruptionCost() / 10) * amount);
     }
 
     public int getTotalPopulation() {
@@ -57,16 +83,25 @@ public class Population {
     }
 
     public String corruptionDisplay() {
-        StringBuilder display = new StringBuilder("0. Retour");
-        int count = 1;
+        StringBuilder display = new StringBuilder();
+        int count = 0;
         for (Faction faction : factions.values()) {
-            display.append("\n").append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$");
+            display.append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$").append("\n");
             count++;
         }
+        display.append(count).append(". ").append("Retour");
         return display.toString();
     }
 
-    public Collection<game.Faction> getFactions() {
+    public int getFactionCount() {
+        return factions.size();
+    }
+
+    public int getFactionCorruptionCost(int index, int amount) {
+        return ((Faction) factions.values().toArray()[index]).getCorruptionCost() * amount;
+    }
+
+    public Collection<Faction> getFactions() {
         return factions.values();
     }
 
