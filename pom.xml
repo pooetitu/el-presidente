@@ -50,13 +50,18 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                             <mainClass>com.presidente.main.Main</mainClass>
+                            <mainClass>com.presidente.display.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>

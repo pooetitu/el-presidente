@@ -1,0 +1,165 @@
+{
+  "events": [
+    {
+      "description": "L’Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques\nsuite aux récentes inondations dans la région",
+      "choices": [
+        {
+          "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+          "effects": [
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "description": "Décliner au motif qu’ils ne sont pas du même culte que vous",
+          "effects": [
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "description": "Accepter sans condition",
+          "effects": [
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 10.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": 10.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "nationalistes"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "description": "Accepter sous condition d’aide financière de la part de l’OCU",
+          "effects": [
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "nationalistes"
+                ],
+                "applyToAll": false,
+                "amount": 20.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "capitalistes"
+                ],
+                "applyToAll": false,
+                "amount": 10.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectMoney",
+              "data": {
+                "amount": 200.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
