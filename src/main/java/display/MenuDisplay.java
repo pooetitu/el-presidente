@@ -2,9 +2,6 @@ package display;
 
 import main.Main;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public abstract class MenuDisplay {
     private String choicesDisplay;
     private int switchSize;
@@ -18,12 +15,12 @@ public abstract class MenuDisplay {
         System.out.println(choicesDisplay);
     }
 
-    public boolean displayMenu() throws IOException, URISyntaxException {
+    public boolean displayMenu() {
         if (switchSize <= 0) return false;
         return execute(getChoice());
     }
 
-    protected abstract boolean execute(int choice) throws IOException, URISyntaxException;
+    protected abstract boolean execute(int choice);
 
     protected int getChoice() {
         int choice = -1;

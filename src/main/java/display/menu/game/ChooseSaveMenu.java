@@ -4,8 +4,6 @@ import display.MenuDisplay;
 import game.Island;
 import utils.GameSaver;
 
-import java.io.IOException;
-
 public class ChooseSaveMenu extends MenuDisplay {
     private final Island island;
 
@@ -15,7 +13,7 @@ public class ChooseSaveMenu extends MenuDisplay {
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException {
+    protected boolean execute(int choice) {
         GameSaver.getGameSaver().saveGame(island, choice);
         return true;
     }

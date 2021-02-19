@@ -3,8 +3,6 @@ package utils;
 import game.Island;
 import game.Season;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -27,7 +25,7 @@ public class ScenarioLoader {
         return scenarioLoader;
     }
 
-    public String showScenarioList() throws URISyntaxException, IOException {
+    public String showScenarioList() {
         loadScenarioList();
         StringBuilder display = new StringBuilder();
         int counter = 0;
@@ -43,7 +41,7 @@ public class ScenarioLoader {
         return scenariosPathList.size();
     }
 
-    private void loadScenarioList() throws URISyntaxException, IOException {
+    private void loadScenarioList() {
         String[] files = ResourceReader.getFilesList(scenarioPath);
         if (files != null && files.length > 0) {
             scenariosPathList.clear();

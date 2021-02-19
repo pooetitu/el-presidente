@@ -7,9 +7,6 @@ import game.Season;
 import game.event.Event;
 import main.Main;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class GameState extends State {
     private Island island;
     private GameMenu gameMenuDisplay;
@@ -21,17 +18,17 @@ public class GameState extends State {
 
     @Override
     public void init() {
-    }
-
-    public void initGame(Island island) {
-        this.island = island;
-        island.init();
         gameMenuDisplay = new GameMenu(island);
         endYearMenu = new EndYearMenu(island);
     }
 
+    public void init(Island island) {
+        this.island = island;
+        island.init();
+    }
+
     @Override
-    public void run() throws IOException, URISyntaxException {
+    public void run() {
         boolean displaying = true;
         startEvent();
         displayIsland();

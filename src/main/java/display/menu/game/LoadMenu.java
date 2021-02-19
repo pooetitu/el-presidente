@@ -6,18 +6,16 @@ import state.GameState;
 import state.State;
 import utils.GameSaver;
 
-import java.io.IOException;
-
 public class LoadMenu extends MenuDisplay {
     public LoadMenu(String choicesDisplay, int switchSize) {
         super(choicesDisplay, switchSize + 1);
     }
 
     @Override
-    protected boolean execute(int choice) throws IOException {
+    protected boolean execute(int choice) {
         Island island = GameSaver.getGameSaver().loadGame(choice);
         if (island != null) {
-            ((GameState) State.getStateById(State.GAME_STATE_ID)).initGame(island);
+            ((GameState) State.getStateById(State.GAME_STATE_ID)).init(island);
             State.setActiveStateId(State.GAME_STATE_ID);
         }
         return true;

@@ -15,7 +15,6 @@ public class EventEffectFood extends EventEffect {
     public void applyEffect(Island island) {
         int result = calculateNewValue(island.getResource().getFood(), island.getDifficulty().getEffectRatio());
         island.getResource().setFood(result);
-        System.out.println(island.getResource().getFood());
     }
 
     @Override

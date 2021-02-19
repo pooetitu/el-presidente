@@ -27,8 +27,4 @@ public abstract class EventEffect {
             return amount * effectRatio;
         }
     }
-
-    public double getAmount() {
-        return amount;
-    }
 }

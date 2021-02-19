@@ -16,6 +16,18 @@ public class GameFileParser {
     private GameFileParser() {
         xstream = new XStream(new JettisonMappedXmlDriver());
         xstream.setMode(XStream.NO_REFERENCES);
+        initXStreamSecurity(xstream);
+        initXStreamAliases(xstream);
+    }
+
+    public static GameFileParser getGameFileParser() {
+        if (gameFileParser == null) {
+            gameFileParser = new GameFileParser();
+        }
+        return gameFileParser;
+    }
+
+    private void initXStreamAliases(XStream xstream) {
         xstream.autodetectAnnotations(true);
         xstream.processAnnotations(Season.class);
         xstream.processAnnotations(Event.class);
@@ -28,19 +40,18 @@ public class GameFileParser {
         xstream.processAnnotations(EventEffectFood.class);
         xstream.processAnnotations(CalculationPercentage.class);
         xstream.processAnnotations(CalculationFixed.class);
-
         xstream.processAnnotations(Population.class);
         xstream.processAnnotations(Faction.class);
         xstream.processAnnotations(Island.class);
         xstream.processAnnotations(Resource.class);
-
     }
 
-    public static GameFileParser getGameFileParser() {
-        if (gameFileParser == null) {
-            gameFileParser = new GameFileParser();
-        }
-        return gameFileParser;
+    private void initXStreamSecurity(XStream xstream) {
+        Class<?>[] classes = new Class[]{Island.class, Resource.class, Faction.class, Population.class, Season.class, Event.class,
+                EventChoice.class, EventEffectFactionSatisfaction.class, EventEffectFactionSupporter.class, EventEffectIndustrie.class,
+                EventEffectAgriculture.class, EventEffectMoney.class, EventEffectFood.class, CalculationPercentage.class, CalculationFixed.class};
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(classes);
     }
 
     public Object parseData(String data) {

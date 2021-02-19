@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import game.event.Event;
 import utils.ScenarioLoader;
 
-import java.io.IOException;
 import java.util.LinkedList;
 
 @XStreamAlias("island")
@@ -22,7 +21,7 @@ public class Island {
     private int industrie;
     private int turn;
 
-    public Island(int agriculture, int industrie, Resource resource) throws IOException {
+    public Island(int agriculture, int industrie, Resource resource) {
         this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
@@ -33,7 +32,7 @@ public class Island {
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) throws IOException {
+    public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) {
         this.turn = 0;
         this.agriculture = agriculture;
         this.industrie = industrie;
@@ -57,11 +56,10 @@ public class Island {
     }
 
     public void corruptFaction(int factionIndex, int amount) {
-        if (amount > getMaximumPurchasableCorruption(factionIndex)) {
-            return;
+        if (amount <= getMaximumPurchasableCorruption(factionIndex)) {
+            population.corruptFaction(factionIndex, amount);
+            resource.setTreasury(resource.getTreasury() - population.getFactionCorruptionCost(factionIndex, amount));
         }
-        population.corruptFaction(factionIndex, amount);
-        resource.setTreasury(resource.getTreasury() - population.getFactionCorruptionCost(factionIndex, amount));
     }
 
     public int getMaximumPurchasableCorruption(int factionIndex) {
@@ -155,5 +153,9 @@ public class Island {
         return resource + "\n" +
                 String.format("%-21s%s", "Agriculture: " + agriculture + "%", "Industrie: " + industrie + "%") + "\n" +
                 "Satisfaction globale: " + population.getGlobalSatisfaction();
+    }
+
+    public String advancedDisplay() {
+        return population + toString();
     }
 }
