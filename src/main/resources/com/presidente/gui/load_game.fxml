@@ -22,12 +22,12 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Button disable="true" layoutX="103.0" layoutY="519.0" mnemonicParsing="false" onAction="#loadGame" prefWidth="250.0" text="Charger la partie" AnchorPane.leftAnchor="100.0">
+      <Button disable="true" layoutX="103.0" layoutY="519.0" mnemonicParsing="false" onAction="#loadGame" prefWidth="250.0" text="Charger la partie" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0">
          <font>
             <Font name="Stencil" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="471.0" layoutY="519.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="250.0" text="Retour au menu principal" AnchorPane.rightAnchor="100.0">
+      <Button layoutX="471.0" layoutY="519.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="250.0" text="Retour au menu principal" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="Stencil" size="14.0" />
          </font>
