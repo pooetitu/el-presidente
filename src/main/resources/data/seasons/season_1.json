@@ -1,94 +1,142 @@
 {
-  "season": {
-    "event": {
+  "events": [
+    {
       "description": "Vous avez découvert un gisement d’or ! Que faire ?",
-      "choice": [
+      "choices": [
         {
           "description": "Utilisons-le pour améliorer le bien-être des citoyens !",
-          "effect": [
+          "effects": [
             {
-              "@class": "effect-faction-supporter",
-              "amount": 10,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "communistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "communistes"
+                ],
+                "applyToAll": false,
+                "amount": 10.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-faction-supporter",
-              "amount": -30,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "capitalistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "capitalistes"
+                ],
+                "applyToAll": false,
+                "amount": -30.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-industrie",
-              "amount": 10,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
+              "type": "game.event.effect.EventEffectIndustrie",
+              "data": {
+                "amount": 10.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
               }
             }
           ]
         },
         {
           "description": "Exploitons-le au maximum pour moderniser le pays !",
-          "effect": [
+          "effects": [
             {
-              "@class": "effect-faction-supporter",
-              "amount": 5,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "communistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "communistes"
+                ],
+                "applyToAll": false,
+                "amount": 5.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-faction-supporter",
-              "amount": -20,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "écologistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "écologistes"
+                ],
+                "applyToAll": false,
+                "amount": -20.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-faction-supporter",
-              "amount": 10,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "capitalistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "capitalistes"
+                ],
+                "applyToAll": false,
+                "amount": 10.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-industrie",
-              "amount": 20,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
+              "type": "game.event.effect.EventEffectIndustrie",
+              "data": {
+                "amount": 20.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
               }
             }
           ]
         },
         {
           "description": "Vendons les terrains à l’Empire du Dragon et renflouons nos comptes secrets.",
-          "effect": [
+          "effects": [
             {
-              "@class": "effect-faction-supporter",
-              "amount": -30,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "nationalistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "nationalistes"
+                ],
+                "applyToAll": false,
+                "amount": -30.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-faction-supporter",
-              "amount": 15,
-              "calculationMethod": {
-                "@class": "calculation-percentage"
-              },
-              "faction": "loyalistes"
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "factions": [
+                  "loyalistes"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
             }
           ]
         }
       ]
     }
-  }
+  ]
 }

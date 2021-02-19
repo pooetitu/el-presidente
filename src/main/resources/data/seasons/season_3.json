@@ -1,51 +1,75 @@
 {
-  "season": {
-    "event": {
+  "events": [
+    {
       "description": "ddddddd",
-      "choice": [
+      "choices": [
         {
           "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
-          "effect": [
+          "effects": [
             {
-              "@class": "effect-faction-satisfaction",
-              "amount": 15,
-              "calculationMethod": {
-                "@class": "calculation-fixed"
-              },
-              "faction": "religieux"
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-faction-satisfaction",
-              "amount": -15,
-              "calculationMethod": {
-                "@class": "calculation-fixed"
-              },
-              "faction": "libéraux"
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
             }
           ]
         },
         {
           "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
-          "effect": [
+          "effects": [
             {
-              "@class": "effect-faction-satisfaction",
-              "amount": 15,
-              "calculationMethod": {
-                "@class": "calculation-fixed"
-              },
-              "faction": "religieux"
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
             },
             {
-              "@class": "effect-faction-satisfaction",
-              "amount": -15,
-              "calculationMethod": {
-                "@class": "calculation-fixed"
-              },
-              "faction": "libéraux"
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
             }
           ]
         }
       ]
     }
-  }
+  ]
 }

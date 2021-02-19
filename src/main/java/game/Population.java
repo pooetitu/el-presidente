@@ -1,15 +1,10 @@
 package game;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
-@XStreamAlias("population")
 public class Population {
-    @XStreamImplicit(itemFieldName = "faction", keyFieldName = "name")
     private final LinkedHashMap<String, Faction> factions;
 
     public Population() {

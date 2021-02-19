@@ -1,51 +1,65 @@
 {
-  "season": {
-    "event": {
+  "events": [
+    {
       "description": "Un ouragan va frapper l’île ! Sauvons El Presidente !",
-      "choice": {
-        "description": "Se mettre à l’abri",
-        "effect": [
-          {
-            "@class": "effect-faction-supporter",
-            "amount": -10,
-            "applyToAll": true,
-            "calculationMethod": {
-              "@class": "calculation-percentage"
+      "choices": [
+        {
+          "description": "Se mettre à l’abri",
+          "effects": [
+            {
+              "type": "game.event.effect.EventEffectFactionSupporter",
+              "data": {
+                "applyToAll": true,
+                "amount": -10.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationPercentage",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "capitalistes",
+                  "communistes",
+                  "libéraux",
+                  "religieux",
+                  "militaristes",
+                  "écologistes",
+                  "nationalistes"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "game.event.effect.EventEffectIndustrie",
+              "data": {
+                "amount": -20.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "game.event.effect.EventEffectAgriculture",
+              "data": {
+                "amount": -10.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
             }
-          },
-          {
-            "@class": "effect-faction-satisfaction",
-            "applyToAll": false,
-            "faction": [
-              "capitalistes",
-              "communistes",
-              "libéraux",
-              "religieux",
-              "militaristes",
-              "écologistes",
-              "nationalistes"
-            ],
-            "amount": -15,
-            "calculationMethod": {
-              "@class": "calculation-fixed"
-            }
-          },
-          {
-            "@class": "effect-industrie",
-            "amount": -20,
-            "calculationMethod": {
-              "@class": "calculation-fixed"
-            }
-          },
-          {
-            "@class": "effect-agriculture",
-            "amount": -10,
-            "calculationMethod": {
-              "@class": "calculation-fixed"
-            }
-          }
-        ]
-      }
+          ]
+        }
+      ]
     }
-  }
+  ]
 }

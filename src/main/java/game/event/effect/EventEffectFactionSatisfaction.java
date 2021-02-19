@@ -1,7 +1,5 @@
 package game.event.effect;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import game.Faction;
 import game.GameDifficulty;
 import game.Island;
@@ -10,9 +8,7 @@ import game.event.effect.calculation.Calculation;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@XStreamAlias("effect-faction-satisfaction")
 public class EventEffectFactionSatisfaction extends EventEffect {
-    @XStreamImplicit(itemFieldName = "faction")
     private final ArrayList<String> factions;
     private final boolean applyToAll;
 

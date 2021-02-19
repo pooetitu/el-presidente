@@ -1,23 +1,20 @@
 package utils;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import game.*;
-import game.event.Event;
-import game.event.EventChoice;
-import game.event.effect.*;
-import game.event.effect.calculation.CalculationFixed;
-import game.event.effect.calculation.CalculationPercentage;
+import adapters.SubClassesTypeAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import game.event.effect.EventEffect;
+import game.event.effect.calculation.Calculation;
 
 public class GameFileParser {
     private static GameFileParser gameFileParser;
-    private final XStream xstream;
+    private final Gson gson;
 
     private GameFileParser() {
-        xstream = new XStream(new JettisonMappedXmlDriver());
-        xstream.setMode(XStream.NO_REFERENCES);
-        initXStreamSecurity(xstream);
-        initXStreamAliases(xstream);
+        this.gson = new GsonBuilder()
+                .registerTypeAdapter(EventEffect.class, new SubClassesTypeAdapter<EventEffect>())
+                .registerTypeAdapter(Calculation.class, new SubClassesTypeAdapter<Calculation>())
+                .create();
     }
 
     public static GameFileParser getGameFileParser() {
@@ -27,38 +24,12 @@ public class GameFileParser {
         return gameFileParser;
     }
 
-    private void initXStreamAliases(XStream xstream) {
-        xstream.autodetectAnnotations(true);
-        xstream.processAnnotations(Season.class);
-        xstream.processAnnotations(Event.class);
-        xstream.processAnnotations(EventChoice.class);
-        xstream.processAnnotations(EventEffectFactionSatisfaction.class);
-        xstream.processAnnotations(EventEffectFactionSupporter.class);
-        xstream.processAnnotations(EventEffectIndustrie.class);
-        xstream.processAnnotations(EventEffectAgriculture.class);
-        xstream.processAnnotations(EventEffectMoney.class);
-        xstream.processAnnotations(EventEffectFood.class);
-        xstream.processAnnotations(CalculationPercentage.class);
-        xstream.processAnnotations(CalculationFixed.class);
-        xstream.processAnnotations(Population.class);
-        xstream.processAnnotations(Faction.class);
-        xstream.processAnnotations(Island.class);
-        xstream.processAnnotations(Resource.class);
-    }
-
-    private void initXStreamSecurity(XStream xstream) {
-        Class<?>[] classes = new Class[]{Island.class, Resource.class, Faction.class, Population.class, Season.class, Event.class,
-                EventChoice.class, EventEffectFactionSatisfaction.class, EventEffectFactionSupporter.class, EventEffectIndustrie.class,
-                EventEffectAgriculture.class, EventEffectMoney.class, EventEffectFood.class, CalculationPercentage.class, CalculationFixed.class};
-        XStream.setupDefaultSecurity(xstream);
-        xstream.allowTypes(classes);
-    }
-
-    public Object parseData(String data) {
-        return xstream.fromXML(data);
+    public <T> T parseData(String data, Class<T> c) {
+        return gson.fromJson(data, c);
     }
 
     public String dataToJson(Object object) {
-        return xstream.toXML(object);
+        System.out.println(gson.toJson(object) + " " + object);
+        return gson.toJson(object);
     }
 }

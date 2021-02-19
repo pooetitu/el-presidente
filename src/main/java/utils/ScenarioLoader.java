@@ -53,7 +53,7 @@ public class ScenarioLoader {
         if (index < 0 || index >= scenariosPathList.size()) {
             return null;
         }
-        Island island = (Island) gameFileParser.parseData(ResourceReader.getContentStringFromResource(scenarioPath + scenariosPathList.get(index)));
+        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource(scenarioPath + scenariosPathList.get(index)), Island.class);
         island.init();
         return island;
     }
@@ -62,13 +62,13 @@ public class ScenarioLoader {
         Season[] seasons = new Season[4];
         for (int i = 0; i < 4; i++) {
             String saveJson = ResourceReader.getContentStringFromResource("data/seasons/season_" + i + ".json");
-            seasons[i] = (Season) gameFileParser.parseData(saveJson);
+            seasons[i] = gameFileParser.parseData(saveJson, Season.class);
         }
         return seasons;
     }
 
     public Island loadIslandSandboxConfig() {
-        Island island = (Island) gameFileParser.parseData(ResourceReader.getContentStringFromResource("data/sandbox.json"));
+        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource("data/sandbox.json"), Island.class);
         island.init();
         return island;
     }

@@ -18,13 +18,13 @@ public class GameState extends State {
 
     @Override
     public void init() {
-        gameMenuDisplay = new GameMenu(island);
-        endYearMenu = new EndYearMenu(island);
     }
 
     public void init(Island island) {
         this.island = island;
         island.init();
+        gameMenuDisplay = new GameMenu(island);
+        endYearMenu = new EndYearMenu(island);
     }
 
     @Override

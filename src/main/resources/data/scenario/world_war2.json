@@ -1,122 +1,599 @@
 {
-  "island": {
-    "resource": {
-      "treasury": 200,
-      "food": 300
-    },
-    "population": {
-      "faction": [
+  "resource": {
+    "treasury": 200,
+    "food": 300
+  },
+  "population": {
+    "factions": {
+      "capitalistes": {
+        "name": "capitalistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "communistes": {
+        "name": "communistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "libéraux": {
+        "name": "libéraux",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "religieux": {
+        "name": "religieux",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "militaristes": {
+        "name": "militaristes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "écologistes": {
+        "name": "écologistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "nationalistes": {
+        "name": "nationalistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "loyalistes": {
+        "name": "loyalistes",
+        "satisfaction": 50,
+        "supporter": 15
+      }
+    }
+  },
+  "eventsQueue": [
+    {
+      "description": "L\u0027Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région",
+      "choices": [
         {
-          "name": "capitalistes",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "communistes",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "libéraux",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "religieux",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "militaristes",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "écologistes",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "nationalistes",
-          "satisfaction": 50,
-          "supporter": 15
-        },
-        {
-          "name": "loyalistes",
-          "satisfaction": 50,
-          "supporter": 15
+          "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+          "effects": [
+            {
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
         }
       ]
     },
-    "event": [
-      {
-        "description": "L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région",
-        "choice": {
+    {
+      "description": "L\u0027Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région",
+      "choices": [
+        {
           "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
-          "effect": {
-            "@class": "effect-faction-satisfaction",
-            "amount": 15,
-            "calculationMethod": {
-              "@class": "calculation-fixed"
+          "effects": [
+            {
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
             },
-            "faction": "religieux",
-            "applyToAll": false
-          }
+            {
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+          "effects": [
+            {
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "capitalistes"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "loyalistes"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
         }
-      },
-      {
-        "description": "L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région",
-        "choice": [
-          {
-            "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
-            "effect": [
-              {
-                "@class": "effect-faction-satisfaction",
-                "amount": 15,
-                "calculationMethod": {
-                  "@class": "calculation-fixed"
+      ]
+    }
+  ],
+  "seasons": [
+    {
+      "events": [
+        {
+          "description": "L’Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques\nsuite aux récentes inondations dans la région",
+          "choices": [
+            {
+              "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "religieux"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
                 },
-                "faction": "religieux",
-                "applyToAll": false
-              },
-              {
-                "@class": "effect-faction-satisfaction",
-                "amount": -15,
-                "calculationMethod": {
-                  "@class": "calculation-fixed"
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "libéraux"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "description": "Décliner au motif qu’ils ne sont pas du même culte que vous",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "religieux"
+                    ],
+                    "applyToAll": false,
+                    "amount": 15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
                 },
-                "faction": "libéraux",
-                "applyToAll": false
-              }
-            ]
-          },
-          {
-            "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
-            "effect": [
-              {
-                "@class": "effect-faction-satisfaction",
-                "amount": 15,
-                "calculationMethod": {
-                  "@class": "calculation-fixed"
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "libéraux"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "description": "Accepter sans condition",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "religieux"
+                    ],
+                    "applyToAll": false,
+                    "amount": 10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
                 },
-                "faction": "capitalistes",
-                "applyToAll": false
-              },
-              {
-                "@class": "effect-faction-satisfaction",
-                "amount": -15,
-                "calculationMethod": {
-                  "@class": "calculation-fixed"
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "libéraux"
+                    ],
+                    "applyToAll": false,
+                    "amount": 10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
                 },
-                "faction": "loyalistes",
-                "applyToAll": false
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "agriculture": 15,
-    "industrie": 15
-  }
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "nationalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "description": "Accepter sous condition d’aide financière de la part de l’OCU",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "nationalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": 20.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "capitalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": 10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectMoney",
+                  "data": {
+                    "amount": 200.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "events": [
+        {
+          "description": "Vous avez découvert un gisement d’or ! Que faire ?",
+          "choices": [
+            {
+              "description": "Utilisons-le pour améliorer le bien-être des citoyens !",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "communistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": 10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "capitalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": -30.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectIndustrie",
+                  "data": {
+                    "amount": 10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "description": "Exploitons-le au maximum pour moderniser le pays !",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "communistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": 5.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "écologistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": -20.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "capitalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": 10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectIndustrie",
+                  "data": {
+                    "amount": 20.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "description": "Vendons les terrains à l’Empire du Dragon et renflouons nos comptes secrets.",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "nationalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": -30.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "factions": [
+                      "loyalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": 15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "events": [
+        {
+          "description": "Un ouragan va frapper l’île ! Sauvons El Presidente !",
+          "choices": [
+            {
+              "description": "Se mettre à l’abri",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSupporter",
+                  "data": {
+                    "applyToAll": true,
+                    "amount": -10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationPercentage",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "capitalistes",
+                      "communistes",
+                      "libéraux",
+                      "religieux",
+                      "militaristes",
+                      "écologistes",
+                      "nationalistes"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectIndustrie",
+                  "data": {
+                    "amount": -20.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectAgriculture",
+                  "data": {
+                    "amount": -10.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "events": [
+        {
+          "description": "ddddddd",
+          "choices": [
+            {
+              "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "religieux"
+                    ],
+                    "applyToAll": false,
+                    "amount": 15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "libéraux"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+              "effects": [
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "religieux"
+                    ],
+                    "applyToAll": false,
+                    "amount": 15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                },
+                {
+                  "type": "game.event.effect.EventEffectFactionSatisfaction",
+                  "data": {
+                    "factions": [
+                      "libéraux"
+                    ],
+                    "applyToAll": false,
+                    "amount": -15.0,
+                    "calculationMethod": {
+                      "type": "game.event.effect.calculation.CalculationFixed",
+                      "data": {}
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "agriculture": 15,
+  "industrie": 15,
+  "turn": 0
 }

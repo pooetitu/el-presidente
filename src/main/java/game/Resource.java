@@ -1,8 +1,5 @@
 package game;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-@XStreamAlias("ressource")
 public class Resource {
     private static final int FOOD_UNIT_COST = 8;
     private static final int FOOD_CONSUMPTION_PER_PERSON = 4;
