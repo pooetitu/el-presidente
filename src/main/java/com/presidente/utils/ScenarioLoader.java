@@ -16,6 +16,7 @@ public class ScenarioLoader {
         gameFileParser = GameFileParser.getGameFileParser();
         this.scenariosPathList = new LinkedList<>();
         this.scenarioPath = "/com/presidente/data/scenario/";
+        loadScenarioList();
     }
 
     public static ScenarioLoader getScenarioLoader() {
@@ -26,7 +27,6 @@ public class ScenarioLoader {
     }
 
     public String showScenarioList() {
-        loadScenarioList();
         StringBuilder display = new StringBuilder();
         int counter = 0;
         for (String path : scenariosPathList) {
@@ -73,4 +73,7 @@ public class ScenarioLoader {
         return island;
     }
 
+    public LinkedList<String> getScenarioList() {
+        return scenariosPathList;
+    }
 }

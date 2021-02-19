@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.LoadGameController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" layoutX="23.0" layoutY="24.0" prefHeight="471.0" prefWidth="764.0">
+         <content>
+            <TableView fx:id="saveList" mouseTransparent="true" prefHeight="469.0" prefWidth="763.0">
+                <placeholder>
+                    <Label text="Aucun fichier de sauvegarde trouvé" />
+                </placeholder>
+              <columns>
+                <TableColumn prefWidth="493.0" text="Nom" />
+                <TableColumn minWidth="0.0" prefWidth="269.0" text="Dernière modification" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Button disable="true" layoutX="103.0" layoutY="519.0" mnemonicParsing="false" onAction="#loadGame" prefWidth="250.0" text="Charger la partie" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="Stencil" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="471.0" layoutY="519.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="250.0" text="Retour au menu principal" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="Stencil" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

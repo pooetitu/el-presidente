@@ -14,12 +14,12 @@ public class MainMenuController {
 
     @FXML
     private void switchToGameCreationMenu() throws IOException {
-        App.setRoot("game_creator");
+        App.setRoot("game_creation");
     }
 
     @FXML
     private void switchToLoadSaveMenu() throws IOException {
-        App.setRoot("save_load");
+        App.setRoot("load_game");
     }
 
 }
