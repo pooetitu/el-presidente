@@ -3,15 +3,9 @@ package com.presidente.display.controller;
 import com.presidente.display.App;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
-import com.presidente.game.Resource;
 import com.presidente.utils.ScenarioLoader;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 
@@ -19,12 +13,22 @@ public class GameCreationController {
     @FXML
     public ListView<String> scenarioListView;
     @FXML
+    public ChoiceBox<GameDifficulty> difficultyChoiceBox;
+    @FXML
+    public Button startGameButton;
+    @FXML
     private CheckBox sandboxCheckBox;
 
     @FXML
     public void startGame() throws IOException {
-        FXMLLoader loader = App.setRoot("game");
-        ((GameController) loader.getController()).setIsland(new Island(15, 15, GameDifficulty.NORMAL, new Resource(10, 10)));
+        Island island;
+        if (sandboxCheckBox.isSelected()) {
+            island = ScenarioLoader.getScenarioLoader().loadIslandSandboxConfig();
+        } else {
+            island = ScenarioLoader.getScenarioLoader().loadScenario(scenarioListView.getSelectionModel().getSelectedIndex());
+        }
+        island.setDifficulty(difficultyChoiceBox.getSelectionModel().getSelectedItem());
+        ((GameController) App.setRoot("game").getController()).setIsland(island);
     }
 
     @FXML
@@ -39,7 +43,14 @@ public class GameCreationController {
 
     @FXML
     public void initialize() {
+        for (GameDifficulty difficulty : GameDifficulty.values()) {
+            difficultyChoiceBox.getItems().add(difficulty);
+        }
         scenarioListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         scenarioListView.getItems().addAll(ScenarioLoader.getScenarioLoader().getScenarioList());
+    }
+
+    public void updateStartGameButton() {
+        startGameButton.setDisable(!((scenarioListView.getSelectionModel().getSelectedItem() != null || sandboxCheckBox.isSelected()) && difficultyChoiceBox.getSelectionModel().getSelectedItem() != null));
     }
 }

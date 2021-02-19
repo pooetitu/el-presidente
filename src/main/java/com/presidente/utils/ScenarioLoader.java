@@ -15,7 +15,7 @@ public class ScenarioLoader {
     private ScenarioLoader() {
         gameFileParser = GameFileParser.getGameFileParser();
         this.scenariosPathList = new LinkedList<>();
-        this.scenarioPath = "/com/presidente/data/scenario/";
+        this.scenarioPath = "com/presidente/data/scenario/";
         loadScenarioList();
     }
 
@@ -53,7 +53,7 @@ public class ScenarioLoader {
         if (index < 0 || index >= scenariosPathList.size()) {
             return null;
         }
-        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource(scenarioPath + scenariosPathList.get(index)), Island.class);
+        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource("/" + scenarioPath + scenariosPathList.get(index)), Island.class);
         island.init();
         return island;
     }

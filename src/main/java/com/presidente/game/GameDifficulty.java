@@ -20,4 +20,9 @@ public enum GameDifficulty {
     public int getSatisfactionThreshold() {
         return satisfactionThreshold;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
