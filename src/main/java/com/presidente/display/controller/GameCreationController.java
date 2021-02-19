@@ -39,6 +39,7 @@ public class GameCreationController {
     @FXML
     public void toggleSandbox() {
         scenarioListView.setDisable(sandboxCheckBox.isSelected());
+        updateStartGameButton();
     }
 
     @FXML
@@ -51,6 +52,8 @@ public class GameCreationController {
     }
 
     public void updateStartGameButton() {
-        startGameButton.setDisable(!((scenarioListView.getSelectionModel().getSelectedItem() != null || sandboxCheckBox.isSelected()) && difficultyChoiceBox.getSelectionModel().getSelectedItem() != null));
+        startGameButton.setDisable(!((scenarioListView.getSelectionModel().getSelectedItem() != null ||
+                sandboxCheckBox.isSelected()) &&
+                difficultyChoiceBox.getSelectionModel().getSelectedItem() != null));
     }
 }

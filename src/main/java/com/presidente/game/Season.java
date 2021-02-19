@@ -16,19 +16,19 @@ public class Season {
         String season = "";
         switch (index) {
             case 0: {
-                season = "printemps";
+                season = "Printemps";
                 break;
             }
             case 1: {
-                season = "été";
+                season = "Été";
                 break;
             }
             case 2: {
-                season = "automne";
+                season = "Automne";
                 break;
             }
             case 3: {
-                season = "hiver";
+                season = "Hiver";
                 break;
             }
         }

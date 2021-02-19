@@ -16,7 +16,7 @@
         </font>
     </Button>
     <ListView fx:id="scenarioListView" layoutX="486.0" layoutY="64.0" onMouseReleased="#updateStartGameButton" prefHeight="360.0" prefWidth="240.0" />
-    <CheckBox fx:id="sandboxCheckBox" layoutX="113.0" layoutY="182.0" mnemonicParsing="false" onAction="#toggleSandbox" onMouseReleased="#updateStartGameButton" text="Mode Sandbox" />
+    <CheckBox fx:id="sandboxCheckBox" layoutX="113.0" layoutY="182.0" mnemonicParsing="false" onAction="#toggleSandbox" text="Mode Sandbox" />
     <Label layoutX="113.0" layoutY="222.0" text="Difficulté" />
-    <ChoiceBox fx:id="difficultyChoiceBox" layoutX="113.0" layoutY="239.0" onMouseReleased="#updateStartGameButton" prefWidth="150.0" />
+    <ChoiceBox fx:id="difficultyChoiceBox" layoutX="113.0" layoutY="239.0" onAction="#updateStartGameButton" prefWidth="150.0" />
 </AnchorPane>
