@@ -1,0 +1,9 @@
+.menu-background {
+    -fx-background-image: url("images/main_background.jpg");
+    -fx-background-position: center;
+    -fx-background-size: 140%;
+}
+
+.button {
+    -fx-background-color: #FFFFFF;
+}

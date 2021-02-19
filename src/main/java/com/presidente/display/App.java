@@ -27,9 +27,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("main_menu"), 640, 480);
+        scene = new Scene(loadFXML("main_menu"), 800, 600);
+        stage.setTitle("El Presidente");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-    }
 
+    }
 }
