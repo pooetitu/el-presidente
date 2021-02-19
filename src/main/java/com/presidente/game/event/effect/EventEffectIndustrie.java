@@ -1,15 +1,9 @@
 package com.presidente.game.event.effect;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.presidente.game.Island;
 import com.presidente.game.event.effect.calculation.Calculation;
 
-@XStreamAlias("effect-industrie")
 public class EventEffectIndustrie extends EventEffect {
-
-    public EventEffectIndustrie() {
-        super();
-    }
 
     public EventEffectIndustrie(double amount, Calculation calculationMethod) {
         super(amount, calculationMethod);

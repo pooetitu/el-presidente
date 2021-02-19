@@ -1,8 +1,6 @@
 package com.presidente.game;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-@XStreamAlias("faction")
 public class Faction {
     private static final int CORRUPTION_COST = 15;
     private String name;

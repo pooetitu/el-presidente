@@ -2,28 +2,18 @@ package com.presidente.game;
 
 import com.presidente.game.event.Event;
 import com.presidente.utils.ScenarioLoader;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import java.util.LinkedList;
 
-@XStreamAlias("island")
 public class Island {
-    private Resource resource;
-    private Population population;
-    @XStreamImplicit(itemFieldName = "event")
+    private final Resource resource;
+    private final Population population;
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
-    @XStreamOmitField
-    private Season[] seasons;
+    private transient Season[] seasons;
     private int agriculture;
     private int industrie;
     private int turn;
-
-    public Island() {
-        super();
-    }
 
     public Island(int agriculture, int industrie, Resource resource) {
         this.turn = 0;

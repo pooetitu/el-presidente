@@ -2,14 +2,8 @@ package com.presidente.game.event.effect;
 
 import com.presidente.game.Island;
 import com.presidente.game.event.effect.calculation.Calculation;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-@XStreamAlias("effect-money")
 public class EventEffectMoney extends EventEffect {
-
-    public EventEffectMoney() {
-        super();
-    }
 
     public EventEffectMoney(double amount, Calculation calculationMethod) {
         super(amount, calculationMethod);

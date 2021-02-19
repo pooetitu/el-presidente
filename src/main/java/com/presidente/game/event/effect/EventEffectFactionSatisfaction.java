@@ -4,21 +4,13 @@ import com.presidente.game.Faction;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
 import com.presidente.game.event.effect.calculation.Calculation;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@XStreamAlias("effect-faction-satisfaction")
 public class EventEffectFactionSatisfaction extends EventEffect {
-    @XStreamImplicit(itemFieldName = "faction")
-    private ArrayList<String> factions;
-    private boolean applyToAll;
-
-    public EventEffectFactionSatisfaction() {
-        super();
-    }
+    private final ArrayList<String> factions;
+    private final boolean applyToAll;
 
     public EventEffectFactionSatisfaction(double amount, boolean applyToAll, Calculation calculationMethod) {
         super(amount, calculationMethod);

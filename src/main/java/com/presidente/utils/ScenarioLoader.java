@@ -15,7 +15,7 @@ public class ScenarioLoader {
     private ScenarioLoader() {
         gameFileParser = GameFileParser.getGameFileParser();
         this.scenariosPathList = new LinkedList<>();
-        this.scenarioPath = "/com/presidente/data/scenario/";
+        this.scenarioPath = "com/presidente/data/scenario/";
     }
 
     public static ScenarioLoader getScenarioLoader() {
@@ -53,7 +53,7 @@ public class ScenarioLoader {
         if (index < 0 || index >= scenariosPathList.size()) {
             return null;
         }
-        Island island = (Island) gameFileParser.parseData(ResourceReader.getContentStringFromResource(scenarioPath + scenariosPathList.get(index)));
+        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource(scenarioPath + scenariosPathList.get(index)), Island.class);
         island.init();
         return island;
     }
@@ -61,14 +61,14 @@ public class ScenarioLoader {
     public Season[] loadSeasons() {
         Season[] seasons = new Season[4];
         for (int i = 0; i < 4; i++) {
-            String saveJson = ResourceReader.getContentStringFromResource("/com/presidente/data/seasons/season_" + i + ".json");
-            seasons[i] = (Season) gameFileParser.parseData(saveJson);
+            String saveJson = ResourceReader.getContentStringFromResource("com/presidente/data/seasons/season_" + i + ".json");
+            seasons[i] = gameFileParser.parseData(saveJson, Season.class);
         }
         return seasons;
     }
 
     public Island loadIslandSandboxConfig() {
-        Island island = (Island) gameFileParser.parseData(ResourceReader.getContentStringFromResource("/com/presidente/data/sandbox.json"));
+        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource("com/presidente/data/sandbox.json"), Island.class);
         island.init();
         return island;
     }

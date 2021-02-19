@@ -1,20 +1,12 @@
 package com.presidente.game.event;
 
 import com.presidente.game.Island;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
-@XStreamAlias("event")
 public class Event {
-    private String description;
-    private Event nextEvent;
+    private final String description;
+    private final Event nextEvent;
 
-    @XStreamImplicit(itemFieldName = "choice")
-    private EventChoice[] choices;
-
-    public Event() {
-        super();
-    }
+    private final EventChoice[] choices;
 
     public Event(String description, Event nextEvent, EventChoice[] choices) {
         this.description = description;

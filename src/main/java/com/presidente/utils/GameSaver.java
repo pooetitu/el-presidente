@@ -91,7 +91,7 @@ public class GameSaver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return (Island) gameFileParser.parseData(saveJson);
+        return gameFileParser.parseData(saveJson, Island.class);
     }
 
 }
