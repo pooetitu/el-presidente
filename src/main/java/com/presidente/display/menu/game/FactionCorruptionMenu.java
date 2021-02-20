@@ -16,6 +16,9 @@ public class FactionCorruptionMenu extends MenuDisplay {
         if (choice < getSwitchSize() - 1) {
             setChoicesDisplay("Combien de fois voulez-vous les corrompre ? (Achetable: " + island.getMaximumPurchasableCorruption(choice) + " )");
             setSwitchSize(island.getMaximumPurchasableCorruption(choice));
+            if (getSwitchSize() <= 1) {
+                return false;
+            }
             int amount = getChoice();
             island.corruptFaction(choice, amount);
         }

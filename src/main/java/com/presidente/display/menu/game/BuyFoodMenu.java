@@ -13,6 +13,9 @@ public class BuyFoodMenu extends MenuDisplay {
 
     @Override
     protected boolean execute(int choice) {
+        if (getSwitchSize() <= 1) {
+            return false;
+        }
         resource.buyFood(choice);
         return false;
     }
