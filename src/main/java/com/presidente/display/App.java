@@ -18,7 +18,7 @@ public class App extends Application {
         return loader;
     }
 
-    private static FXMLLoader loadFXML(String fxml) {
+    public static FXMLLoader loadFXML(String fxml) {
         return new FXMLLoader(App.class.getResource("/com/presidente/gui/" + fxml + ".fxml"));
     }
 

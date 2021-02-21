@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.GameController">
-    <ListView fx:id="factionListView" focusTraversable="false" layoutX="36.0" layoutY="125.0" prefHeight="350.0" prefWidth="200.0">
-        <cursor>
-            <Cursor fx:constant="DEFAULT" />
-        </cursor>
-    </ListView>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.GameController">
     <HBox alignment="CENTER" layoutX="5.0" layoutY="536.0" prefHeight="50.0" prefWidth="790.0" spacing="20.0">
-        <Label fx:id="dateLabel" alignment="CENTER" textAlignment="CENTER" wrapText="true" />
+        <Label fx:id="dateLabel" alignment="CENTER" contentDisplay="RIGHT" prefWidth="100.0" textAlignment="RIGHT" />
         <Label fx:id="moneyLabel" alignment="CENTER" prefHeight="27.0" prefWidth="91.0" textAlignment="CENTER" wrapText="true" />
         <Label fx:id="foodLabel" alignment="CENTER" prefHeight="27.0" prefWidth="91.0" textAlignment="CENTER" wrapText="true" />
         <Label fx:id="agricultureLabel" alignment="CENTER" prefHeight="27.0" prefWidth="91.0" textAlignment="CENTER" wrapText="true" />
@@ -23,13 +17,23 @@
             <Font name="Stencil" size="14.0" />
         </font>
     </Button>
-    <Button layoutX="36.0" layoutY="30.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="200.0" text="Menu">
+    <Button fx:id="openMenuButton" layoutX="36.0" layoutY="30.0" mnemonicParsing="false" onAction="#openMenu" prefHeight="28.0" prefWidth="200.0" text="Menu">
         <font>
             <Font name="Stencil" size="14.0" />
         </font>
     </Button>
-    <VBox fx:id="eventVBox" alignment="BOTTOM_CENTER" layoutX="251.0" layoutY="29.0" prefHeight="447.0" prefWidth="523.0" spacing="20.0">
-        <Label fx:id="eventLabel" alignment="CENTER" textAlignment="CENTER" wrapText="true" />
-        <VBox fx:id="eventChoiceVBox" alignment="TOP_CENTER" prefHeight="306.0" prefWidth="523.0" spacing="10.0" />
-    </VBox>
+    <TableView fx:id="factionTable" editable="true" focusTraversable="false" layoutX="11.0" layoutY="125.0" prefHeight="350.0" prefWidth="252.0">
+        <columns>
+            <TableColumn fx:id="factionName" editable="false" prefWidth="100.0" text="Faction" />
+            <TableColumn fx:id="factionSatisfaction" editable="false" prefWidth="75.0" text="Satisfaction" />
+            <TableColumn fx:id="factionSupporter" editable="false" prefWidth="75.0" text="Population" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+    <Pane fx:id="gamePane" layoutX="266.0" layoutY="125.0" prefHeight="350.0" prefWidth="500.0" visible="false" />
+    <Pane fx:id="menuPane" prefHeight="600.0" prefWidth="800.0" visible="false" />
+
+
 </AnchorPane>

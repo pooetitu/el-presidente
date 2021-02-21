@@ -5,5 +5,16 @@
 }
 
 .button {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: rgba(255, 255, 255, 1);
+}
+
+
+.choice-label {
+    -fx-background-color: #53613e80;
+    -fx-background-radius: 10;
+    -fx-text-fill: rgba(0, 0, 0, 1);
+}
+
+.menu-pause {
+    -fx-background-color: #808080;
 }
