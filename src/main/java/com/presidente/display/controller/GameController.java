@@ -46,15 +46,49 @@ public class GameController {
     @FXML
     public void nextTurn() throws IOException {
         nextTurnButton.setDisable(true);
-        refreshLabels();
         if (island.isEndOfYear()) {
             setEndOfYearPane();
-            return;
+        } else {
+            setEventPane();
+            island.newTurn();
         }
-        setEventPane();
-        island.newTurn();
+        refreshLabels();
     }
 
+
+    public void setIsland(Island island) throws IOException {
+        this.island = island;
+        ObservableList<Faction> factionObservableList = FXCollections.observableArrayList();
+        factionObservableList.addAll(island.getPopulation().getFactions());
+        factionTable.setItems(factionObservableList);
+        nextTurn();
+    }
+
+    public void openMenu() throws IOException {
+        menuPane.getChildren().clear();
+        FXMLLoader loader = App.loadFXML("menu/pause_menu");
+        VBox newLoadedPane = loader.load();
+        ((PauseMenuController) loader.getController()).setController(this);
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
+    }
+
+    public void setSavePane() throws IOException {
+        menuPane.getChildren().clear();
+        FXMLLoader loader = App.loadFXML("menu/save_game");
+        VBox newLoadedPane = loader.load();
+        ((SaveGameController) loader.getController()).setController(this);
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
+    }
+
+    public void setLoadPane() throws IOException {
+        menuPane.getChildren().clear();
+        FXMLLoader loader = App.loadFXML("menu/load_game");
+        VBox newLoadedPane = loader.load();
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
+    }
     public void setBuyFoodPane() throws IOException {
         gamePane.getChildren().clear();
         FXMLLoader loader = App.loadFXML("game/food_buy_menu");
@@ -91,33 +125,6 @@ public class GameController {
         gamePane.setVisible(true);
     }
 
-    public void setIsland(Island island) throws IOException {
-        this.island = island;
-        ObservableList<Faction> factionObservableList = FXCollections.observableArrayList();
-        factionObservableList.addAll(island.getPopulation().getFactions());
-        factionTable.setItems(factionObservableList);
-        nextTurn();
-    }
-
-    public void openMenu() throws IOException {
-        menuPane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("game/pause_menu");
-        VBox newLoadedPane = loader.load();
-        ((PauseMenuController) loader.getController()).setController(this);
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
-    }
-
-    public void setSavePane() throws IOException {
-        menuPane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("game/save_game");
-        VBox newLoadedPane = loader.load();
-        ((SaveGameController) loader.getController()).setController(this);
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
-    }
-
-
     public void refreshLabels() {
         setDateLabel();
         setMoneyLabel();
@@ -150,13 +157,12 @@ public class GameController {
     }
 
     private void setIndustryLabel() {
-        this.industryLabel.setText("Agriculture: " + island.getIndustrie() + "%");
+        this.industryLabel.setText("Industrie: " + island.getIndustrie() + "%");
     }
 
     public Island getIsland() {
         return island;
     }
-
 
     public void closeMenu() {
         menuPane.setVisible(false);

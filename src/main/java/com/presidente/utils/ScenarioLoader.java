@@ -53,9 +53,7 @@ public class ScenarioLoader {
         if (index < 0 || index >= scenariosPathList.size()) {
             return null;
         }
-        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource("/" + scenarioPath + scenariosPathList.get(index)), Island.class);
-        island.init();
-        return island;
+        return gameFileParser.parseData(ResourceReader.getContentStringFromResource("/" + scenarioPath + scenariosPathList.get(index)), Island.class);
     }
 
     public Season[] loadSeasons() {
@@ -68,9 +66,7 @@ public class ScenarioLoader {
     }
 
     public Island loadIslandSandboxConfig() {
-        Island island = gameFileParser.parseData(ResourceReader.getContentStringFromResource("/com/presidente/data/sandbox.json"), Island.class);
-        island.init();
-        return island;
+        return gameFileParser.parseData(ResourceReader.getContentStringFromResource("/com/presidente/data/sandbox.json"), Island.class);
     }
 
     public LinkedList<String> getScenarioList() {

@@ -1,25 +1,42 @@
 package com.presidente.display.controller;
 
 import com.presidente.display.App;
-import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
-import com.presidente.game.Resource;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import com.presidente.utils.GameSaver;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 public class LoadGameController {
-    @FXML
-    public TableView<String> saveList;
+    public VBox vBox;
+    public ListView<String> saveList;
+    public Button loadButton;
 
-    @FXML
-    public void loadGame() throws IOException {
-        ((GameController) App.setRoot("game").getController()).setIsland(new Island(15, 15, GameDifficulty.NORMAL, new Resource(10, 10)));
+    public void loadSave() throws IOException {
+        Island island = GameSaver.getGameSaver().loadGame(saveList.getSelectionModel().getSelectedIndex());
+        ((GameController) App.setRoot("game").getController()).setIsland(island);
     }
 
-    @FXML
-    public void switchToMainMenu() throws IOException {
-        App.setRoot("main_menu");
+    public void backToPrevious() {
+        vBox.getParent().setVisible(false);
+        ((Pane) vBox.getParent()).getChildren().clear();
+    }
+
+    public void initialize() {
+        saveList.getItems().addAll(GameSaver.getGameSaver().getSaveFileListName());
+        saveList.setOnMouseClicked(e -> loadButton.setDisable(false));
+        saveList.setOnMouseClicked(click -> {
+            if (click.getClickCount() == 2) {
+                try {
+                    loadSave();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 }

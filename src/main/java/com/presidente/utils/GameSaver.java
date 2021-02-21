@@ -94,4 +94,12 @@ public class GameSaver {
         return gameFileParser.parseData(saveJson, Island.class);
     }
 
+    public LinkedList<String> getSaveFileListName() {
+        loadSaveList();
+        LinkedList<String> fileNames = new LinkedList<>();
+        for (File file : saveFileList) {
+            fileNames.add(file.getName().replaceFirst("[.][^.]+$", ""));
+        }
+        return fileNames;
+    }
 }

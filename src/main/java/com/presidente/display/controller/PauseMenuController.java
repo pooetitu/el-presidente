@@ -15,10 +15,12 @@ public class PauseMenuController {
         gameController.closeMenu();
     }
 
-    public void saveGame() {
+    public void saveGame() throws IOException {
+        gameController.setSavePane();
     }
 
-    public void loadGame() {
+    public void loadGame() throws IOException {
+        gameController.setLoadPane();
     }
 
     public void leaveToMainMenu() throws IOException {

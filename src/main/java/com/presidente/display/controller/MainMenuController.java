@@ -2,15 +2,14 @@ package com.presidente.display.controller;
 
 import com.presidente.display.App;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 public class MainMenuController {
-
-    public VBox eventChoiceVBox;
-    public Label eventLabel;
+    public Pane menuPane;
 
     @FXML
     private void buttonLeaveAction() {
@@ -24,7 +23,12 @@ public class MainMenuController {
 
     @FXML
     private void switchToLoadSaveMenu() throws IOException {
-        App.setRoot("load_game");
+        menuPane.getChildren().clear();
+        FXMLLoader loader = App.loadFXML("menu/load_game");
+        VBox newLoadedPane = loader.load();
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
     }
+
 
 }

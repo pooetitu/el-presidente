@@ -6,14 +6,21 @@ import com.presidente.utils.ScenarioLoader;
 import java.util.LinkedList;
 
 public class Island {
-    private final Resource resource;
-    private final Population population;
+    private Resource resource;
+    private Population population;
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
-    private transient Season[] seasons;
+    private final transient Season[] seasons;
     private int agriculture;
     private int industrie;
     private int turn;
+
+    public Island() {
+        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        if (eventsQueue == null) {
+            eventsQueue = new LinkedList<>();
+        }
+    }
 
     public Island(int agriculture, int industrie, Resource resource) {
         this.turn = 0;
@@ -36,13 +43,6 @@ public class Island {
         this.population = new Population();
         this.population.populate();
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
-    }
-
-    public void init() {
-        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
-        if (eventsQueue == null) {
-            eventsQueue = new LinkedList<>();
-        }
     }
 
     public boolean isGameOver() {
