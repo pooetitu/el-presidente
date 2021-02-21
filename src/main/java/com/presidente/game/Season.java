@@ -7,32 +7,14 @@ import java.util.Random;
 
 public class Season {
     private final ArrayList<Event> events;
+    private static final String[] seasonNames = {"Printemps", "Été", "Automne", "Hiver"};
 
     public Season() {
         events = new ArrayList<>();
     }
 
     public static String getSeason(int index) {
-        String season = "";
-        switch (index) {
-            case 0: {
-                season = "Printemps";
-                break;
-            }
-            case 1: {
-                season = "Été";
-                break;
-            }
-            case 2: {
-                season = "Automne";
-                break;
-            }
-            case 3: {
-                season = "Hiver";
-                break;
-            }
-        }
-        return season;
+        return seasonNames[index];
     }
 
     public Event getRandomEvent() {
