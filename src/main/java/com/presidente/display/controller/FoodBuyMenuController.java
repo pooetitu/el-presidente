@@ -1,7 +1,6 @@
 package com.presidente.display.controller;
 
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 

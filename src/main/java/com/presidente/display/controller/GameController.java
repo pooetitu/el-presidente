@@ -99,6 +99,25 @@ public class GameController {
         nextTurn();
     }
 
+    public void openMenu() throws IOException {
+        menuPane.getChildren().clear();
+        FXMLLoader loader = App.loadFXML("game/pause_menu");
+        VBox newLoadedPane = loader.load();
+        ((PauseMenuController) loader.getController()).setController(this);
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
+    }
+
+    public void setSavePane() throws IOException {
+        menuPane.getChildren().clear();
+        FXMLLoader loader = App.loadFXML("game/save_game");
+        VBox newLoadedPane = loader.load();
+        ((SaveGameController) loader.getController()).setController(this);
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
+    }
+
+
     public void refreshLabels() {
         setDateLabel();
         setMoneyLabel();
@@ -138,14 +157,6 @@ public class GameController {
         return island;
     }
 
-    public void openMenu() throws IOException {
-        menuPane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("game/pause_menu");
-        VBox newLoadedPane = loader.load();
-        ((PauseMenuController) loader.getController()).setController(this);
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
-    }
 
     public void closeMenu() {
         menuPane.setVisible(false);
@@ -154,6 +165,7 @@ public class GameController {
     public void yearEnded() throws IOException {
         nextTurnButton.setDisable(true);
         island.endTheYear();
+        refreshLabels();
         setEventPane();
         island.newTurn();
     }

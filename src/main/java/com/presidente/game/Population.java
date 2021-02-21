@@ -1,5 +1,6 @@
 package com.presidente.game;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Random;
@@ -98,6 +99,10 @@ public class Population {
 
     public Collection<Faction> getFactions() {
         return factions.values();
+    }
+
+    public int getFactionIndex(String name) {
+        return new ArrayList<>(factions.keySet()).indexOf(name);
     }
 
     @Override
