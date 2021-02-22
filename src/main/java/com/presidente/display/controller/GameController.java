@@ -45,6 +45,9 @@ public class GameController {
 
     @FXML
     public void nextTurn() throws IOException {
+        if (island.isGameOver()) {
+            setGameOverPane();
+        }
         nextTurnButton.setDisable(true);
         if (island.isEndOfYear()) {
             setEndOfYearPane();
@@ -65,6 +68,13 @@ public class GameController {
 
     public void openMenu() throws IOException {
         FXMLLoader loader = App.loadFXML("menu/pause_menu");
+        VBox newLoadedPane = loader.load();
+        menuPane.getChildren().add(newLoadedPane);
+        menuPane.setVisible(true);
+    }
+
+    public void setGameOverPane() throws IOException {
+        FXMLLoader loader = App.loadFXML("menu/game_over");
         VBox newLoadedPane = loader.load();
         menuPane.getChildren().add(newLoadedPane);
         menuPane.setVisible(true);
@@ -96,7 +106,6 @@ public class GameController {
     }
 
     public void readyForNextTurn() throws IOException {
-        System.out.println(island);
         nextTurnButton.setDisable(false);
         gamePane.getChildren().clear();
         refreshLabels();

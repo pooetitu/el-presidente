@@ -29,7 +29,6 @@ public class GameFileParser {
     }
 
     public String dataToJson(Object object) {
-        System.out.println(gson.toJson(object) + " " + object);
         return gson.toJson(object);
     }
 }
