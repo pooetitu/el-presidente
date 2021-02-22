@@ -23,18 +23,6 @@ public class ResourceReader {
                 .collect(Collectors.joining("\n"));
     }
 
-    public static File getFileFromResource(String fileName) {
-        try {
-            URL resource = ResourceReader.class.getResource(fileName);
-            if (resource != null) {
-                return new File(resource.toURI());
-            }
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public static InputStream getStreamFromResource(String fileName) {
         return ResourceReader.class.getResourceAsStream(fileName);
     }

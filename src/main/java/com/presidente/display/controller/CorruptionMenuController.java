@@ -36,7 +36,7 @@ public class CorruptionMenuController {
         });
     }
 
-    public void corruptFaction() throws IOException {
+    public void corruptFaction() {
         gameController.getIsland().corruptFaction(gameController.getIsland().getPopulation().getFactionIndex(faction.getName()), (int) quantitySlider.getValue());
         returnToEndOfYearMenu();
         gameController.refreshLabels();

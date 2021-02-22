@@ -65,22 +65,6 @@ public class GameSaver {
         }
     }
 
-    public String showSaveList() {
-        loadSaveList();
-        StringBuilder display = new StringBuilder();
-        int counter = 0;
-        for (File file : saveFileList) {
-            display.append(counter).append(". ").append(file.getName().replaceFirst("[.][^.]+$", "")).append("\n");
-            counter++;
-        }
-        display.append(counter).append(". ").append("Retour");
-        return display.toString();
-    }
-
-    public int getSaveListCount() {
-        return saveFileList.size();
-    }
-
     public Island loadGame(int index) {
         if (index < 0 || index >= saveFileList.size()) {
             return null;

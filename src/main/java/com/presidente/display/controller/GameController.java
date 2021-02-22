@@ -42,6 +42,11 @@ public class GameController {
         factionSupporter.setCellValueFactory(f -> new ReadOnlyObjectWrapper<>(f.getValue().getSupporter()));
     }
 
+    /**
+     * Display is refreshed and the next turn button is disabled
+     * If it is the end of the year the end of the year menu is displayed, otherwise the event menu is displayed
+     * @throws IOException
+     */
     @FXML
     public void nextTurn() throws IOException {
         nextTurnButton.setDisable(true);
@@ -54,13 +59,22 @@ public class GameController {
         refreshLabels();
     }
 
+    /**
+     * Display the game over menu over the menu pane
+     * @throws IOException
+     */
     public void openMenu() throws IOException {
         FXMLLoader loader = App.loadFXML("menu/pause_menu");
         VBox newLoadedPane = loader.load();
+        ((PauseMenuController) loader.getController()).setController(this);
         menuPane.getChildren().add(newLoadedPane);
         menuPane.setVisible(true);
     }
 
+    /**
+     * Display the game over menu over the menu pane
+     * @throws IOException
+     */
     public void setGameOverPane() throws IOException {
         FXMLLoader loader = App.loadFXML("menu/game_over");
         VBox newLoadedPane = loader.load();
@@ -68,6 +82,10 @@ public class GameController {
         menuPane.setVisible(true);
     }
 
+    /**
+     * Display the end of the year menu over the game pane
+     * @throws IOException
+     */
     public void setEndOfYearPane() throws IOException {
         FXMLLoader loader = App.loadFXML("game/year_end_menu");
         VBox newLoadedPane = loader.load();
@@ -76,6 +94,10 @@ public class GameController {
         gamePane.setVisible(true);
     }
 
+    /**
+     * Display the event menu over the game pane
+     * @throws IOException
+     */
     private void setEventPane() throws IOException {
         FXMLLoader loader = App.loadFXML("game/event_menu");
         VBox newLoadedPane = loader.load();
@@ -84,6 +106,9 @@ public class GameController {
         gamePane.setVisible(true);
     }
 
+    /**
+     * Refresh the island's data displayed
+     */
     public void refreshLabels() {
         setGlobalSatisfactionLabel();
         setDateLabel();
@@ -94,6 +119,12 @@ public class GameController {
         factionTable.refresh();
     }
 
+    /**
+     * Removes any remaining menu displayed in the game pane
+     * Display is refreshed and the next turn button is enabled
+     * The game over menu is displayed if necessary
+     * @throws IOException
+     */
     public void readyForNextTurn() throws IOException {
         nextTurnButton.setDisable(false);
         gamePane.getChildren().clear();
@@ -143,6 +174,12 @@ public class GameController {
         menuPane.setVisible(false);
     }
 
+    /**
+     * The island is asked to end the year
+     * Display is refreshed and the next turn button is enabled
+     * The event menu is displayed
+     * @throws IOException
+     */
     public void yearEnded() throws IOException {
         nextTurnButton.setDisable(true);
         island.endTheYear();

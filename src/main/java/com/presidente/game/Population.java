@@ -92,10 +92,6 @@ public class Population {
         return display.toString();
     }
 
-    public int getFactionCount() {
-        return factions.size();
-    }
-
     public int getFactionCorruptionCost(int index, int amount) {
         return ((Faction) factions.values().toArray()[index]).getCorruptionCost() * amount;
     }

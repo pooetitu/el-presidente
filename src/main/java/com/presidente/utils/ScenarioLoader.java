@@ -36,11 +36,6 @@ public class ScenarioLoader {
         display.append(counter).append(". ").append("Retour");
         return display.toString();
     }
-
-    public int getScenarioListCount() {
-        return scenariosPathList.size();
-    }
-
     private void loadScenarioList() {
         String[] files = ResourceReader.getFilesList(scenarioPath);
         if (files != null && files.length > 0) {

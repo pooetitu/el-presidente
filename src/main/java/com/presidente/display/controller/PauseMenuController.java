@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class PauseMenuController {
     public VBox vBox;
+    private GameController gameController;
 
     public void leaveMenu() {
         Pane parentPane = ((Pane) vBox.getParent());
@@ -22,6 +23,7 @@ public class PauseMenuController {
         FXMLLoader loader = App.loadFXML("menu/save_game");
         Pane parentPane = ((Pane) vBox.getParent());
         VBox newLoadedPane = loader.load();
+        ((SaveGameController) loader.getController()).setController(gameController);
         parentPane.getChildren().add(newLoadedPane);
         parentPane.setVisible(true);
     }
@@ -36,5 +38,9 @@ public class PauseMenuController {
 
     public void leaveToMainMenu() throws IOException {
         App.setRoot("main_menu");
+    }
+
+    public void setController(GameController gameController) {
+        this.gameController = gameController;
     }
 }

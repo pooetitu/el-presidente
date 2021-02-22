@@ -30,10 +30,6 @@ public class Event {
         }
     }
 
-    public int getChoicesCount() {
-        return choices.length;
-    }
-
     public Event getNextEvent() {
         return nextEvent;
     }
