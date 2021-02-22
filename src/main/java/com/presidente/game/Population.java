@@ -28,7 +28,10 @@ public class Population {
 
     private void addPeople() {
         Random rand = new Random();
-        int peopleToAdd = rand.nextInt(11) / (100 * getTotalPopulation());
+        int peopleToAdd = 0;
+        if (getTotalPopulation() > 0) {
+            peopleToAdd = rand.nextInt(11) / (100 * getTotalPopulation());
+        }
         int percentPerFaction = 100 / factions.size();
         for (Faction faction : factions.values()) {
             faction.addPeople(peopleToAdd * percentPerFaction);

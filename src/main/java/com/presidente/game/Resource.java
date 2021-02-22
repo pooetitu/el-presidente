@@ -6,6 +6,10 @@ public class Resource {
     private int treasury;
     private int food;
 
+    public Resource() {
+        super();
+    }
+
     public Resource(int treasury, int food) {
         this.treasury = treasury;
         this.food = food;

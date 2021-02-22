@@ -6,14 +6,21 @@ import com.presidente.utils.ScenarioLoader;
 import java.util.LinkedList;
 
 public class Island {
-    private final Resource resource;
-    private final Population population;
+    private Resource resource;
+    private Population population;
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
-    private transient Season[] seasons;
+    private final transient Season[] seasons;
     private int agriculture;
     private int industrie;
     private int turn;
+
+    public Island() {
+        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        if (eventsQueue == null) {
+            eventsQueue = new LinkedList<>();
+        }
+    }
 
     public Island(int agriculture, int industrie, Resource resource) {
         this.turn = 0;
@@ -38,13 +45,6 @@ public class Island {
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
-    public void init() {
-        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
-        if (eventsQueue == null) {
-            eventsQueue = new LinkedList<>();
-        }
-    }
-
     public boolean isGameOver() {
         return population.getGlobalSatisfaction() < difficulty.getSatisfactionThreshold();
     }
@@ -57,6 +57,9 @@ public class Island {
     }
 
     public int getMaximumPurchasableCorruption(int factionIndex) {
+        if (population.getFactionCorruptionCost(factionIndex, 1) <= 0) {
+            return 0;
+        }
         return resource.getTreasury() / population.getFactionCorruptionCost(factionIndex, 1);
     }
 
@@ -75,7 +78,7 @@ public class Island {
     }
 
     public boolean isEndOfYear() {
-        if (turn % 4 == 0) {
+        if (turn % 4 == 3) {
             resource.addIndustriePayoff(industrie);
             resource.addAgriculturePayoff(agriculture);
             return true;

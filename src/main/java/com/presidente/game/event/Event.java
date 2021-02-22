@@ -37,4 +37,12 @@ public class Event {
     public Event getNextEvent() {
         return nextEvent;
     }
+
+    public EventChoice[] getChoices() {
+        return choices;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

@@ -23,8 +23,8 @@ public class EventEffectAgricultureTest extends TestCase {
         islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(10, 10));
         islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10, 10));
         islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(10, 10));
-        islandNormalHundred = new Island(100, 15, GameDifficulty.NORMAL, new Resource(10, 10));
-        islandNormalZero = new Island(0, 15, GameDifficulty.NORMAL, new Resource(10, 10));
+        islandNormalHundred = new Island(100, 0, GameDifficulty.NORMAL, new Resource(10, 10));
+        islandNormalZero = new Island(0, 0, GameDifficulty.NORMAL, new Resource(10, 10));
     }
 
     public void testEffectPositiveEasyDifficulty() {
@@ -64,6 +64,6 @@ public class EventEffectAgricultureTest extends TestCase {
 
     public void testEffectNegativeNotSmallerThanZero() {
         eventEffectNegative.applyEffect(islandNormalZero);
-        assertTrue(islandNormalZero.getAgriculture() + islandNormalZero.getIndustrie() >= 0);
+        assertTrue(islandNormalZero.getAgriculture() >= 0);
     }
 }

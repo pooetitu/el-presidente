@@ -608,7 +608,7 @@
                   "data": {
                     "amount": 10.0,
                     "calculationMethod": {
-                      "type": "com.presidente.game.event.effect.calculation.CalculationPercentage",
+                      "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
                       "data": {}
                     }
                   }
@@ -665,7 +665,7 @@
                   "data": {
                     "amount": 20.0,
                     "calculationMethod": {
-                      "type": "com.presidente.game.event.effect.calculation.CalculationPercentage",
+                      "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
                       "data": {}
                     }
                   }

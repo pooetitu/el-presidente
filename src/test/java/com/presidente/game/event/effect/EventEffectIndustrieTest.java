@@ -64,6 +64,6 @@ public class EventEffectIndustrieTest extends TestCase {
 
     public void testEffectNegativeNotSmallerThanZero() {
         eventEffectNegative.applyEffect(islandNormalZero);
-        assertTrue(islandNormalZero.getIndustrie() + islandNormalZero.getIndustrie() >= 0);
+        assertTrue(islandNormalZero.getIndustrie() >= 0);
     }
 }

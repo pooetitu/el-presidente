@@ -3,9 +3,13 @@ package com.presidente.game;
 
 public class Faction {
     private static final int CORRUPTION_COST = 15;
-    private final String name;
+    private String name;
     private int satisfaction;
     private int supporter;
+
+    public Faction() {
+        super();
+    }
 
     public Faction(String name, int satisfaction, int supporter) {
         this.name = name;
@@ -42,8 +46,8 @@ public class Faction {
     }
 
     public void removePeople(int count) {
-        supporter -= count;
-        satisfaction -= count * 2;
+        setSupporter(supporter - count);
+        setSatisfaction(satisfaction - count * 2);
     }
 
     public void addPeople(int count) {

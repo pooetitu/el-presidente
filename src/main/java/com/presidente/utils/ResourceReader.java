@@ -25,8 +25,7 @@ public class ResourceReader {
 
     public static File getFileFromResource(String fileName) {
         try {
-            ClassLoader classLoader = ResourceReader.class.getClassLoader();
-            URL resource = classLoader.getResource(fileName);
+            URL resource = ResourceReader.class.getResource(fileName);
             if (resource != null) {
                 return new File(resource.toURI());
             }
@@ -37,7 +36,7 @@ public class ResourceReader {
     }
 
     public static InputStream getStreamFromResource(String fileName) {
-        return ResourceReader.class.getClassLoader().getResourceAsStream(fileName);
+        return ResourceReader.class.getResourceAsStream(fileName);
     }
 
     static String[] getFilesList(String path) {

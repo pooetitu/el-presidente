@@ -1,8 +1,8 @@
 package com.presidente.utils;
 
-import com.presidente.adapters.SubClassesTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.presidente.adapters.SubClassesTypeAdapter;
 import com.presidente.game.event.effect.EventEffect;
 import com.presidente.game.event.effect.calculation.Calculation;
 
@@ -29,7 +29,6 @@ public class GameFileParser {
     }
 
     public String dataToJson(Object object) {
-        System.out.println(gson.toJson(object) + " " + object);
         return gson.toJson(object);
     }
 }
