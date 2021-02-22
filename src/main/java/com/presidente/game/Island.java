@@ -6,8 +6,17 @@ import com.presidente.utils.ScenarioLoader;
 import java.util.LinkedList;
 
 public class Island {
+    /**
+     * An array of seasons which can be used to get a random event from the current season, it is transient to have lighter game save
+     */
     private final transient Season[] seasons;
+    /**
+     * The treasury and the food possesses on this island
+     */
     private Resource resource;
+    /**
+     * Contains the list of factions
+     */
     private Population population;
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;

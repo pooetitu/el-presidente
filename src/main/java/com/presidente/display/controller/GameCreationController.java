@@ -29,7 +29,7 @@ public class GameCreationController {
             island = ScenarioLoader.getScenarioLoader().loadScenario(scenarioListView.getSelectionModel().getSelectedIndex());
         }
         island.setDifficulty(difficultyChoiceBox.getSelectionModel().getSelectedItem());
-        ((GameController) App.setRoot("game").getController()).setIsland(island);
+        ((GameController) App.setRoot("game/game").getController()).setIsland(island);
     }
 
     @FXML
