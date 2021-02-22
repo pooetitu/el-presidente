@@ -1,5 +1,6 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.menu;
 
+import com.presidente.display.controller.game.GameController;
 import com.presidente.utils.GameSaver;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;

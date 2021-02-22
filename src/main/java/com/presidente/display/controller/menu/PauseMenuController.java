@@ -1,6 +1,7 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.menu;
 
 import com.presidente.display.App;
+import com.presidente.display.controller.game.GameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;

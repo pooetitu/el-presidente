@@ -1,4 +1,4 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.game;
 
 import javafx.beans.binding.Bindings;
 import javafx.scene.control.Label;

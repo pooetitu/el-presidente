@@ -1,4 +1,4 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.game;
 
 import com.presidente.game.Faction;
 import javafx.beans.binding.Bindings;
@@ -8,8 +8,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
 
 public class CorruptionMenuController {
     public Label quantityLabel;

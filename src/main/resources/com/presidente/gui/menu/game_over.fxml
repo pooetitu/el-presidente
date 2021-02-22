@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" styleClass="menu" prefHeight="600.0" prefWidth="800.0"
       spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1"
-      fx:controller="com.presidente.display.controller.GameOverController">
+      fx:controller="com.presidente.display.controller.menu.GameOverController">
     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="85.0" text="Game Over"
            textAlignment="CENTER" wrapText="true">
         <font>

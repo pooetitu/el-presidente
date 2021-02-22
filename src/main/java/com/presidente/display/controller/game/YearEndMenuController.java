@@ -1,6 +1,9 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.game;
 
 import com.presidente.display.App;
+import com.presidente.display.controller.game.CorruptionMenuController;
+import com.presidente.display.controller.game.FoodBuyMenuController;
+import com.presidente.display.controller.game.GameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;

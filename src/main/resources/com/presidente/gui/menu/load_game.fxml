@@ -8,7 +8,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="40.0"
       styleClass="menu" xmlns="http://javafx.com/javafx/11.0.1"
-      fx:controller="com.presidente.display.controller.LoadGameController">
+      fx:controller="com.presidente.display.controller.menu.LoadGameController">
     <ListView fx:id="saveList" prefHeight="353.0" prefWidth="584.0">
         <VBox.margin>
             <Insets left="100.0" right="100.0"/>

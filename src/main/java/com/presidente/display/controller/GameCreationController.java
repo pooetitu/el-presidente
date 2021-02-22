@@ -1,6 +1,7 @@
 package com.presidente.display.controller;
 
 import com.presidente.display.App;
+import com.presidente.display.controller.game.GameController;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
 import com.presidente.utils.ScenarioLoader;

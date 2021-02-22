@@ -5,6 +5,8 @@ module com.presidente {
 
     opens com.presidente.display to javafx.fxml;
     opens com.presidente.display.controller to javafx.fxml;
+    opens com.presidente.display.controller.game to javafx.fxml;
+    opens com.presidente.display.controller.menu to javafx.fxml;
 
     opens com.presidente.game to com.google.gson;
     opens com.presidente.game.event to com.google.gson;

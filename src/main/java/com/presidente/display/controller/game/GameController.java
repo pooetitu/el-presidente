@@ -1,6 +1,7 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.game;
 
 import com.presidente.display.App;
+import com.presidente.display.controller.menu.PauseMenuController;
 import com.presidente.game.Faction;
 import com.presidente.game.Island;
 import com.presidente.game.Season;

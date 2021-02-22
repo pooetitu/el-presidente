@@ -1,6 +1,7 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.menu;
 
 import com.presidente.display.App;
+import com.presidente.display.controller.game.GameController;
 import com.presidente.game.Island;
 import com.presidente.utils.GameSaver;
 import javafx.scene.control.Button;
@@ -17,7 +18,7 @@ public class LoadGameController {
 
     public void loadSave() throws IOException {
         Island island = GameSaver.getGameSaver().loadGame(saveList.getSelectionModel().getSelectedIndex());
-        ((GameController) App.setRoot("game").getController()).setIsland(island);
+        ((GameController) App.setRoot("game/game").getController()).setIsland(island);
     }
 
     public void backToPrevious() {

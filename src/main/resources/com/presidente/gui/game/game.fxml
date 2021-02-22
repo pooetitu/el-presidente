@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.game.GameController">
     <Label fx:id="globalSatisfactionLabel" layoutX="36.0" layoutY="485.0" />
     <HBox alignment="CENTER" layoutX="5.0" layoutY="536.0" prefHeight="50.0" prefWidth="790.0" spacing="20.0">
         <Label fx:id="dateLabel" alignment="CENTER" contentDisplay="RIGHT" prefWidth="100.0" textAlignment="RIGHT" />

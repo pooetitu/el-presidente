@@ -1,4 +1,4 @@
-package com.presidente.display.controller;
+package com.presidente.display.controller.menu;
 
 import com.presidente.display.App;
 import javafx.fxml.FXMLLoader;
