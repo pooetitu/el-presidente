@@ -46,8 +46,8 @@ public class Faction {
     }
 
     public void removePeople(int count) {
-        supporter -= count;
-        satisfaction -= count * 2;
+        setSupporter(supporter - count);
+        setSatisfaction(satisfaction - count * 2);
     }
 
     public void addPeople(int count) {
