@@ -36,7 +36,6 @@ public class GameCreationMenu extends MenuDisplay {
             return false;
         }
         island.setDifficulty(difficultyMenuDisplay.getGameDifficulty());
-        island.init();
         State.setActiveStateId(State.GAME_STATE_ID);
         ((GameState) State.getActiveState()).init(island);
         return true;

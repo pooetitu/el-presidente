@@ -60,7 +60,7 @@ public class ScenarioLoader {
     public Season[] loadSeasons() {
         Season[] seasons = new Season[4];
         for (int i = 0; i < 4; i++) {
-            String saveJson = ResourceReader.getContentStringFromResource("com/presidente/data/seasons/season_" + i + ".json");
+            String saveJson = ResourceReader.getContentStringFromResource("/com/presidente/data/seasons/season_" + i + ".json");
             seasons[i] = gameFileParser.parseData(saveJson, Season.class);
         }
         return seasons;

@@ -22,7 +22,6 @@ public class GameState extends State {
 
     public void init(Island island) {
         this.island = island;
-        island.init();
         gameMenuDisplay = new GameMenu(island);
         endYearMenu = new EndYearMenu(island);
     }
