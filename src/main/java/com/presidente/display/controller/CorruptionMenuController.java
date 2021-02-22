@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -14,6 +16,7 @@ public class CorruptionMenuController {
     public Slider quantitySlider;
     public Label corruptionMessage;
     public Button corruptButton;
+    public VBox vBox;
     private GameController gameController;
     private Faction faction;
 
@@ -39,7 +42,11 @@ public class CorruptionMenuController {
         gameController.refreshLabels();
     }
 
-    public void returnToEndOfYearMenu() throws IOException {
-        gameController.setEndOfYearPane();
+    public void returnToEndOfYearMenu() {
+        Pane parentPane = ((Pane) vBox.getParent());
+        parentPane.getChildren().remove(vBox);
+        if (parentPane.getChildren().isEmpty()) {
+            parentPane.setVisible(false);
+        }
     }
 }

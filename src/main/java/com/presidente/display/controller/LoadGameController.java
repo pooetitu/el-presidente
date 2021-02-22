@@ -21,14 +21,17 @@ public class LoadGameController {
     }
 
     public void backToPrevious() {
-        vBox.getParent().setVisible(false);
-        ((Pane) vBox.getParent()).getChildren().clear();
+        Pane parentPane = ((Pane) vBox.getParent());
+        parentPane.getChildren().remove(vBox);
+        if (parentPane.getChildren().isEmpty()) {
+            parentPane.setVisible(false);
+        }
     }
 
     public void initialize() {
         saveList.getItems().addAll(GameSaver.getGameSaver().getSaveFileListName());
-        saveList.setOnMouseClicked(e -> loadButton.setDisable(false));
         saveList.setOnMouseClicked(click -> {
+            loadButton.setDisable(false);
             if (click.getClickCount() == 2) {
                 try {
                     loadSave();

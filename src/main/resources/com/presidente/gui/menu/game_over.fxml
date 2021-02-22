@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER"  styleClass="menu" prefHeight="400.0" prefWidth="600.0" spacing="40.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.GameOverController">
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="237.0" layoutY="85.0" text="Game Over" textAlignment="CENTER" wrapText="true">
+        <font>
+          <Font name="System Bold" size="24.0" />
+        </font>
+        <VBox.margin>
+          <Insets bottom="20.0" />
+        </VBox.margin>
+    </Label>
+    <Button mnemonicParsing="false" onAction="#setLoadPane" prefWidth="200.0" text="Charger une sauvegarde" />
+    <Button layoutX="200.0" layoutY="233.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="200.0" text="Retourner au menu principal" />
+</VBox>

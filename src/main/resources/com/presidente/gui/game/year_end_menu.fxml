@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="500.0" spacing="25.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.YearEndMenuController">
+<VBox fx:id="vBox"  styleClass="menu" alignment="TOP_CENTER" prefHeight="350.0" prefWidth="500.0" spacing="25.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.YearEndMenuController">
     <Label alignment="CENTER" prefHeight="44.0" prefWidth="464.0" text="L'année est terminé il est temps de prendre vos décisions annuel" textAlignment="CENTER" wrapText="true">
         <font>
             <Font name="Stencil" size="18.0" />

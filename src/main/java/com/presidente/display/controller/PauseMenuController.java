@@ -1,26 +1,37 @@
 package com.presidente.display.controller;
 
 import com.presidente.display.App;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 public class PauseMenuController {
-    private GameController gameController;
-
-    public void setController(GameController gameController) {
-        this.gameController = gameController;
-    }
+    public VBox vBox;
 
     public void leaveMenu() {
-        gameController.closeMenu();
+        Pane parentPane = ((Pane) vBox.getParent());
+        parentPane.getChildren().remove(vBox);
+        if (parentPane.getChildren().isEmpty()) {
+            parentPane.setVisible(false);
+        }
     }
 
     public void saveGame() throws IOException {
-        gameController.setSavePane();
+        FXMLLoader loader = App.loadFXML("menu/save_game");
+        Pane parentPane = ((Pane) vBox.getParent());
+        VBox newLoadedPane = loader.load();
+        parentPane.getChildren().add(newLoadedPane);
+        parentPane.setVisible(true);
     }
 
     public void loadGame() throws IOException {
-        gameController.setLoadPane();
+        FXMLLoader loader = App.loadFXML("menu/load_game");
+        Pane parentPane = ((Pane) vBox.getParent());
+        VBox newLoadedPane = loader.load();
+        parentPane.getChildren().add(newLoadedPane);
+        parentPane.setVisible(true);
     }
 
     public void leaveToMainMenu() throws IOException {

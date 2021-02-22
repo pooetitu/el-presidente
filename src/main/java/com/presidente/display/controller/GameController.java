@@ -55,7 +55,6 @@ public class GameController {
         refreshLabels();
     }
 
-
     public void setIsland(Island island) throws IOException {
         this.island = island;
         ObservableList<Faction> factionObservableList = FXCollections.observableArrayList();
@@ -65,50 +64,13 @@ public class GameController {
     }
 
     public void openMenu() throws IOException {
-        menuPane.getChildren().clear();
         FXMLLoader loader = App.loadFXML("menu/pause_menu");
         VBox newLoadedPane = loader.load();
-        ((PauseMenuController) loader.getController()).setController(this);
         menuPane.getChildren().add(newLoadedPane);
         menuPane.setVisible(true);
-    }
-
-    public void setSavePane() throws IOException {
-        menuPane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("menu/save_game");
-        VBox newLoadedPane = loader.load();
-        ((SaveGameController) loader.getController()).setController(this);
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
-    }
-
-    public void setLoadPane() throws IOException {
-        menuPane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("menu/load_game");
-        VBox newLoadedPane = loader.load();
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
-    }
-    public void setBuyFoodPane() throws IOException {
-        gamePane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("game/food_buy_menu");
-        VBox newLoadedPane = loader.load();
-        ((FoodBuyMenuController) loader.getController()).setController(this);
-        gamePane.getChildren().add(newLoadedPane);
-        gamePane.setVisible(true);
-    }
-
-    public void setCorruptPane() throws IOException {
-        gamePane.getChildren().clear();
-        FXMLLoader loader = App.loadFXML("game/corruption_menu");
-        VBox newLoadedPane = loader.load();
-        ((CorruptionMenuController) loader.getController()).setController(this);
-        gamePane.getChildren().add(newLoadedPane);
-        gamePane.setVisible(true);
     }
 
     public void setEndOfYearPane() throws IOException {
-        gamePane.getChildren().clear();
         FXMLLoader loader = App.loadFXML("game/year_end_menu");
         VBox newLoadedPane = loader.load();
         ((YearEndMenuController) loader.getController()).setController(this);
@@ -117,7 +79,6 @@ public class GameController {
     }
 
     private void setEventPane() throws IOException {
-        gamePane.getChildren().clear();
         FXMLLoader loader = App.loadFXML("game/event_menu");
         VBox newLoadedPane = loader.load();
         ((EventMenuController) loader.getController()).setController(this);
@@ -135,6 +96,7 @@ public class GameController {
     }
 
     public void readyForNextTurn() throws IOException {
+        System.out.println(island);
         nextTurnButton.setDisable(false);
         gamePane.getChildren().clear();
         refreshLabels();
