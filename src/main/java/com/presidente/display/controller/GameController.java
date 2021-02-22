@@ -45,9 +45,6 @@ public class GameController {
 
     @FXML
     public void nextTurn() throws IOException {
-        if (island.isGameOver()) {
-            setGameOverPane();
-        }
         nextTurnButton.setDisable(true);
         if (island.isEndOfYear()) {
             setEndOfYearPane();
@@ -109,6 +106,9 @@ public class GameController {
         nextTurnButton.setDisable(false);
         gamePane.getChildren().clear();
         refreshLabels();
+        if (island.isGameOver()) {
+            setGameOverPane();
+        }
     }
 
     private void setDateLabel() {
