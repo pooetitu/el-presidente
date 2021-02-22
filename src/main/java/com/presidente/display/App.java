@@ -1,9 +1,5 @@
 package com.presidente.display;
 
-import com.presidente.game.GameDifficulty;
-import com.presidente.game.Island;
-import com.presidente.game.Resource;
-import com.presidente.utils.GameSaver;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

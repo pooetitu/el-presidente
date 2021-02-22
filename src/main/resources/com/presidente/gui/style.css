@@ -18,3 +18,13 @@
 .menu {
     -fx-background-color: #808080;
 }
+
+.label-choice {
+    -fx-background-color: #606b5e;
+    -fx-background-radius: 5;
+}
+
+.label-choice:hover {
+    -fx-background-color: #4d544b;
+
+}

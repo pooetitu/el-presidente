@@ -6,8 +6,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
-
 public class FoodBuyMenuController {
     public Label buyMessage;
     public Slider quantitySlider;

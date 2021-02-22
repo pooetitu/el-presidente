@@ -2,22 +2,29 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.GameCreationController">
-    <Button fx:id="startGameButton" disable="true" layoutX="113.0" layoutY="508.0" mnemonicParsing="false" onAction="#startGame" prefWidth="250.0" text="Commencer la partie" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0">
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="com.presidente.display.controller.GameCreationController">
+    <Button fx:id="startGameButton" disable="true" layoutX="113.0" layoutY="508.0" mnemonicParsing="false"
+            onAction="#startGame" prefWidth="250.0" text="Commencer la partie" AnchorPane.bottomAnchor="50.0"
+            AnchorPane.leftAnchor="100.0">
         <font>
-            <Font name="Stencil" size="14.0" />
+            <Font name="Stencil" size="14.0"/>
         </font>
     </Button>
-    <Button layoutX="537.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="250.0" text="Retour au menu principal" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="100.0">
+    <Button layoutX="537.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="250.0"
+            text="Retour au menu principal" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="100.0">
         <font>
-            <Font name="Stencil" size="14.0" />
+            <Font name="Stencil" size="14.0"/>
         </font>
     </Button>
-    <ListView fx:id="scenarioListView" layoutX="486.0" layoutY="64.0" onMouseReleased="#updateStartGameButton" prefHeight="360.0" prefWidth="240.0" />
-    <CheckBox fx:id="sandboxCheckBox" layoutX="113.0" layoutY="182.0" mnemonicParsing="false" onAction="#toggleSandbox" text="Mode Sandbox" />
-    <Label layoutX="113.0" layoutY="222.0" text="Difficulté" />
-    <ChoiceBox fx:id="difficultyChoiceBox" layoutX="113.0" layoutY="239.0" onAction="#updateStartGameButton" prefWidth="150.0" />
-   <Label layoutX="486.0" layoutY="47.0" text="Scenarios" />
+    <ListView fx:id="scenarioListView" layoutX="486.0" layoutY="64.0" onMouseReleased="#updateStartGameButton"
+              prefHeight="360.0" prefWidth="240.0"/>
+    <CheckBox fx:id="sandboxCheckBox" layoutX="113.0" layoutY="182.0" mnemonicParsing="false" onAction="#toggleSandbox"
+              text="Mode Sandbox"/>
+    <Label layoutX="113.0" layoutY="222.0" text="Difficulté"/>
+    <ChoiceBox fx:id="difficultyChoiceBox" layoutX="113.0" layoutY="239.0" onAction="#updateStartGameButton"
+               prefWidth="150.0"/>
+    <Label layoutX="486.0" layoutY="47.0" text="Scenarios"/>
 </AnchorPane>

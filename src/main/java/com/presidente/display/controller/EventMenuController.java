@@ -37,6 +37,7 @@ public class EventMenuController {
             label.setWrapText(true);
             label.setAlignment(Pos.CENTER);
             label.setTextAlignment(TextAlignment.CENTER);
+            label.getStyleClass().add("label-choice");
             eventChoiceVBox.getChildren().add(label);
         }
     }

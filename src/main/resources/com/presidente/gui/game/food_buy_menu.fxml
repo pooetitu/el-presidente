@@ -3,8 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="vBox"  styleClass="menu" alignment="CENTER" prefHeight="350.0" prefWidth="500.0" spacing="50.0" xmlns="http://javafx.com/javafx/11.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.FoodBuyMenuController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" styleClass="menu" alignment="CENTER" prefHeight="350.0" prefWidth="500.0"
+      spacing="50.0"
+      xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.presidente.display.controller.FoodBuyMenuController">
     <Label fx:id="buyMessage" alignment="CENTER" text="Choisissez le montant de nourriture à acheter (Montant max: %d)"
            textAlignment="CENTER"/>
     <HBox alignment="CENTER">

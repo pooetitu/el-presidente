@@ -8,8 +8,8 @@ import java.util.Iterator;
 
 
 public class EventChoice {
-    private String description;
     private final EventEffect[] effects;
+    private String description;
 
     public EventChoice() {
         effects = new EventEffect[0];
@@ -22,7 +22,7 @@ public class EventChoice {
 
     public String display(double effectRatio) {
         StringBuilder display = new StringBuilder(description);
-        if(effects.length>0){
+        if (effects.length > 0) {
             display.append("\neffets: ");
         }
         Iterator<EventEffect> eventEffectIterator = Arrays.stream(effects).iterator();

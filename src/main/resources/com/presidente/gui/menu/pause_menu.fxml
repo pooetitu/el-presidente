@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox fx:id="vBox" alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="25.0" styleClass="menu"
-      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="25.0"
+      styleClass="menu" xmlns="http://javafx.com/javafx/11.0.1"
       fx:controller="com.presidente.display.controller.PauseMenuController">
     <Label alignment="CENTER" contentDisplay="CENTER" text="Menu de pause" textAlignment="CENTER" wrapText="true">
         <font>

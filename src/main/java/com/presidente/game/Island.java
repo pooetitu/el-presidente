@@ -6,11 +6,11 @@ import com.presidente.utils.ScenarioLoader;
 import java.util.LinkedList;
 
 public class Island {
+    private final transient Season[] seasons;
     private Resource resource;
     private Population population;
     private LinkedList<Event> eventsQueue;
     private GameDifficulty difficulty;
-    private final transient Season[] seasons;
     private int agriculture;
     private int industrie;
     private int turn;

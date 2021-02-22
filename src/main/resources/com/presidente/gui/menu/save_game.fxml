@@ -4,10 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="vBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      styleClass="menu"
-      prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.SaveGameController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity"
+      styleClass="menu" prefHeight="600.0" prefWidth="800.0" spacing="20.0"
+      xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.presidente.display.controller.SaveGameController">
     <ListView fx:id="saveList" prefHeight="383.0" prefWidth="500.0">
         <VBox.margin>
             <Insets left="150.0" right="150.0"/>

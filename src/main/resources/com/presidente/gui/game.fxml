@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presidente.display.controller.GameController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.presidente.display.controller.GameController">
     <HBox alignment="CENTER" layoutX="5.0" layoutY="536.0" prefHeight="50.0" prefWidth="790.0" spacing="20.0">
         <Label fx:id="dateLabel" alignment="CENTER" contentDisplay="RIGHT" prefWidth="100.0" textAlignment="RIGHT"/>
         <Label fx:id="moneyLabel" alignment="CENTER" prefHeight="27.0" prefWidth="91.0" textAlignment="CENTER"
@@ -44,6 +44,7 @@
     </TableView>
     <Pane fx:id="gamePane" layoutX="266.0" layoutY="125.0" prefHeight="350.0" prefWidth="500.0" visible="false"/>
     <Pane fx:id="menuPane" prefHeight="600.0" prefWidth="800.0" visible="false"/>
+    <Label fx:id="globalSatisfactionLabel" layoutX="36.0" layoutY="485.0"/>
 
 
 </AnchorPane>

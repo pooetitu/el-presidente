@@ -18,8 +18,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-/* TODO add game over support
- *   rework display aesthetics*/
 public class GameController {
     public Label moneyLabel;
     public Label foodLabel;
@@ -34,6 +32,7 @@ public class GameController {
     public Button openMenuButton;
     public Pane menuPane;
     public Pane gamePane;
+    public Label globalSatisfactionLabel;
     private Island island;
 
     @FXML
@@ -53,14 +52,6 @@ public class GameController {
             island.newTurn();
         }
         refreshLabels();
-    }
-
-    public void setIsland(Island island) throws IOException {
-        this.island = island;
-        ObservableList<Faction> factionObservableList = FXCollections.observableArrayList();
-        factionObservableList.addAll(island.getPopulation().getFactions());
-        factionTable.setItems(factionObservableList);
-        nextTurn();
     }
 
     public void openMenu() throws IOException {
@@ -94,6 +85,7 @@ public class GameController {
     }
 
     public void refreshLabels() {
+        setGlobalSatisfactionLabel();
         setDateLabel();
         setMoneyLabel();
         setFoodLabel();
@@ -127,12 +119,24 @@ public class GameController {
         this.agricultureLabel.setText("Agriculture: " + island.getAgriculture() + "%");
     }
 
+    private void setGlobalSatisfactionLabel() {
+        this.globalSatisfactionLabel.setText("Satisfaction globale: " + island.getPopulation().getGlobalSatisfaction() + "%");
+    }
+
     private void setIndustryLabel() {
         this.industryLabel.setText("Industrie: " + island.getIndustrie() + "%");
     }
 
     public Island getIsland() {
         return island;
+    }
+
+    public void setIsland(Island island) throws IOException {
+        this.island = island;
+        ObservableList<Faction> factionObservableList = FXCollections.observableArrayList();
+        factionObservableList.addAll(island.getPopulation().getFactions());
+        factionTable.setItems(factionObservableList);
+        nextTurn();
     }
 
     public void closeMenu() {
