@@ -37,4 +37,22 @@ public class FactionTest extends TestCase {
         island.corruptFaction(0, 1);
         assertEquals(28, loyalistes.getSatisfaction());
     }
+
+    public void testGetFactionSupporter(){
+        assertEquals(15,capitalistes.getSupporter());
+    }
+
+    public void testSetFactionSupporter(){
+        capitalistes.setSupporter(12);
+        assertEquals(12,capitalistes.getSupporter());
+    }
+
+    public void testGetFactionSatisfaction(){
+        assertEquals(50,capitalistes.getSatisfaction());
+    }
+
+    public void testSetFactionSatisfaction(){
+        capitalistes.setSatisfaction(40);
+        assertEquals(40,capitalistes.getSatisfaction());
+    }
 }
