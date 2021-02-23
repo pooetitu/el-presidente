@@ -76,7 +76,7 @@
         private void update()
     </text>
     <text font-family="Dialog" font-size="12" x="250" y="132">
-        private void display()
+        private void com.presidente.display()
     </text>
     <polyline fill="none" points="286,206 286,142" stroke="#000000" stroke-width="1"/>
     <polygon fill="#ffffff" points="286,142 293,154 279,154" stroke="#ffffff" stroke-width="1"/>
