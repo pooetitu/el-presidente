@@ -18,10 +18,25 @@ public class Island {
      * Contains the list of factions
      */
     private Population population;
+    /**
+     * A list of events incoming
+     */
     private LinkedList<Event> eventsQueue;
+    /**
+     * The defined difficulty of the game
+     */
     private GameDifficulty difficulty;
+    /**
+     * The percentage of agriculture on the island, stored as an integer between 0 and 100
+     */
     private int agriculture;
+    /**
+     * The percentage of industry on the island, stored as an integer between 0 and 100
+     */
     private int industrie;
+    /**
+     * The current turn this data is stored in the island to be written in the save file
+     */
     private int turn;
 
     public Island() {
@@ -54,10 +69,22 @@ public class Island {
         this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
     }
 
+    /**
+     * Checks if the global satisfaction goes under the threshold set in the difficulty
+     *
+     * @return Is the game over or not
+     */
     public boolean isGameOver() {
         return population.getGlobalSatisfaction() < difficulty.getSatisfactionThreshold();
     }
 
+    /**
+     * Checks if the island is able to pay for the amount given,
+     * corrupts the faction and sets the new amount of money
+     *
+     * @param factionIndex The index of the faction to corrupt
+     * @param amount       The amount of time to corrupt this faction
+     */
     public void corruptFaction(int factionIndex, int amount) {
         if (amount <= getMaximumPurchasableCorruption(factionIndex)) {
             population.corruptFaction(factionIndex, amount);
@@ -65,6 +92,12 @@ public class Island {
         }
     }
 
+    /**
+     * Calculate the amount of time a faction is corruptible
+     *
+     * @param factionIndex The index of the faction to corrupt
+     * @return The amount of time the faction can be corrupted
+     */
     public int getMaximumPurchasableCorruption(int factionIndex) {
         if (population.getFactionCorruptionCost(factionIndex, 1) <= 0) {
             return 0;
@@ -76,6 +109,11 @@ public class Island {
         return agriculture;
     }
 
+    /**
+     * The amount of agriculture is capped between 0 and 100
+     *
+     * @param agriculture The new value of agriculture to be set
+     */
     public void setAgriculture(int agriculture) {
         this.agriculture = agriculture;
         if (this.agriculture < 0) {
@@ -86,6 +124,12 @@ public class Island {
         }
     }
 
+    /**
+     * Checks if the year is finished,
+     * adds the new amount of food from the agriculture and the money from the industries
+     *
+     * @return True if the year is finished, False if not
+     */
     public boolean isEndOfYear() {
         if (turn % 4 == 3) {
             resource.addIndustriePayoff(industrie);
@@ -95,6 +139,9 @@ public class Island {
         return false;
     }
 
+    /**
+     * Consumes the food and calculates the new population proportion
+     */
     public void endTheYear() {
         int foodRest = resource.consumeFood(population.getTotalPopulation());
         population.calculateNewPeopleCount(foodRest, agriculture);
@@ -104,6 +151,11 @@ public class Island {
         return industrie;
     }
 
+    /**
+     * The amount of industrie is capped between 0 and 100
+     *
+     * @param industrie The new value of agriculture to be set
+     */
     public void setIndustrie(int industrie) {
         this.industrie = industrie;
         if (this.industrie < 0) {
@@ -114,6 +166,11 @@ public class Island {
         }
     }
 
+    /**
+     * Gets an event from the eventQueue otherwise if it's empty a random Event is get from the current season
+     *
+     * @return An instance of the Event to be played
+     */
     public Event getNextEvent() {
         if (!eventsQueue.isEmpty()) {
             return eventsQueue.remove();
@@ -123,6 +180,11 @@ public class Island {
         return event;
     }
 
+    /**
+     * This function is called recursively on the given event stops when the given event is null
+     *
+     * @param event The event to be added to the list
+     */
     private void addNextEventToQueue(Event event) {
         if (event != null) {
             eventsQueue.add(event);
@@ -130,6 +192,9 @@ public class Island {
         }
     }
 
+    /**
+     * Increments the current turn
+     */
     public void newTurn() {
         turn++;
     }
