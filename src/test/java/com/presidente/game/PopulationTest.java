@@ -44,16 +44,4 @@ public class PopulationTest extends TestCase {
         population.addFaction(capitalistes);
         assertEquals(50, population.getTotalPopulation());
     }
-
-    public void testCorruptionDisplayOneFaction() {
-        assertEquals("0. communistes - 525$\n" +
-                "1. Retour", population.corruptionDisplay());
-    }
-
-    public void testCorruptionDisplayMultipleFaction() {
-        population.addFaction(capitalistes);
-        assertEquals("0. communistes - 525$\n" +
-                "1. capitalistes - 225$\n" +
-                "2. Retour", population.corruptionDisplay());
-    }
 }
