@@ -116,6 +116,17 @@ public class Population {
         return factions.get(name);
     }
 
+    public String corruptionDisplay() {
+        StringBuilder display = new StringBuilder();
+        int count = 0;
+        for (Faction faction : factions.values()) {
+            display.append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$").append("\n");
+            count++;
+        }
+        display.append(count).append(". ").append("Retour");
+        return display.toString();
+    }
+
     public int getFactionCorruptionCost(int index, int amount) {
         return ((Faction) factions.values().toArray()[index]).getCorruptionCost() * amount;
     }
