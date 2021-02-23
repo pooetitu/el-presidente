@@ -8,6 +8,7 @@ import java.util.Random;
 public class Season {
     private static final String[] seasonNames = {"Printemps", "Été", "Automne", "Hiver"};
     private final ArrayList<Event> events;
+    private static final String[] seasonNames = {"Printemps", "Été", "Automne", "Hiver"};
 
     public Season() {
         events = new ArrayList<>();
