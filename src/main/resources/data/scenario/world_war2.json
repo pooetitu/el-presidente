@@ -1,6 +1,6 @@
 {
   "island": {
-    "ressource": {
+    "resource": {
       "treasury": 200,
       "food": 300
     },
@@ -54,7 +54,16 @@
         "choice": [
           {
             "description": "Se faire discret face à cette guerre",
-            "effect": []
+            "effect": [
+              {
+              "@class": "effect-faction-supporter",
+              "amount": 0,
+              "calculationMethod": {
+                "@class": "calculation-fixed"
+              },
+              "applyToAll": true
+            }
+            ]
           },
           {
             "description": "Préparer ses défenses par précautions",
