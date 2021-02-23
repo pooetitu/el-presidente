@@ -1,0 +1,75 @@
+{
+  "events": [
+    {
+      "description": "ddddddd",
+      "choices": [
+        {
+          "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+          "effects": [
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "description": "Décliner poliment au motif que vous n’avez pas les infrastructures pour eux",
+          "effects": [
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "religieux"
+                ],
+                "applyToAll": false,
+                "amount": 15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            },
+            {
+              "type": "com.presidente.game.event.effect.EventEffectFactionSatisfaction",
+              "data": {
+                "factions": [
+                  "libéraux"
+                ],
+                "applyToAll": false,
+                "amount": -15.0,
+                "calculationMethod": {
+                  "type": "com.presidente.game.event.effect.calculation.CalculationFixed",
+                  "data": {}
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

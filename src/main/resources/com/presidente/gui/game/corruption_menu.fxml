@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" styleClass="menu" alignment="CENTER" prefHeight="350.0" prefWidth="500.0"
+      spacing="25.0"
+      xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.presidente.display.controller.game.CorruptionMenuController">
+    <Label fx:id="corruptionMessage" text="Sélectionnez une faction à corrompre dans la liste"/>
+    <HBox alignment="CENTER">
+        <Label fx:id="quantityLabel" textAlignment="RIGHT" wrapText="true"/>
+        <Slider fx:id="quantitySlider" blockIncrement="1" disable="true"/>
+    </HBox>
+    <HBox alignment="CENTER" spacing="25.0">
+        <Button fx:id="corruptButton" disable="true" mnemonicParsing="false" onAction="#corruptFaction"
+                prefWidth="100.0" text="Corrompre"/>
+        <Button mnemonicParsing="false" onAction="#returnToEndOfYearMenu" prefWidth="100.0" text="Retour"/>
+    </HBox>
+</VBox>

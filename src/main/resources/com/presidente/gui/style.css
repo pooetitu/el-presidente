@@ -1,0 +1,30 @@
+.menu-background {
+    -fx-background-image: url("images/main_background.jpg");
+    -fx-background-position: center;
+    -fx-background-size: 140%;
+}
+
+.button {
+    -fx-background-color: rgba(255, 255, 255, 1);
+}
+
+
+.choice-label {
+    -fx-background-color: #53613e80;
+    -fx-background-radius: 10;
+    -fx-text-fill: rgba(0, 0, 0, 1);
+}
+
+.menu {
+    -fx-background-color: #808080;
+}
+
+.label-choice {
+    -fx-background-color: #606b5e;
+    -fx-background-radius: 5;
+}
+
+.label-choice:hover {
+    -fx-background-color: #4d544b;
+
+}

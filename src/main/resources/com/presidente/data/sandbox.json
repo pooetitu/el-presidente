@@ -1,0 +1,53 @@
+{
+  "resource": {
+    "treasury": 200,
+    "food": 1000
+  },
+  "population": {
+    "factions": {
+      "capitalistes": {
+        "name": "capitalistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "communistes": {
+        "name": "communistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "libéraux": {
+        "name": "libéraux",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "religieux": {
+        "name": "religieux",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "militaristes": {
+        "name": "militaristes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "écologistes": {
+        "name": "écologistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "nationalistes": {
+        "name": "nationalistes",
+        "satisfaction": 50,
+        "supporter": 15
+      },
+      "loyalistes": {
+        "name": "loyalistes",
+        "satisfaction": 100,
+        "supporter": 15
+      }
+    }
+  },
+  "agriculture": 15,
+  "industrie": 15,
+  "turn": 0
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" alignment="CENTER" prefHeight="600.0" prefWidth="800.0"
+      spacing="25.0"
+      styleClass="menu" xmlns="http://javafx.com/javafx/11.0.1"
+      fx:controller="com.presidente.display.controller.menu.PauseMenuController">
+    <Label alignment="CENTER" contentDisplay="CENTER" text="Menu de pause" textAlignment="CENTER" wrapText="true">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <Button mnemonicParsing="false" onAction="#leaveMenu" prefWidth="150.0"
+            text="Reprendre"/>
+    <Button mnemonicParsing="false" onAction="#saveGame" prefWidth="150.0"
+            text="Sauvegarder la partie"/>
+    <Button mnemonicParsing="false" onAction="#loadGame" prefWidth="150.0"
+            text="Charger une partie"/>
+    <Button mnemonicParsing="false" onAction="#leaveToMainMenu" prefWidth="150.0"
+            text="Retour au menu principal"/>
+</VBox>
