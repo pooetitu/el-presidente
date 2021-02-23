@@ -46,6 +46,7 @@ public class GameController {
     /**
      * Display is refreshed and the next turn button is disabled
      * If it is the end of the year the end of the year menu is displayed, otherwise the event menu is displayed
+     *
      * @throws IOException
      */
     @FXML
@@ -62,6 +63,7 @@ public class GameController {
 
     /**
      * Display the game over menu over the menu pane
+     *
      * @throws IOException
      */
     public void openMenu() throws IOException {
@@ -74,6 +76,7 @@ public class GameController {
 
     /**
      * Display the game over menu over the menu pane
+     *
      * @throws IOException
      */
     public void setGameOverPane() throws IOException {
@@ -85,6 +88,7 @@ public class GameController {
 
     /**
      * Display the end of the year menu over the game pane
+     *
      * @throws IOException
      */
     public void setEndOfYearPane() throws IOException {
@@ -97,6 +101,7 @@ public class GameController {
 
     /**
      * Display the event menu over the game pane
+     *
      * @throws IOException
      */
     private void setEventPane() throws IOException {
@@ -124,6 +129,7 @@ public class GameController {
      * Removes any remaining menu displayed in the game pane
      * Display is refreshed and the next turn button is enabled
      * The game over menu is displayed if necessary
+     *
      * @throws IOException
      */
     public void readyForNextTurn() throws IOException {
@@ -179,6 +185,7 @@ public class GameController {
      * The island is asked to end the year
      * Display is refreshed and the next turn button is enabled
      * The event menu is displayed
+     *
      * @throws IOException
      */
     public void yearEnded() throws IOException {

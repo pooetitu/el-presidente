@@ -26,16 +26,6 @@ public class ScenarioLoader {
         return scenarioLoader;
     }
 
-    public String showScenarioList() {
-        StringBuilder display = new StringBuilder();
-        int counter = 0;
-        for (String path : scenariosPathList) {
-            display.append(counter).append(". ").append(path.replaceFirst("[.][^.]+$", "")).append("\n");
-            counter++;
-        }
-        display.append(counter).append(". ").append("Retour");
-        return display.toString();
-    }
     private void loadScenarioList() {
         String[] files = ResourceReader.getFilesList(scenarioPath);
         if (files != null && files.length > 0) {
