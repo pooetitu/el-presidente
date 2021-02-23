@@ -1,0 +1,597 @@
+{
+  "island": {
+    "resource": {
+      "treasury": 800,
+      "food": 1000
+    },
+    "population": {
+      "faction": [
+        {
+          "name": "capitalistes",
+          "satisfaction": 40,
+          "supporter": 15
+        },
+        {
+          "name": "communistes",
+          "satisfaction": 60,
+          "supporter": 30
+        },
+        {
+          "name": "libéraux",
+          "satisfaction": 40,
+          "supporter": 18
+        },
+        {
+          "name": "religieux",
+          "satisfaction": 50,
+          "supporter": 17
+        },
+        {
+          "name": "militaristes",
+          "satisfaction": 60,
+          "supporter": 28
+        },
+        {
+          "name": "écologistes",
+          "satisfaction": 40,
+          "supporter": 15
+        },
+        {
+          "name": "nationalistes",
+          "satisfaction": 60,
+          "supporter": 16
+        },
+        {
+          "name": "loyalistes",
+          "satisfaction": 100,
+          "supporter": 16
+        }
+      ]
+    },
+    "event": [
+      {
+        "description": "Les attaques indirectes américaines sont font de plus en plus nombreuses",
+        "choice": [
+          {
+            "description": "Je mets en place une doctrine les désignant comme coupables",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              }
+            ]
+          },
+          {
+            "description": "Je riposte plus fort en alliant plus de pays à ma cause",
+            "effect": [
+              {
+                "@class": "effect-faction-supporter",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -5 ,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "religieux",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 10 ,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -5 ,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "nationalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 23 ,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -15 ,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "libéraux",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -150,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Je ne fais rien j'attends que ça passe",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -17,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "nationalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Vous devez créer une alliance militaire",
+        "choice": [
+          {
+            "description": "Je crée une alliance pour que tous mes alliés me protègent",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 15,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": ["communistes","militaristes"],
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "religieux",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -200,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              },
+              {
+                "@class": "effect-industrie",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Les Américains menacent mes alliés",
+        "choice": [
+          {
+            "description": "J'essaie de négocier avec eux pour arrêter",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": ["militaristes","nationalistes"],
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              }
+            ]
+          },
+          {
+            "description": "J'envoie un convoi militaire en leur direction",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": ["loyalistes","nationalistes","communistes"],
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-industrie",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              },
+              {
+                "@class": "effect-money",
+                "amount": -250,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Les Américains entament une course à l'espace",
+        "choice": [
+          {
+            "description": "Je leur montre que nous pouvons mieux faire",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "nationalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "écologistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -150,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              },
+              {
+                "@class": "effect-industrie",
+                "amount": 13,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Je les laisse dépenser leur ressources",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": ["nationalistes","militaristes"],
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 11,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "écologistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": 200,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Il est temps d'équilibrer les forces entre votre alliance et le camps adverse",
+        "choice": [
+          {
+            "description": "Je développe mon armement",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "écologistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -150,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              },
+              {
+                "@class": "effect-industrie",
+                "amount": 15,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Vous avez développé des armes de dissuasion",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 18,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 5,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "capitalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 3,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "libéraux",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 19,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": 80,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Je laisse mes adverses prendre le dessus le temps d'économiser",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -22,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": 500,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Les Américains sont à deux doigts de dissoudre mon alliance",
+        "choice": [
+          {
+            "description": "Je fais un discours où j'engage des négociations",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 13,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "militaristes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 15,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 7,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "religieux",
+                "applyToAll": false
+              }
+            ]
+          },
+          {
+            "description": "J'envoie une bombe nucléaire en direction de Washington",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -20,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "écologistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": 10,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "communistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -8,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "nationalistes",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -35,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "faction": "religieux",
+                "applyToAll": false
+              },
+              {
+                "@class": "effect-money",
+                "amount": -350,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                }
+              }
+            ]
+          },
+          {
+            "description": "Les Américains ripostent et tout le monde meurt dans une guerre nucléaire",
+            "effect": [
+              {
+                "@class": "effect-faction-satisfaction",
+                "amount": -100,
+                "calculationMethod": {
+                  "@class": "calculation-fixed"
+                },
+                "applyToAll": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "agriculture": 45,
+    "industrie": 25
+  }
+}
