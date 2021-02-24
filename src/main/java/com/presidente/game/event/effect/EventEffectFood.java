@@ -9,6 +9,11 @@ public class EventEffectFood extends EventEffect {
         super(amount, calculationMethod);
     }
 
+    /**
+     * Modifies the food value of the given island
+     *
+     * @param island The Island on which the effect will be applied
+     */
     @Override
     public void applyEffect(Island island) {
         int result = calculateNewValue(island.getResource().getFood(), island.getDifficulty().getEffectRatio());

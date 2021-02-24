@@ -9,7 +9,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class EventEffectFactionSupporter extends EventEffect {
+    /**
+     * The list of faction names on which the effect will be applied
+     */
     private final ArrayList<String> factions;
+    /**
+     * Whether the effect will be applied on every factions or not
+     */
     private final boolean applyToAll;
 
     public EventEffectFactionSupporter(double amount, boolean applyToAll, Calculation calculationMethod) {
@@ -18,7 +24,12 @@ public class EventEffectFactionSupporter extends EventEffect {
         this.applyToAll = applyToAll;
     }
 
-
+    /**
+     * Applies an effect on the given Island's faction(s), applies the effect to every faction if the applyToAll attribute is true or
+     * applies to each faction listed in the factions list
+     *
+     * @param island The Island on which the effect will be applied
+     */
     @Override
     public void applyEffect(Island island) {
         if (applyToAll) {
@@ -45,17 +56,33 @@ public class EventEffectFactionSupporter extends EventEffect {
         return display.toString();
     }
 
+    /**
+     * Applies the effect on every faction of the given Island
+     *
+     * @param island The Island on which the effect will be applied
+     */
     private void applyToAll(Island island) {
         for (Faction faction : island.getPopulation().getFactions()) {
             applyChangement(faction, island.getDifficulty());
         }
     }
 
+    /**
+     * Modifies the supporter value of the given faction
+     *
+     * @param faction    The faction to be affected
+     * @param difficulty The current game's difficulty
+     */
     private void applyChangement(Faction faction, GameDifficulty difficulty) {
         int result = calculateNewValue(faction.getSupporter(), difficulty.getEffectRatio());
         faction.setSupporter(result);
     }
 
+    /**
+     * Adds a faction to be affected by the effect to the factions list
+     *
+     * @param name The name of a faction to be affected by the effect
+     */
     public void addFaction(String name) {
         factions.add(name);
     }

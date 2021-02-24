@@ -1,0 +1,11 @@
+module:com.presidente
+com.presidente.adapters
+com.presidente.display
+com.presidente.display.controller
+com.presidente.display.controller.game
+com.presidente.display.controller.menu
+com.presidente.game
+com.presidente.game.event
+com.presidente.game.event.effect
+com.presidente.game.event.effect.calculation
+com.presidente.utils

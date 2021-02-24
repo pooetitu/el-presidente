@@ -20,6 +20,12 @@ public class EventChoice {
         this.effects = effects;
     }
 
+    /**
+     * Builds a String containing the description of the choice followed by the different effects applied by this choice
+     *
+     * @param effectRatio The ratio applied to the effect to adjust the difficulty
+     * @return The String display of the choice
+     */
     public String display(double effectRatio) {
         StringBuilder display = new StringBuilder(description);
         if (effects.length > 0) {
@@ -35,6 +41,11 @@ public class EventChoice {
         return display.toString();
     }
 
+    /**
+     * Apply each effect on the given Island
+     *
+     * @param island The Island on which the effects are applied
+     */
     public void applyEffects(Island island) {
         for (EventEffect effect : effects) {
             effect.applyEffect(island);

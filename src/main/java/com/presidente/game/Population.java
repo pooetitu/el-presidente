@@ -97,6 +97,11 @@ public class Population {
         return factions.values().stream().mapToInt(Faction::getSupporter).sum();
     }
 
+    /**
+     * Calculates the global satisfaction with the given calculus the sum of the amount of supporters times the satisfaction for each faction divided by the total population
+     *
+     * @return The global satisfaction for every factions
+     */
     public int getGlobalSatisfaction() {
         int totalSupporter = 0;
         int totalSatisfaction = 0;
@@ -116,21 +121,20 @@ public class Population {
         return factions.get(name);
     }
 
-    public String corruptionDisplay() {
-        StringBuilder display = new StringBuilder();
-        int count = 0;
-        for (Faction faction : factions.values()) {
-            display.append(count).append(". ").append(faction.getName()).append(" - ").append(faction.getCorruptionCost()).append("$").append("\n");
-            count++;
-        }
-        display.append(count).append(". ").append("Retour");
-        return display.toString();
-    }
-
+    /**
+     * Calculate the cost for the given faction times the amount of corruption to be bought
+     *
+     * @param index  The index of the faction to be corrupted
+     * @param amount The amount of time to corrupt it
+     * @return The cost of the faction's corruption
+     */
     public int getFactionCorruptionCost(int index, int amount) {
         return ((Faction) factions.values().toArray()[index]).getCorruptionCost() * amount;
     }
 
+    /**
+     * @return A list of the factions
+     */
     public Collection<Faction> getFactions() {
         return factions.values();
     }

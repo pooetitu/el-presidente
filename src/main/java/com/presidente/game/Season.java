@@ -17,6 +17,9 @@ public class Season {
         return seasonNames[index];
     }
 
+    /**
+     * @return A random event is returned from the season's events list
+     */
     public Event getRandomEvent() {
         Random rand = new Random();
         return events.get(rand.nextInt(events.size()));

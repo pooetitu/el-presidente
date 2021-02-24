@@ -3,9 +3,17 @@ package com.presidente.game.event;
 import com.presidente.game.Island;
 
 public class Event {
+    /**
+     * The description of the event
+     */
     private final String description;
+    /**
+     * The event following
+     */
     private final Event nextEvent;
-
+    /**
+     * The list of choices available for this event
+     */
     private final EventChoice[] choices;
 
     public Event(String description, Event nextEvent, EventChoice[] choices) {
@@ -14,16 +22,10 @@ public class Event {
         this.choices = choices;
     }
 
-    public String display(double effectRatio) {
-        StringBuilder display = new StringBuilder(description);
-        int counter = 0;
-        for (EventChoice choice : choices) {
-            display.append("\n").append(counter).append(". ").append(choice.display(effectRatio));
-            counter++;
-        }
-        return display.toString();
-    }
-
+    /**
+     * @param island      The island on which the effects will be applied
+     * @param choiceIndex The index of the event choice to be applied
+     */
     public void applyChoice(Island island, int choiceIndex) {
         if (choiceIndex >= 0 && choiceIndex < choices.length) {
             choices[choiceIndex].applyEffects(island);
