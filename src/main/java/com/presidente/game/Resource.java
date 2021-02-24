@@ -3,7 +3,13 @@ package com.presidente.game;
 public class Resource {
     private static final int FOOD_UNIT_COST = 8;
     private static final int FOOD_CONSUMPTION_PER_PERSON = 4;
+    /**
+     * The amount of money available
+     */
     private int treasury;
+    /**
+     * The amount of food available
+     */
     private int food;
 
     public Resource() {

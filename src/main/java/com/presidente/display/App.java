@@ -14,9 +14,9 @@ public class App extends Application {
 
     /**
      * Loads a fxml file and sets it as the root scene
+     *
      * @param fxml The name and directory in which the file is located
      * @return the loader
-     * @throws IOException
      */
     public static FXMLLoader setRoot(String fxml) throws IOException {
         FXMLLoader loader = loadFXML(fxml);
@@ -26,6 +26,7 @@ public class App extends Application {
 
     /**
      * Loads a fxml file
+     *
      * @param fxml The name and directory in which the file is located
      * @return An instance of FXMLLoader
      */
