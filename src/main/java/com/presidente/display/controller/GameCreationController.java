@@ -24,9 +24,9 @@ public class GameCreationController {
     public void startGame() throws IOException {
         Island island;
         if (sandboxCheckBox.isSelected()) {
-            island = ScenarioLoader.getScenarioLoader().loadIslandSandboxConfig();
+            island = ScenarioLoader.getInstance().getIslandSandboxInstance();
         } else {
-            island = ScenarioLoader.getScenarioLoader().loadScenario(scenarioListView.getSelectionModel().getSelectedIndex());
+            island = ScenarioLoader.getInstance().loadScenario(scenarioListView.getSelectionModel().getSelectedIndex());
         }
         island.setDifficulty(difficultyChoiceBox.getSelectionModel().getSelectedItem());
         ((GameController) App.setRoot("game/game").getController()).setIsland(island);
@@ -49,7 +49,7 @@ public class GameCreationController {
             difficultyChoiceBox.getItems().add(difficulty);
         }
         scenarioListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        scenarioListView.getItems().addAll(ScenarioLoader.getScenarioLoader().getScenarioList());
+        scenarioListView.getItems().addAll(ScenarioLoader.getInstance().getScenarioList());
     }
 
     public void updateStartGameButton() {

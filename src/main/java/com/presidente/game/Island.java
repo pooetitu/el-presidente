@@ -40,7 +40,7 @@ public class Island {
     private int turn;
 
     public Island() {
-        seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        seasons = ScenarioLoader.getInstance().loadSeasons();
         if (eventsQueue == null) {
             eventsQueue = new LinkedList<>();
         }
@@ -54,7 +54,7 @@ public class Island {
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        this.seasons = ScenarioLoader.getInstance().loadSeasons();
     }
 
     public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) {
@@ -66,7 +66,7 @@ public class Island {
         this.eventsQueue = new LinkedList<>();
         this.population = new Population();
         this.population.populate();
-        this.seasons = ScenarioLoader.getScenarioLoader().loadSeasons();
+        this.seasons = ScenarioLoader.getInstance().loadSeasons();
     }
 
     /**

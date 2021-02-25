@@ -18,17 +18,17 @@ public class SaveGameController {
 
     public void initialize() {
         saveList.setOnMouseClicked(e -> overwriteSaveButton.setDisable(false));
-        saveList.getItems().addAll(GameSaver.getGameSaver().getSaveFileListName());
+        saveList.getItems().addAll(GameSaver.getInstance().getSaveFileListName());
         saveNameField.textProperty().addListener((observable, oldValue, newValue) -> createSaveButton.setDisable(saveNameField.getText().equals("")));
     }
 
     public void overwriteSave() {
-        GameSaver.getGameSaver().saveGame(gameController.getIsland(), saveList.getSelectionModel().getSelectedIndex());
+        GameSaver.getInstance().saveGame(gameController.getIsland(), saveList.getSelectionModel().getSelectedIndex());
         gameController.closeMenu();
     }
 
     public void createSave() {
-        GameSaver.getGameSaver().createSaveFile(saveNameField.getText(), gameController.getIsland());
+        GameSaver.getInstance().createSaveFile(gameController.getIsland(), saveNameField.getText());
         gameController.closeMenu();
     }
 

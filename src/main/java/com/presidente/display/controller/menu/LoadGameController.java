@@ -17,7 +17,7 @@ public class LoadGameController {
     public Button loadButton;
 
     public void loadSave() throws IOException {
-        Island island = GameSaver.getGameSaver().loadGame(saveList.getSelectionModel().getSelectedIndex());
+        Island island = GameSaver.getInstance().loadGame(saveList.getSelectionModel().getSelectedIndex());
         ((GameController) App.setRoot("game/game").getController()).setIsland(island);
     }
 
@@ -30,7 +30,7 @@ public class LoadGameController {
     }
 
     public void initialize() {
-        saveList.getItems().addAll(GameSaver.getGameSaver().getSaveFileListName());
+        saveList.getItems().addAll(GameSaver.getInstance().getSaveFileListName());
         saveList.setOnMouseClicked(click -> {
             loadButton.setDisable(false);
             if (click.getClickCount() == 2) {

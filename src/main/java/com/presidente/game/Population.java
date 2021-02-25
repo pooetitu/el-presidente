@@ -103,10 +103,11 @@ public class Population {
      * @return The global satisfaction for every factions
      */
     public int getGlobalSatisfaction() {
-        int totalSupporter = getTotalPopulation();
+        int totalSupporter = 0;
         int totalSatisfaction = 0;
         for (Faction faction : factions.values()) {
             totalSatisfaction += faction.getSupporter() * faction.getSatisfaction();
+            totalSupporter += faction.getSupporter();
         }
         if (totalSatisfaction == 0 || totalSupporter == 0) return 0;
         return (totalSatisfaction) / totalSupporter;

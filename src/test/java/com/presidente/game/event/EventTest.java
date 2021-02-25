@@ -46,20 +46,6 @@ public class EventTest extends TestCase {
 
     }
 
-    public void testDisplayEventOneChoice() {
-        assertEquals("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région\n" +
-                "0. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
-                "effets: +15 % de satisfaction pour les religieux", eventOneChoice.display(islandNormal.getDifficulty().getEffectRatio()));
-    }
-
-    public void testDisplayEventMultipleChoices() {
-        assertEquals("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région\n" +
-                "0. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
-                "effets: +15 % de satisfaction pour les religieux, -15 % de satisfaction pour les libéraux\n" +
-                "1. Décliner poliment au motif que vous n’avez pas les infrastructures pour eux\n" +
-                "effets: +15 % de satisfaction pour les capitalistes, -15 % de satisfaction pour les loyalistes", eventMultipleChoice.display(islandNormal.getDifficulty().getEffectRatio()));
-    }
-
     public void testChooseInSingleChoice() {
         eventOneChoice.applyChoice(islandNormal, 0);
         assertEquals(65, islandNormal.getPopulation().getFactionByName("religieux").getSatisfaction());
