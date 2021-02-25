@@ -15,17 +15,35 @@ import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
 public class ResourceReader {
-    public static String getContentStringFromResource(String fileName) {
+    /**
+     * Reads the content of a given file and returns its content as a String
+     *
+     * @param filePath The path to the resource
+     * @return The content of the resource is returned as a String
+     */
+    public static String getContentStringFromResource(String filePath) {
         return new BufferedReader(
-                new InputStreamReader(getStreamFromResource(fileName), StandardCharsets.UTF_8))
+                new InputStreamReader(getStreamFromResource(filePath), StandardCharsets.UTF_8))
                 .lines()
                 .collect(Collectors.joining("\n"));
     }
 
-    public static InputStream getStreamFromResource(String fileName) {
-        return ResourceReader.class.getResourceAsStream(fileName);
+    /**
+     * Returns an InputStream of the file path
+     *
+     * @param filePath The path to the resource
+     * @return An InputStream of the resource
+     */
+    public static InputStream getStreamFromResource(String filePath) {
+        return ResourceReader.class.getResourceAsStream(filePath);
     }
 
+    /**
+     * Get the list of resources in the given path
+     *
+     * @param path Path of the repertory to be listed
+     * @return An array of String of the resource names
+     */
     static String[] getFilesList(String path) {
         try {
             URL dirURL = ResourceReader.class.getClassLoader().getResource(path);
