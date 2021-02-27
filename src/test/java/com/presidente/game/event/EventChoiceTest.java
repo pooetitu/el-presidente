@@ -23,12 +23,12 @@ public class EventChoiceTest extends TestCase {
         eventEffectsMultipleChoice[1] = new EventEffectFactionSatisfaction(-15, false, new CalculationFixed());
         eventEffectsMultipleChoice[1].addFaction("libéraux");
 
-        choiceMultipleEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice);
+        choiceMultipleEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice, null);
 
         EventEffectFactionSatisfaction[] eventEffectsOneChoice = new EventEffectFactionSatisfaction[1];
         eventEffectsOneChoice[0] = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
         eventEffectsOneChoice[0].addFaction("religieux");
-        choiceOneEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice);
+        choiceOneEffect = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice, null);
     }
 
     public void testApplyOneEffect() {

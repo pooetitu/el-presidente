@@ -1,5 +1,6 @@
 package com.presidente.game.event;
 
+import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
 import com.presidente.game.event.effect.EventEffect;
 
@@ -8,16 +9,27 @@ import java.util.Iterator;
 
 
 public class EventChoice {
+    /**
+     * The list of effects to be applied on an Island
+     */
     private final EventEffect[] effects;
+    /**
+     * The difficulty at which the choice won't be available
+     */
+    private GameDifficulty difficultyThreshold;
+    /**
+     * The description of the choice
+     */
     private String description;
 
     public EventChoice() {
         effects = new EventEffect[0];
     }
 
-    public EventChoice(String description, EventEffect[] effects) {
+    public EventChoice(String description, EventEffect[] effects, GameDifficulty difficultyThreshold) {
         this.description = description;
         this.effects = effects;
+        this.difficultyThreshold = difficultyThreshold;
     }
 
     /**
@@ -39,6 +51,10 @@ public class EventChoice {
             }
         }
         return display.toString();
+    }
+
+    public GameDifficulty getDifficultyThreshold() {
+        return difficultyThreshold;
     }
 
     /**

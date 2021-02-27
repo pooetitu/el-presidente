@@ -2,6 +2,8 @@ package com.presidente.game.event;
 
 import com.presidente.game.Island;
 
+import java.util.Arrays;
+
 public class Event {
     /**
      * The description of the event
@@ -32,12 +34,25 @@ public class Event {
         }
     }
 
+    /**
+     * Returns the instance of the following Event if it exists
+     *
+     * @return An instance of Event
+     */
     public Event getNextEvent() {
         return nextEvent;
     }
 
-    public EventChoice[] getChoices() {
-        return choices;
+    /**
+     * Filters the choices of the Event with the current game difficulty and returns a filtered array of choices
+     *
+     * @param island An instance of Island of which the difficulty will be applied
+     * @return The list of selectable choices
+     */
+    public EventChoice[] getChoices(Island island) {
+        return Arrays.stream(choices)
+                .filter(c -> c.getDifficultyThreshold() == null || c.getDifficultyThreshold().compareTo(island.getDifficulty()) > 0)
+                .toArray(EventChoice[]::new);
     }
 
     public String getDescription() {

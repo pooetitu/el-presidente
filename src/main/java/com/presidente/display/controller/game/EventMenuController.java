@@ -23,7 +23,7 @@ public class EventMenuController {
         eventChoiceVBox.setVisible(true);
         Event event = controller.getIsland().getNextEvent();
         eventLabel.setText(event.getDescription());
-        for (EventChoice eventChoice : event.getChoices()) {
+        for (EventChoice eventChoice : event.getChoices(controller.getIsland())) {
             Label label = new Label(eventChoice.display(controller.getIsland().getDifficulty().getEffectRatio()));
             label.setOnMouseReleased(e -> {
                 eventChoice.applyEffects(controller.getIsland());
