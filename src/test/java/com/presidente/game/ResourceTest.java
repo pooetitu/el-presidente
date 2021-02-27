@@ -8,7 +8,7 @@ public class ResourceTest extends TestCase {
 
     @Override
     protected void setUp() {
-        resource = new Resource(500, 0);
+        resource = new Resource(500);
         Faction capitalistes = new Faction("capitalistes", 15, 10);
         Faction loyalistes = new Faction("loyalistes", 15, 10);
         island = new Island(15, 15, GameDifficulty.NORMAL, resource);
@@ -22,12 +22,12 @@ public class ResourceTest extends TestCase {
     }
 
     public void testPayForFood() {
-        resource.buyFood(10);
+        resource.buyFood(10, 0);
         assertEquals(420, island.getResource().getTreasury());
     }
 
     public void testBuyFood() {
-        resource.buyFood(10);
-        assertEquals(10, resource.getFood());
+        resource.buyFood(10, 0);
+        assertEquals(10, resource.getFoodQuantity());
     }
 }

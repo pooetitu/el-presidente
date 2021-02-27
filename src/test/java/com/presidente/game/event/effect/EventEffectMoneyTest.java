@@ -18,9 +18,9 @@ public class EventEffectMoneyTest extends TestCase {
         super.setUp();
         eventEffectNegative = new EventEffectMoney(-100, new CalculationFixed());
         eventEffectPositive = new EventEffectMoney(100, new CalculationFixed());
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(100, 100));
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(100, 100));
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(100, 100));
+        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(100));
+        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(100));
+        islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(100));
     }
 
 

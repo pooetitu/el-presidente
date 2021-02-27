@@ -15,7 +15,7 @@ public class EventChoiceTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10, 10));
+        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource( 10));
 
         EventEffectFactionSatisfaction[] eventEffectsMultipleChoice = new EventEffectFactionSatisfaction[2];
         eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());

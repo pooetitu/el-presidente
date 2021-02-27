@@ -133,7 +133,7 @@ public class Island {
     public boolean isEndOfYear() {
         if (turn % 4 == 3) {
             resource.addIndustriePayoff(industrie);
-            resource.addAgriculturePayoff(agriculture);
+            resource.addAgriculturePayoff(agriculture, turn / 4);
             return true;
         }
         return false;
