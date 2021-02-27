@@ -35,11 +35,16 @@ public class Resource {
      */
     public void buyFood(int amount, int year) {
         if (purchasableMaximumFoodAmount() < amount) return;
-        System.out.println(amount);
         addFood(amount, year + 4);
         treasury -= amount * FOOD_UNIT_COST;
     }
 
+    /**
+     * Adds a certain amount of food to the given expiration year, or creates a new instance of Food if there is no food at the given expiration year
+     *
+     * @param amount         The amount of food to be added
+     * @param expirationYear The year at which the added food will expire
+     */
     public void addFood(int amount, int expirationYear) {
         if (foodList.containsKey(expirationYear)) {
             foodList.get(expirationYear).addFood(amount);
@@ -48,6 +53,12 @@ public class Resource {
         }
     }
 
+    /**
+     * Removes food from each instance of Food
+     *
+     * @param amount The amount of food to be removed
+     * @return The amount of food that has not been removed
+     */
     public int removeFood(int amount) {
         for (Map.Entry<Integer, Food> entry : foodList.entrySet()) {
             if (amount == 0) {
@@ -89,6 +100,11 @@ public class Resource {
         return getFoodQuantity() - rest;
     }
 
+    /**
+     * Removes an instance of Food if it contains no food or the expiration year is passed and so the total amount of food is decreased
+     *
+     * @param year The current year of the game
+     */
     public void removeExpiredFood(int year) {
         List<Integer> toBeRemoved = new ArrayList<>();
         for (Map.Entry<Integer, Food> entry : foodList.entrySet()) {
@@ -114,16 +130,19 @@ public class Resource {
         this.treasury = treasury;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%-21s%s", "Argent: " + treasury, "Nourriture: " + foodList);
-    }
-
+    /**
+     * @return The total amount of food available
+     */
     public int getFoodQuantity() {
         return foodList
                 .values()
                 .stream()
                 .mapToInt(Food::getAmount)
                 .sum();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-21s%s", "Argent: " + treasury, "Nourriture: " + foodList);
     }
 }

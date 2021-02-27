@@ -1,6 +1,9 @@
 package com.presidente.game;
 
 public class Food {
+    /**
+     * The current amount of food for this instance
+     */
     private int amount;
 
     public Food(int amount) {
@@ -22,6 +25,11 @@ public class Food {
         return removed;
     }
 
+    /**
+     * Adds a certain amount of food
+     *
+     * @param amount The amount of food to be added
+     */
     public void addFood(int amount) {
         this.amount += amount;
         if (this.amount < 0) {
