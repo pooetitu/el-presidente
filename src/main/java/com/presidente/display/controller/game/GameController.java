@@ -46,11 +46,9 @@ public class GameController {
     /**
      * Display is refreshed and the next turn button is disabled
      * If it is the end of the year the end of the year menu is displayed, otherwise the event menu is displayed
-     *
-     * @throws IOException
      */
     @FXML
-    public void nextTurn() throws IOException {
+    public void nextTurn() {
         nextTurnButton.setDisable(true);
         if (island.isEndOfYear()) {
             setEndOfYearPane();
@@ -63,53 +61,43 @@ public class GameController {
 
     /**
      * Display the game over menu over the menu pane
-     *
-     * @throws IOException
      */
-    public void openMenu() throws IOException {
-        FXMLLoader loader = App.loadFXML("menu/pause_menu");
-        VBox newLoadedPane = loader.load();
-        ((PauseMenuController) loader.getController()).setController(this);
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
+    public void openMenu() {
+        ((PauseMenuController) setPane("menu/pause_menu", menuPane).getController()).setController(this);
     }
 
     /**
      * Display the game over menu over the menu pane
-     *
-     * @throws IOException
      */
-    public void setGameOverPane() throws IOException {
-        FXMLLoader loader = App.loadFXML("menu/game_over");
-        VBox newLoadedPane = loader.load();
-        menuPane.getChildren().add(newLoadedPane);
-        menuPane.setVisible(true);
+    public void setGameOverPane() {
+        setPane("menu/game_over", menuPane);
     }
 
     /**
      * Display the end of the year menu over the game pane
-     *
-     * @throws IOException
      */
-    public void setEndOfYearPane() throws IOException {
-        FXMLLoader loader = App.loadFXML("game/year_end_menu");
-        VBox newLoadedPane = loader.load();
-        ((YearEndMenuController) loader.getController()).setController(this);
-        gamePane.getChildren().add(newLoadedPane);
-        gamePane.setVisible(true);
+    public void setEndOfYearPane() {
+        ((YearEndMenuController) setPane("game/year_end_menu", gamePane).getController()).setController(this);
     }
 
     /**
      * Display the event menu over the game pane
-     *
-     * @throws IOException
      */
-    private void setEventPane() throws IOException {
-        FXMLLoader loader = App.loadFXML("game/event_menu");
-        VBox newLoadedPane = loader.load();
-        ((EventMenuController) loader.getController()).setController(this);
-        gamePane.getChildren().add(newLoadedPane);
-        gamePane.setVisible(true);
+    private void setEventPane() {
+        ((EventMenuController) setPane("game/event_menu", gamePane).getController()).setController(this);
+    }
+
+    public FXMLLoader setPane(String scene, Pane pane) {
+        FXMLLoader loader = null;
+        try {
+            loader = App.loadFXML(scene);
+            VBox newLoadedPane = loader.load();
+            pane.getChildren().add(newLoadedPane);
+            pane.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return loader;
     }
 
     /**
@@ -129,10 +117,8 @@ public class GameController {
      * Removes any remaining menu displayed in the game pane
      * Display is refreshed and the next turn button is enabled
      * The game over menu is displayed if necessary
-     *
-     * @throws IOException
      */
-    public void readyForNextTurn() throws IOException {
+    public void readyForNextTurn() {
         nextTurnButton.setDisable(false);
         gamePane.getChildren().clear();
         refreshLabels();
@@ -169,7 +155,7 @@ public class GameController {
         return island;
     }
 
-    public void setIsland(Island island) throws IOException {
+    public void setIsland(Island island) {
         this.island = island;
         ObservableList<Faction> factionObservableList = FXCollections.observableArrayList();
         factionObservableList.addAll(island.getPopulation().getFactions());
@@ -185,10 +171,8 @@ public class GameController {
      * The island is asked to end the year
      * Display is refreshed and the next turn button is enabled
      * The event menu is displayed
-     *
-     * @throws IOException
      */
-    public void yearEnded() throws IOException {
+    public void yearEnded() {
         nextTurnButton.setDisable(true);
         island.endTheYear();
         refreshLabels();
