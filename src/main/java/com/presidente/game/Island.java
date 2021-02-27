@@ -143,6 +143,7 @@ public class Island {
      * Consumes the food and calculates the new population proportion
      */
     public void endTheYear() {
+        resource.removeExpiredFood(turn / 4);
         int foodRest = resource.consumeFood(population.getTotalPopulation());
         population.calculateNewPeopleCount(foodRest, agriculture);
     }

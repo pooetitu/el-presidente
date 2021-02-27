@@ -1,6 +1,8 @@
 package com.presidente.game;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Resource {
@@ -46,16 +48,14 @@ public class Resource {
         }
     }
 
-    public void removeFood(int amount) {
+    public int removeFood(int amount) {
         for (Map.Entry<Integer, Food> entry : foodList.entrySet()) {
             if (amount == 0) {
                 break;
             }
             amount -= entry.getValue().removeFood(amount);
-            if (entry.getValue().getAmount() == 0) {
-                foodList.remove(entry.getKey());
-            }
         }
+        return amount;
     }
 
     /**
@@ -85,9 +85,18 @@ public class Resource {
      */
     public int consumeFood(int population) {
         int tooConsume = population * FOOD_CONSUMPTION_PER_PERSON;
-        //int rest = food - tooConsume;
-        //food -= tooConsume;
-        return 0;//rest;
+        int rest = removeFood(tooConsume);
+        return getFoodQuantity() - rest;
+    }
+
+    public void removeExpiredFood(int year) {
+        List<Integer> toBeRemoved = new ArrayList<>();
+        for (Map.Entry<Integer, Food> entry : foodList.entrySet()) {
+            if (entry.getKey() <= year || entry.getValue().getAmount() == 0) {
+                toBeRemoved.add(entry.getKey());
+            }
+        }
+        toBeRemoved.forEach(foodList::remove);
     }
 
     /**
