@@ -52,6 +52,7 @@
       "description": "Les communistes et capitalistes veulent se confronter à cause de leurs discordes",
       "choices": [
         {
+          "difficultyThreshold": "NORMAL",
           "description": "Donner raison aux capitalistes",
           "effects": [
             {

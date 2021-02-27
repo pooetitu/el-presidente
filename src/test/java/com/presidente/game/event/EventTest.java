@@ -30,8 +30,8 @@ public class EventTest extends TestCase {
         eventEffectsMultipleChoice2[1].addFaction("loyalistes");
 
         EventChoice[] multipleChoices = new EventChoice[2];
-        multipleChoices[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice);
-        multipleChoices[1] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice2);
+        multipleChoices[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice, null);
+        multipleChoices[1] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsMultipleChoice2, null);
         eventMultipleChoice = new Event("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région", null, multipleChoices);
 
 
@@ -40,7 +40,7 @@ public class EventTest extends TestCase {
         eventEffectsOneChoice[0].addFaction("religieux");
 
         EventChoice[] eventSingleChoice = new EventChoice[1];
-        eventSingleChoice[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice);
+        eventSingleChoice[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice, null);
 
         eventOneChoice = new Event("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région", null, eventSingleChoice);
 
