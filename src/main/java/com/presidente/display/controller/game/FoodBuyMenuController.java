@@ -31,7 +31,7 @@ public class FoodBuyMenuController {
     }
 
     public void buyFood() {
-        gameController.getIsland().getResource().buyFood((int) quantitySlider.getValue());
+        gameController.getIsland().getResource().buyFood((int) Math.round(quantitySlider.getValue()), gameController.getIsland().getTurn() / 4);
         returnToEndOfYearMenu();
         gameController.refreshLabels();
     }
