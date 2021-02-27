@@ -1,7 +1,11 @@
 {
   "resource": {
     "treasury": 200,
-    "food": 1000
+    "foodList": {
+      "1": {
+        "amount": 1000
+      }
+    }
   },
   "population": {
     "factions": {

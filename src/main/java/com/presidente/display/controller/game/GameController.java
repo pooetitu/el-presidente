@@ -150,7 +150,7 @@ public class GameController {
     }
 
     private void setFoodLabel() {
-        this.foodLabel.setText("Nourriture: " + island.getResource().getFood());
+        this.foodLabel.setText("Nourriture: " + island.getResource().getFoodQuantity());
     }
 
     private void setAgricultureLabel() {

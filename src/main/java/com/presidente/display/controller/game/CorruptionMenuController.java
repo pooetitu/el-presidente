@@ -35,7 +35,7 @@ public class CorruptionMenuController {
     }
 
     public void corruptFaction() {
-        gameController.getIsland().corruptFaction(gameController.getIsland().getPopulation().getFactionIndex(faction.getName()), (int) quantitySlider.getValue());
+        gameController.getIsland().corruptFaction(gameController.getIsland().getPopulation().getFactionIndex(faction.getName()), (int) Math.round(quantitySlider.getValue()));
         returnToEndOfYearMenu();
         gameController.refreshLabels();
     }
