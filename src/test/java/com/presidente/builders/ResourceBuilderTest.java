@@ -14,7 +14,7 @@ public class ResourceBuilderTest extends TestCase {
 
     public void testClone() {
         Resource resource = new ResourceBuilder().setTreasury(10).addFood(100, 1).build();
-        Resource clone = new ResourceBuilder().clone(resource).build();
+        Resource clone = ResourceBuilder.clone(resource).build();
         assertEquals(clone.getTreasury(), resource.getTreasury());
         assertEquals(clone.getFoodQuantity(), resource.getFoodQuantity());
     }
