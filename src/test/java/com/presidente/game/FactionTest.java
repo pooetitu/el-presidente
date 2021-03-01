@@ -1,6 +1,7 @@
 package com.presidente.game;
 
 import com.presidente.builders.IslandBuilder;
+import com.presidente.builders.ResourceBuilder;
 import junit.framework.TestCase;
 
 public class FactionTest extends TestCase {
@@ -16,8 +17,14 @@ public class FactionTest extends TestCase {
         Population population = new Population();
         population.addFaction(capitalists);
         population.addFaction(loyalists);
-        island = new IslandBuilder().setPopulation(population).setResource(new Resource(1000)).build();
-        islandWithoutMoney = new IslandBuilder().setPopulation(population).setResource(new Resource(0)).build();
+        island = new IslandBuilder()
+                .setPopulation(population)
+                .setResource(new ResourceBuilder().setTreasury(1000).build())
+                .build();
+        islandWithoutMoney = new IslandBuilder()
+                .setPopulation(population)
+                .setResource(new ResourceBuilder().setTreasury(0).build())
+                .build();
     }
 
     public void testCorruption() {

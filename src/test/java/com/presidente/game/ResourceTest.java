@@ -1,6 +1,7 @@
 package com.presidente.game;
 
 import com.presidente.builders.IslandBuilder;
+import com.presidente.builders.ResourceBuilder;
 import junit.framework.TestCase;
 
 public class ResourceTest extends TestCase {
@@ -14,8 +15,8 @@ public class ResourceTest extends TestCase {
         Population population = new Population();
         population.addFaction(capitalistes);
         population.addFaction(loyalistes);
-        resource = new Resource(500);
-        island = new IslandBuilder().setResource(resource).setPopulation(population).build();
+        resource = new ResourceBuilder().setTreasury(500).build();
+        island = new IslandBuilder().setAgriculture(15).setIndustry(15).setResource(resource).setPopulation(population).build();
     }
 
     public void testPayForCorruption() {
@@ -31,5 +32,19 @@ public class ResourceTest extends TestCase {
     public void testBuyFood() {
         resource.buyFood(10, 0);
         assertEquals(10, resource.getFoodQuantity());
+    }
+
+    public void testAddIndustryPayoff() {
+        int initialTreasury = resource.getTreasury();
+        resource.addIndustryPayoff(island.getIndustry());
+        int receivedTreasury = resource.getTreasury() - initialTreasury;
+        assertEquals(150, receivedTreasury);
+    }
+
+    public void testAddAgriculturePayoff() {
+        int initialFood = resource.getFoodQuantity();
+        resource.addAgriculturePayoff(island.getAgriculture(), 0);
+        int receivedFood = resource.getFoodQuantity() - initialFood;
+        assertEquals(600, receivedFood);
     }
 }

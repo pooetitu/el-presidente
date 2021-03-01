@@ -11,7 +11,7 @@ public class Resource {
     /**
      * The key is the year on which the food will expire
      */
-    private final HashMap<Integer, Food> foodList;
+    private HashMap<Integer, Food> foodList;
     /**
      * The amount of money available
      */
@@ -19,11 +19,6 @@ public class Resource {
 
     public Resource() {
         super();
-        this.foodList = new HashMap<>();
-    }
-
-    public Resource(int treasury) {
-        this.treasury = treasury;
         this.foodList = new HashMap<>();
     }
 
@@ -139,6 +134,10 @@ public class Resource {
                 .stream()
                 .mapToInt(Food::getAmount)
                 .sum();
+    }
+
+    public HashMap<Integer, Food> getFoodList() {
+        return foodList;
     }
 
     @Override

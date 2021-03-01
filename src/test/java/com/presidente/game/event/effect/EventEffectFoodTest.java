@@ -1,6 +1,7 @@
 package com.presidente.game.event.effect;
 
 import com.presidente.builders.IslandBuilder;
+import com.presidente.builders.ResourceBuilder;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
 import com.presidente.game.Resource;
@@ -20,13 +21,19 @@ public class EventEffectFoodTest extends TestCase {
         eventEffectNegative = new EventEffectFood(-100, new CalculationFixed());
         eventEffectPositive = new EventEffectFood(100, new CalculationFixed());
 
-        Resource resource = new Resource();
-        resource.addFood(100, 4);
-        islandEasy = new IslandBuilder().setResource(resource).setDifficulty(GameDifficulty.EASY).build();
-
-        islandNormal = new IslandBuilder().setResource(resource).setDifficulty(GameDifficulty.NORMAL).build();
-
-        islandHard = new IslandBuilder().setResource(resource).setDifficulty(GameDifficulty.HARD).build();
+        Resource resource = new ResourceBuilder().addFood(100, 4).build();
+        islandEasy = new IslandBuilder()
+                .setResource(resource)
+                .setDifficulty(GameDifficulty.EASY)
+                .build();
+        islandNormal = new IslandBuilder()
+                .setResource(new ResourceBuilder().clone(resource).build())
+                .setDifficulty(GameDifficulty.NORMAL)
+                .build();
+        islandHard = new IslandBuilder()
+                .setResource(new ResourceBuilder().clone(resource).build())
+                .setDifficulty(GameDifficulty.HARD)
+                .build();
     }
 
 

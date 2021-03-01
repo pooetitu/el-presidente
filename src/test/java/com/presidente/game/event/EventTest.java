@@ -44,7 +44,6 @@ public class EventTest extends TestCase {
         eventSingleChoice[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice, null);
 
         eventOneChoice = new Event("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région", null, eventSingleChoice);
-
     }
 
     public void testChooseInSingleChoice() {
@@ -63,5 +62,4 @@ public class EventTest extends TestCase {
         assertEquals(65, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());
         assertEquals(35, islandNormal.getPopulation().getFactionByName("loyalistes").getSatisfaction());
     }
-
 }

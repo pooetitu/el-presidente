@@ -1,9 +1,9 @@
 package com.presidente.game.event.effect;
 
 import com.presidente.builders.IslandBuilder;
+import com.presidente.builders.ResourceBuilder;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
-import com.presidente.game.Resource;
 import com.presidente.game.event.effect.calculation.CalculationFixed;
 import junit.framework.TestCase;
 
@@ -20,9 +20,18 @@ public class EventEffectMoneyTest extends TestCase {
         eventEffectNegative = new EventEffectMoney(-100, new CalculationFixed());
         eventEffectPositive = new EventEffectMoney(100, new CalculationFixed());
 
-        islandEasy = new IslandBuilder().setDifficulty(GameDifficulty.EASY).setResource(new Resource(100)).build();
-        islandNormal = new IslandBuilder().setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(100)).build();
-        islandHard = new IslandBuilder().setDifficulty(GameDifficulty.HARD).setResource(new Resource(100)).build();
+        islandEasy = new IslandBuilder()
+                .setDifficulty(GameDifficulty.EASY)
+                .setResource(new ResourceBuilder().setTreasury(100).build())
+                .build();
+        islandNormal = new IslandBuilder()
+                .setDifficulty(GameDifficulty.NORMAL)
+                .setResource(new ResourceBuilder().setTreasury(100).build())
+                .build();
+        islandHard = new IslandBuilder()
+                .setDifficulty(GameDifficulty.HARD)
+                .setResource(new ResourceBuilder().setTreasury(100).build())
+                .build();
     }
 
 

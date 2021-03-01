@@ -1,6 +1,7 @@
 package com.presidente.game.event.effect;
 
 import com.presidente.builders.IslandBuilder;
+import com.presidente.builders.ResourceBuilder;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
 import com.presidente.game.Resource;
@@ -21,11 +22,32 @@ public class EventEffectAgricultureTest extends TestCase {
         super.setUp();
         eventEffectNegative = new EventEffectAgriculture(-15, new CalculationPercentage());
         eventEffectPositive = new EventEffectAgriculture(15, new CalculationPercentage());
-        islandEasy = new IslandBuilder().setAgriculture(15).setDifficulty(GameDifficulty.EASY).setResource(new Resource(10)).build();
-        islandNormal = new IslandBuilder().setAgriculture(15).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
-        islandHard = new IslandBuilder().setAgriculture(15).setDifficulty(GameDifficulty.HARD).setResource(new Resource(10)).build();
-        islandNormalHundred = new IslandBuilder().setAgriculture(100).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
-        islandNormalZero = new IslandBuilder().setAgriculture(0).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        Resource resource = new ResourceBuilder().setTreasury(10).build();
+        islandEasy = new IslandBuilder()
+                .setAgriculture(15)
+                .setDifficulty(GameDifficulty.EASY)
+                .setResource(resource)
+                .build();
+        islandNormal = new IslandBuilder()
+                .setAgriculture(15)
+                .setDifficulty(GameDifficulty.NORMAL)
+                .setResource(new ResourceBuilder().clone(resource).build())
+                .build();
+        islandHard = new IslandBuilder()
+                .setAgriculture(15)
+                .setDifficulty(GameDifficulty.HARD)
+                .setResource(new ResourceBuilder().clone(resource).build())
+                .build();
+        islandNormalHundred = new IslandBuilder()
+                .setAgriculture(100)
+                .setDifficulty(GameDifficulty.NORMAL)
+                .setResource(new ResourceBuilder().clone(resource).build())
+                .build();
+        islandNormalZero = new IslandBuilder()
+                .setAgriculture(0)
+                .setDifficulty(GameDifficulty.NORMAL)
+                .setResource(new ResourceBuilder().clone(resource).build())
+                .build();
     }
 
     public void testEffectPositiveEasyDifficulty() {

@@ -3,7 +3,6 @@ package com.presidente.game.event.effect;
 import com.presidente.builders.IslandBuilder;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
-import com.presidente.game.Resource;
 import com.presidente.game.event.effect.calculation.CalculationPercentage;
 import junit.framework.TestCase;
 
@@ -21,11 +20,11 @@ public class EventEffectIndustryTest extends TestCase {
         super.setUp();
         eventEffectNegative = new EventEffectIndustry(-15, new CalculationPercentage());
         eventEffectPositive = new EventEffectIndustry(15, new CalculationPercentage());
-        islandEasy = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.EASY).setResource(new Resource(10)).build();
-        islandNormal = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
-        islandHard = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.HARD).setResource(new Resource(10)).build();
-        islandNormalHundred = new IslandBuilder().setIndustry(100).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
-        islandNormalZero = new IslandBuilder().setIndustry(0).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        islandEasy = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.EASY).build();
+        islandNormal = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.NORMAL).build();
+        islandHard = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.HARD).build();
+        islandNormalHundred = new IslandBuilder().setIndustry(100).setDifficulty(GameDifficulty.NORMAL).build();
+        islandNormalZero = new IslandBuilder().setIndustry(0).setDifficulty(GameDifficulty.NORMAL).build();
     }
 
     public void testEffectPositiveEasyDifficulty() {

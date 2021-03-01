@@ -45,4 +45,9 @@ public class IslandBuilderTest extends TestCase {
         Island island = builder.setPopulation(population).build();
         assertEquals(population, island.getPopulation());
     }
+
+    public void testSetTurn() {
+        Island island = builder.setTurn(5).build();
+        assertEquals(5, island.getTurn());
+    }
 }

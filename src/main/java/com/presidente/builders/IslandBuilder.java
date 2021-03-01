@@ -37,6 +37,11 @@ public class IslandBuilder {
         return this;
     }
 
+    public IslandBuilder setTurn(int turn) {
+        island.setTurn(turn);
+        return this;
+    }
+
     public Island build() {
         return island;
     }

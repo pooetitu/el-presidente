@@ -205,6 +205,10 @@ public class Island {
         return turn;
     }
 
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
     @Override
     public String toString() {
         return resource + "\n" +
