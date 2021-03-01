@@ -9,7 +9,7 @@ public class EventEffectFactionSupporter extends EventEffectFaction {
     public EventEffectFactionSupporter(double amount, boolean applyToAll, Calculation calculationMethod) {
         super(amount, applyToAll, calculationMethod, "partisans");
     }
-    
+
     /**
      * Modifies the supporter value of the given faction
      *

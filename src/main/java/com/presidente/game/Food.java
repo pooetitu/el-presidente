@@ -14,6 +14,7 @@ public class Food {
      * Sets a new amount of food can't go below 0
      *
      * @param amount The amount of food to be removed
+     * @return The amount of food that has not been removed
      */
     public int removeFood(int amount) {
         this.amount -= amount;
