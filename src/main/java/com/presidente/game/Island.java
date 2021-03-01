@@ -46,29 +46,6 @@ public class Island {
         }
     }
 
-    public Island(int agriculture, int industrie, Resource resource) {
-        this.turn = 0;
-        this.agriculture = agriculture;
-        this.industrie = industrie;
-        this.resource = resource;
-        this.eventsQueue = new LinkedList<>();
-        this.population = new Population();
-        this.population.populate();
-        this.seasons = ScenarioLoader.getInstance().loadSeasons();
-    }
-
-    public Island(int agriculture, int industrie, GameDifficulty difficulty, Resource resource) {
-        this.turn = 0;
-        this.agriculture = agriculture;
-        this.industrie = industrie;
-        this.difficulty = difficulty;
-        this.resource = resource;
-        this.eventsQueue = new LinkedList<>();
-        this.population = new Population();
-        this.population.populate();
-        this.seasons = ScenarioLoader.getInstance().loadSeasons();
-    }
-
     /**
      * Checks if the global satisfaction goes under the threshold set in the difficulty
      *
@@ -204,8 +181,16 @@ public class Island {
         return population;
     }
 
+    public void setPopulation(Population population) {
+        this.population = population;
+    }
+
     public Resource getResource() {
         return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 
     public GameDifficulty getDifficulty() {

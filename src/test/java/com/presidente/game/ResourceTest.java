@@ -1,5 +1,6 @@
 package com.presidente.game;
 
+import com.presidente.builders.IslandBuilder;
 import junit.framework.TestCase;
 
 public class ResourceTest extends TestCase {
@@ -8,12 +9,13 @@ public class ResourceTest extends TestCase {
 
     @Override
     protected void setUp() {
-        resource = new Resource(500);
         Faction capitalistes = new Faction("capitalistes", 15, 10);
         Faction loyalistes = new Faction("loyalistes", 15, 10);
-        island = new Island(15, 15, GameDifficulty.NORMAL, resource);
-        island.getPopulation().addFaction(capitalistes);
-        island.getPopulation().addFaction(loyalistes);
+        Population population = new Population();
+        population.addFaction(capitalistes);
+        population.addFaction(loyalistes);
+        resource = new Resource(500);
+        island = new IslandBuilder().setResource(resource).setPopulation(population).build();
     }
 
     public void testPayForCorruption() {

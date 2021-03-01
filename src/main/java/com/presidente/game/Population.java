@@ -114,10 +114,15 @@ public class Population {
     }
 
     /**
+     * Returns a faction for the given name the faction is created with the sandbox values if it does not exist
+     *
      * @param name The name of the faction to be returned
      * @return The faction corresponding to the given name
      */
     public Faction getFactionByName(String name) {
+        if (!factions.containsKey(name)) {
+            addFaction(new Faction(name, 50, 15));
+        }
         return factions.get(name);
     }
 

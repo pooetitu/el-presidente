@@ -1,5 +1,6 @@
 package com.presidente.game.event.effect;
 
+import com.presidente.builders.IslandBuilder;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
 import com.presidente.game.Resource;
@@ -20,11 +21,11 @@ public class EventEffectAgricultureTest extends TestCase {
         super.setUp();
         eventEffectNegative = new EventEffectAgriculture(-15, new CalculationPercentage());
         eventEffectPositive = new EventEffectAgriculture(15, new CalculationPercentage());
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(10));
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10));
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(10));
-        islandNormalHundred = new Island(100, 0, GameDifficulty.NORMAL, new Resource(10));
-        islandNormalZero = new Island(0, 0, GameDifficulty.NORMAL, new Resource(10));
+        islandEasy = new IslandBuilder().setAgriculture(15).setDifficulty(GameDifficulty.EASY).setResource(new Resource(10)).build();
+        islandNormal = new IslandBuilder().setAgriculture(15).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        islandHard = new IslandBuilder().setAgriculture(15).setDifficulty(GameDifficulty.HARD).setResource(new Resource(10)).build();
+        islandNormalHundred = new IslandBuilder().setAgriculture(100).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        islandNormalZero = new IslandBuilder().setAgriculture(0).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
     }
 
     public void testEffectPositiveEasyDifficulty() {
@@ -59,7 +60,7 @@ public class EventEffectAgricultureTest extends TestCase {
 
     public void testEffectPositiveNotGreaterThanHundred() {
         eventEffectPositive.applyEffect(islandNormalHundred);
-        assertTrue(islandNormalHundred.getAgriculture() + islandNormalHundred.getIndustrie() <= 100);
+        assertTrue(islandNormalHundred.getIndustrie() + islandNormalHundred.getAgriculture() <= 100);
     }
 
     public void testEffectNegativeNotSmallerThanZero() {
