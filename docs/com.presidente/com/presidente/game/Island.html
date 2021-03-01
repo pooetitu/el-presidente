@@ -125,14 +125,14 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,int,com.presidente.game.GameDifficulty,com.presidente.game.Resource)">Island</a></span>&#8203;(int&nbsp;agriculture,
-int&nbsp;industrie,
+int&nbsp;industry,
 <a href="GameDifficulty.html" title="enum in com.presidente.game">GameDifficulty</a>&nbsp;difficulty,
 <a href="Resource.html" title="class in com.presidente.game">Resource</a>&nbsp;resource)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,int,com.presidente.game.Resource)">Island</a></span>&#8203;(int&nbsp;agriculture,
-int&nbsp;industrie,
+int&nbsp;industry,
 <a href="Resource.html" title="class in com.presidente.game">Resource</a>&nbsp;resource)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -187,7 +187,7 @@ int&nbsp;amount)</code></th>
 </tr>
 <tr class="altColor" id="i4">
 <td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getIndustrie()">getIndustrie</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getIndustry()">getIndustry</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor" id="i5">
@@ -224,7 +224,7 @@ int&nbsp;amount)</code></th>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isEndOfYear()">isEndOfYear</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Checks if the year is finished,
- adds the new amount of food from the agriculture and the money from the industries</div>
+ adds the new amount of food from the agriculture and the money from the industrys</div>
 </td>
 </tr>
 <tr class="rowColor" id="i11">
@@ -255,9 +255,9 @@ int&nbsp;amount)</code></th>
 </tr>
 <tr class="rowColor" id="i15">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIndustrie(int)">setIndustrie</a></span>&#8203;(int&nbsp;industrie)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIndustry(int)">setIndustry</a></span>&#8203;(int&nbsp;industry)</code></th>
 <td class="colLast">
-<div class="block">The amount of industrie is capped between 0 and 100</div>
+<div class="block">The amount of industry is capped between 0 and 100</div>
 </td>
 </tr>
 <tr class="altColor" id="i16">
@@ -297,7 +297,7 @@ int&nbsp;amount)</code></th>
 <section class="detail">
 <h3><a id="&lt;init&gt;(int,int,com.presidente.game.Resource)">Island</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Island</span>&#8203;(<span class="arguments">int&nbsp;agriculture,
-int&nbsp;industrie,
+int&nbsp;industry,
 <a href="Resource.html" title="class in com.presidente.game">Resource</a>&nbsp;resource)</span></div>
 </section>
 </li>
@@ -305,7 +305,7 @@ int&nbsp;industrie,
 <section class="detail">
 <h3><a id="&lt;init&gt;(int,int,com.presidente.game.GameDifficulty,com.presidente.game.Resource)">Island</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Island</span>&#8203;(<span class="arguments">int&nbsp;agriculture,
-int&nbsp;industrie,
+int&nbsp;industry,
 <a href="GameDifficulty.html" title="enum in com.presidente.game">GameDifficulty</a>&nbsp;difficulty,
 <a href="Resource.html" title="class in com.presidente.game">Resource</a>&nbsp;resource)</span></div>
 </section>
@@ -380,7 +380,7 @@ int&nbsp;amount)</span></div>
 <h3><a id="isEndOfYear()">isEndOfYear</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">boolean</span>&nbsp;<span class="memberName">isEndOfYear</span>()</div>
 <div class="block">Checks if the year is finished,
- adds the new amount of food from the agriculture and the money from the industries</div>
+ adds the new amount of food from the agriculture and the money from the industrys</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>True if the year is finished, False if not</dd>
@@ -396,18 +396,18 @@ int&nbsp;amount)</span></div>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="getIndustrie()">getIndustrie</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">int</span>&nbsp;<span class="memberName">getIndustrie</span>()</div>
+<h3><a id="getIndustry()">getIndustry</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">int</span>&nbsp;<span class="memberName">getIndustry</span>()</div>
 </section>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="setIndustrie(int)">setIndustrie</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">setIndustrie</span>&#8203;(<span class="arguments">int&nbsp;industrie)</span></div>
-<div class="block">The amount of industrie is capped between 0 and 100</div>
+<h3><a id="setIndustry(int)">setIndustry</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">setIndustry</span>&#8203;(<span class="arguments">int&nbsp;industry)</span></div>
+<div class="block">The amount of industry is capped between 0 and 100</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>industrie</code> - The new value of agriculture to be set</dd>
+<dd><code>industry</code> - The new value of agriculture to be set</dd>
 </dl>
 </section>
 </li>

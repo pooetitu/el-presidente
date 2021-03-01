@@ -52,6 +52,6 @@
     }
   },
   "agriculture": 15,
-  "industrie": 15,
+  "industry": 15,
   "turn": 0
 }

@@ -148,7 +148,7 @@ public class GameController {
     }
 
     private void setIndustryLabel() {
-        this.industryLabel.setText("Industrie: " + island.getIndustrie() + "%");
+        this.industryLabel.setText("Industry: " + island.getIndustry() + "%");
     }
 
     public Island getIsland() {

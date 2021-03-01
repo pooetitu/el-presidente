@@ -35,9 +35,9 @@ public class IslandBuilderTest extends TestCase {
         assertEquals(15, island.getAgriculture());
     }
 
-    public void testSetIndustrie() {
-        Island island = builder.setIndustrie(15).build();
-        assertEquals(15, island.getIndustrie());
+    public void testSetIndustry() {
+        Island island = builder.setIndustry(15).build();
+        assertEquals(15, island.getIndustry());
     }
 
     public void testSetPopulation() {

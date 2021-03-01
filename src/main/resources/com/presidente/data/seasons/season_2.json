@@ -38,7 +38,7 @@
               }
             },
             {
-              "type": "com.presidente.game.event.effect.EventEffectIndustrie",
+              "type": "com.presidente.game.event.effect.EventEffectIndustry",
               "data": {
                 "amount": -20.0,
                 "calculationMethod": {

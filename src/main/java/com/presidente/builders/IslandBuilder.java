@@ -27,8 +27,8 @@ public class IslandBuilder {
         return this;
     }
 
-    public IslandBuilder setIndustrie(int industrie) {
-        island.setIndustrie(industrie);
+    public IslandBuilder setIndustry(int industry) {
+        island.setIndustry(industry);
         return this;
     }
 

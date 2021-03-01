@@ -33,7 +33,7 @@ public class Island {
     /**
      * The percentage of industry on the island, stored as an integer between 0 and 100
      */
-    private int industrie;
+    private int industry;
     /**
      * The current turn this data is stored in the island to be written in the save file
      */
@@ -96,20 +96,20 @@ public class Island {
         if (this.agriculture < 0) {
             this.agriculture = 0;
         }
-        if (this.industrie + this.agriculture >= 100) {
-            this.agriculture = 100 - this.industrie;
+        if (this.industry + this.agriculture >= 100) {
+            this.agriculture = 100 - this.industry;
         }
     }
 
     /**
      * Checks if the year is finished,
-     * adds the new amount of food from the agriculture and the money from the industries
+     * adds the new amount of food from the agriculture and the money from the industrys
      *
      * @return True if the year is finished, False if not
      */
     public boolean isEndOfYear() {
         if (turn % 4 == 3) {
-            resource.addIndustriePayoff(industrie);
+            resource.addIndustryPayoff(industry);
             resource.addAgriculturePayoff(agriculture, turn / 4);
             return true;
         }
@@ -125,22 +125,22 @@ public class Island {
         population.calculateNewPeopleCount(foodRest, agriculture);
     }
 
-    public int getIndustrie() {
-        return industrie;
+    public int getIndustry() {
+        return industry;
     }
 
     /**
-     * The amount of industrie is capped between 0 and 100
+     * The amount of industry is capped between 0 and 100
      *
-     * @param industrie The new value of agriculture to be set
+     * @param industry The new value of agriculture to be set
      */
-    public void setIndustrie(int industrie) {
-        this.industrie = industrie;
-        if (this.industrie < 0) {
-            this.industrie = 0;
+    public void setIndustry(int industry) {
+        this.industry = industry;
+        if (this.industry < 0) {
+            this.industry = 0;
         }
-        if (this.agriculture + this.industrie >= 100) {
-            this.industrie = 100 - this.agriculture;
+        if (this.agriculture + this.industry >= 100) {
+            this.industry = 100 - this.agriculture;
         }
     }
 
@@ -208,7 +208,7 @@ public class Island {
     @Override
     public String toString() {
         return resource + "\n" +
-                String.format("%-21s%s", "Agriculture: " + agriculture + "%", "Industrie: " + industrie + "%") + "\n" +
+                String.format("%-21s%s", "Agriculture: " + agriculture + "%", "Industry: " + industry + "%") + "\n" +
                 "Satisfaction globale: " + population.getGlobalSatisfaction();
     }
 }

@@ -7,7 +7,7 @@ import com.presidente.game.Resource;
 import com.presidente.game.event.effect.calculation.CalculationPercentage;
 import junit.framework.TestCase;
 
-public class EventEffectIndustrieTest extends TestCase {
+public class EventEffectIndustryTest extends TestCase {
     private Island islandEasy;
     private Island islandNormal;
     private Island islandHard;
@@ -19,52 +19,52 @@ public class EventEffectIndustrieTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        eventEffectNegative = new EventEffectIndustrie(-15, new CalculationPercentage());
-        eventEffectPositive = new EventEffectIndustrie(15, new CalculationPercentage());
-        islandEasy = new IslandBuilder().setIndustrie(15).setDifficulty(GameDifficulty.EASY).setResource(new Resource(10)).build();
-        islandNormal = new IslandBuilder().setIndustrie(15).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
-        islandHard = new IslandBuilder().setIndustrie(15).setDifficulty(GameDifficulty.HARD).setResource(new Resource(10)).build();
-        islandNormalHundred = new IslandBuilder().setIndustrie(100).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
-        islandNormalZero = new IslandBuilder().setIndustrie(0).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        eventEffectNegative = new EventEffectIndustry(-15, new CalculationPercentage());
+        eventEffectPositive = new EventEffectIndustry(15, new CalculationPercentage());
+        islandEasy = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.EASY).setResource(new Resource(10)).build();
+        islandNormal = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        islandHard = new IslandBuilder().setIndustry(15).setDifficulty(GameDifficulty.HARD).setResource(new Resource(10)).build();
+        islandNormalHundred = new IslandBuilder().setIndustry(100).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
+        islandNormalZero = new IslandBuilder().setIndustry(0).setDifficulty(GameDifficulty.NORMAL).setResource(new Resource(10)).build();
     }
 
     public void testEffectPositiveEasyDifficulty() {
         eventEffectPositive.applyEffect(islandEasy);
-        assertEquals(19, islandEasy.getIndustrie());
+        assertEquals(19, islandEasy.getIndustry());
     }
 
     public void testEffectNegativeEasyDifficulty() {
         eventEffectNegative.applyEffect(islandEasy);
-        assertEquals(13, islandEasy.getIndustrie());
+        assertEquals(13, islandEasy.getIndustry());
     }
 
     public void testEffectPositiveNormalDifficulty() {
         eventEffectPositive.applyEffect(islandNormal);
-        assertEquals(17, islandNormal.getIndustrie());
+        assertEquals(17, islandNormal.getIndustry());
     }
 
     public void testEffectNegativeNormalDifficulty() {
         eventEffectNegative.applyEffect(islandNormal);
-        assertEquals(12, islandNormal.getIndustrie());
+        assertEquals(12, islandNormal.getIndustry());
     }
 
     public void testEffectPositiveHardDifficulty() {
         eventEffectPositive.applyEffect(islandHard);
-        assertEquals(16, islandHard.getIndustrie());
+        assertEquals(16, islandHard.getIndustry());
     }
 
     public void testEffectNegativeHardDifficulty() {
         eventEffectNegative.applyEffect(islandHard);
-        assertEquals(10, islandHard.getIndustrie());
+        assertEquals(10, islandHard.getIndustry());
     }
 
     public void testEffectPositiveNotGreaterThanHundred() {
         eventEffectPositive.applyEffect(islandNormalHundred);
-        assertTrue(islandNormalHundred.getIndustrie() + islandNormalHundred.getAgriculture() <= 100);
+        assertTrue(islandNormalHundred.getIndustry() + islandNormalHundred.getAgriculture() <= 100);
     }
 
     public void testEffectNegativeNotSmallerThanZero() {
         eventEffectNegative.applyEffect(islandNormalZero);
-        assertTrue(islandNormalZero.getIndustrie() >= 0);
+        assertTrue(islandNormalZero.getIndustry() >= 0);
     }
 }

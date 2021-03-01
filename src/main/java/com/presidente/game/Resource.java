@@ -72,10 +72,10 @@ public class Resource {
     /**
      * Calculate the amount of money produced by the industry
      *
-     * @param industrie The current percentage of industry on the island
+     * @param industry The current percentage of industry on the island
      */
-    public void addIndustriePayoff(int industrie) {
-        treasury += industrie * 10;
+    public void addIndustryPayoff(int industry) {
+        treasury += industry * 10;
     }
 
     /**
