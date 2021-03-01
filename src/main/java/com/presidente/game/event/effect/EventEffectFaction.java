@@ -12,13 +12,15 @@ public abstract class EventEffectFaction extends EventEffect {
     /**
      * Whether the effect will be applied on every factions or not
      */
-    protected final boolean applyToAll;
+    private final boolean applyToAll;
     /**
      * The list of faction names on which the effect will be applied
      */
-    protected final ArrayList<String> factions;
-
-    protected final String affectedAttribute;
+    private final ArrayList<String> factions;
+    /**
+     * The displayed name of the affected attribute
+     */
+    private final String affectedAttribute;
 
     protected EventEffectFaction(double amount, boolean applyToAll, Calculation calculationMethod, String affectedAttribute) {
         super(amount, calculationMethod);
@@ -26,6 +28,8 @@ public abstract class EventEffectFaction extends EventEffect {
         this.factions = new ArrayList<>();
         this.applyToAll = applyToAll;
     }
+
+    protected abstract void applyChangement(Faction faction, GameDifficulty difficulty);
 
     /**
      * Applies an effect on the given Island's faction(s), applies the effect to every faction if the applyToAll attribute is true or
@@ -46,19 +50,15 @@ public abstract class EventEffectFaction extends EventEffect {
     }
 
     /**
-     * Modifies the supporter value of the given faction
-     *
-     * @param faction    The faction to be affected
-     * @param difficulty The current game's difficulty
-     */
-    protected abstract void applyChangement(Faction faction, GameDifficulty difficulty);
-
-    /**
      * Applies the effect on every faction of the given Island
      *
      * @param island The Island on which the effect will be applied
      */
-    protected abstract void applyToAll(Island island);
+    private void applyToAll(Island island) {
+        for (Faction faction : island.getPopulation().getFactions()) {
+            applyChangement(faction, island.getDifficulty());
+        }
+    }
 
     @Override
     public String display(double effectRatio) {
