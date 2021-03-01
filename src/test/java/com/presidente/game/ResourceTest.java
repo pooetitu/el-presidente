@@ -15,7 +15,7 @@ public class ResourceTest extends TestCase {
         Population population = new Population();
         population.addFaction(capitalistes);
         population.addFaction(loyalistes);
-        resource = new ResourceBuilder().setTreasury(500).build();
+        resource = new ResourceBuilder().setTreasury(500).addFood(100, 0).build();
         island = new IslandBuilder().setAgriculture(15).setIndustry(15).setResource(resource).setPopulation(population).build();
     }
 
@@ -31,20 +31,40 @@ public class ResourceTest extends TestCase {
 
     public void testBuyFood() {
         resource.buyFood(10, 0);
-        assertEquals(10, resource.getFoodQuantity());
+        assertEquals(110, resource.getFoodQuantity());
     }
 
     public void testAddIndustryPayoff() {
-        int initialTreasury = resource.getTreasury();
         resource.addIndustryPayoff(island.getIndustry());
-        int receivedTreasury = resource.getTreasury() - initialTreasury;
-        assertEquals(150, receivedTreasury);
+        assertEquals(650, resource.getTreasury());
     }
 
     public void testAddAgriculturePayoff() {
-        int initialFood = resource.getFoodQuantity();
         resource.addAgriculturePayoff(island.getAgriculture(), 0);
-        int receivedFood = resource.getFoodQuantity() - initialFood;
-        assertEquals(600, receivedFood);
+        assertEquals(700, resource.getFoodQuantity());
+    }
+
+    public void testAddFood() {
+        resource.addFood(100, 0);
+        assertEquals(200, resource.getFoodQuantity());
+    }
+
+    public void testRemoveFood() {
+        resource.removeFood(100);
+        assertEquals(0, resource.getFoodQuantity());
+    }
+
+    public void testConsumeFood() {
+        resource.consumeFood(10);
+        assertEquals(60, resource.getFoodQuantity());
+    }
+
+    public void testRemoveExpiredFood() {
+        resource.removeExpiredFood(0);
+        assertEquals(0, resource.getFoodQuantity());
+    }
+
+    public void testPurchasableMaximumFoodAmount() {
+        assertEquals(62, resource.purchasableMaximumFoodAmount());
     }
 }

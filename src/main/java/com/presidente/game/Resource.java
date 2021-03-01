@@ -11,7 +11,7 @@ public class Resource {
     /**
      * The key is the year on which the food will expire
      */
-    private HashMap<Integer, Food> foodList;
+    private final HashMap<Integer, Food> foodList;
     /**
      * The amount of money available
      */
