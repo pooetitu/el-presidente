@@ -13,20 +13,6 @@ public class Population {
     }
 
     /**
-     * @deprecated Populates the factions list (used in tests should be removed)
-     */
-    public void populate() {
-        addFaction(new Faction("capitalistes", 50, 15));
-        addFaction(new Faction("communistes", 50, 15));
-        addFaction(new Faction("libéraux", 50, 15));
-        addFaction(new Faction("religieux", 50, 15));
-        addFaction(new Faction("militaristes", 50, 15));
-        addFaction(new Faction("écologistes", 50, 15));
-        addFaction(new Faction("nationalistes", 50, 15));
-        addFaction(new Faction("loyalistes", 50, 15));
-    }
-
-    /**
      * Adds a Faction to the factions list and sets its key as the given faction's name
      *
      * @param faction The faction to be added
