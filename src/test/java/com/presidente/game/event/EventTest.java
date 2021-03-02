@@ -1,8 +1,9 @@
 package com.presidente.game.event;
 
+import com.presidente.builders.IslandBuilder;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
-import com.presidente.game.Resource;
+import com.presidente.game.Population;
 import com.presidente.game.event.effect.EventEffectFactionSatisfaction;
 import com.presidente.game.event.effect.calculation.CalculationFixed;
 import junit.framework.TestCase;
@@ -15,7 +16,7 @@ public class EventTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10));
+        islandNormal = new IslandBuilder().setPopulation(new Population()).setDifficulty(GameDifficulty.NORMAL).build();
 
         EventEffectFactionSatisfaction[] eventEffectsMultipleChoice = new EventEffectFactionSatisfaction[2];
         eventEffectsMultipleChoice[0] = new EventEffectFactionSatisfaction(15, false, new CalculationFixed());
@@ -43,7 +44,6 @@ public class EventTest extends TestCase {
         eventSingleChoice[0] = new EventChoice("Décliner poliment au motif que vous n’avez pas les infrastructures pour eux", eventEffectsOneChoice, null);
 
         eventOneChoice = new Event("L'Organisation des Caraïbes-Unies souhaite que vous accueillez des réfugiés climatiques suite aux récentes inondations dans la région", null, eventSingleChoice);
-
     }
 
     public void testChooseInSingleChoice() {
@@ -62,5 +62,4 @@ public class EventTest extends TestCase {
         assertEquals(65, islandNormal.getPopulation().getFactionByName("capitalistes").getSatisfaction());
         assertEquals(35, islandNormal.getPopulation().getFactionByName("loyalistes").getSatisfaction());
     }
-
 }

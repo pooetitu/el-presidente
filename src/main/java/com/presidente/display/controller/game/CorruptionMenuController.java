@@ -43,6 +43,7 @@ public class CorruptionMenuController {
     public void returnToEndOfYearMenu() {
         Pane parentPane = ((Pane) vBox.getParent());
         parentPane.getChildren().remove(vBox);
+        gameController.factionTable.setOnMouseClicked(null);
         if (parentPane.getChildren().isEmpty()) {
             parentPane.setVisible(false);
         }

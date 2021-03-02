@@ -4,26 +4,26 @@ import junit.framework.TestCase;
 
 public class PopulationTest extends TestCase {
     private Population population;
-    private Faction capitalistes;
-    private Faction communistes;
-    private Faction liberaux;
+    private Faction capitalists;
+    private Faction communists;
+    private Faction liberals;
 
     @Override
     protected void setUp() {
         population = new Population();
-        capitalistes = new Faction("capitalistes", 15, 15);
-        communistes = new Faction("communistes", 65, 35);
-        liberaux = new Faction("libéraux", 80, 2);
-        population.addFaction(communistes);
+        capitalists = new Faction("capitalistes", 15, 15);
+        communists = new Faction("communistes", 65, 35);
+        liberals = new Faction("libéraux", 80, 2);
+        population.addFaction(communists);
     }
 
     public void testGetFaction() {
-        assertEquals(communistes, population.getFactionByName(communistes.getName()));
+        assertEquals(communists, population.getFactionByName(communists.getName()));
     }
 
     public void testAddFaction() {
-        population.addFaction(capitalistes);
-        assertEquals(capitalistes, population.getFactionByName(capitalistes.getName()));
+        population.addFaction(capitalists);
+        assertEquals(capitalists, population.getFactionByName(capitalists.getName()));
     }
 
     public void testGlobalSatisfactionOneFaction() {
@@ -31,8 +31,8 @@ public class PopulationTest extends TestCase {
     }
 
     public void testGlobalSatisfactionMultipleFaction() {
-        population.addFaction(capitalistes);
-        population.addFaction(liberaux);
+        population.addFaction(capitalists);
+        population.addFaction(liberals);
         assertEquals(51, population.getGlobalSatisfaction());
     }
 
@@ -41,7 +41,11 @@ public class PopulationTest extends TestCase {
     }
 
     public void testGetTotalPopulationMultipleFaction() {
-        population.addFaction(capitalistes);
+        population.addFaction(capitalists);
         assertEquals(50, population.getTotalPopulation());
+    }
+
+    public void testGetNotInitializedFaction() {
+        assertEquals("Undefined", population.getFactionByName("Undefined").getName());
     }
 }

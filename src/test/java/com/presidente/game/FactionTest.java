@@ -1,42 +1,49 @@
 package com.presidente.game;
 
+import com.presidente.builders.IslandBuilder;
+import com.presidente.builders.ResourceBuilder;
 import junit.framework.TestCase;
 
 public class FactionTest extends TestCase {
-    private Faction capitalistes;
-    private Faction loyalistes;
+    private Faction capitalists;
+    private Faction loyalists;
     private Island island;
     private Island islandWithoutMoney;
 
     @Override
     protected void setUp() {
-        capitalistes = new Faction("capitalistes", 50, 15);
-        loyalistes = new Faction("loyalistes", 50, 15);
-        island = new Island(15, 15, GameDifficulty.NORMAL, new Resource(1000));
-        island.getPopulation().addFaction(capitalistes);
-        island.getPopulation().addFaction(loyalistes);
-        islandWithoutMoney = new Island(15, 15, GameDifficulty.NORMAL, new Resource(0));
-        islandWithoutMoney.getPopulation().addFaction(capitalistes);
-        islandWithoutMoney.getPopulation().addFaction(loyalistes);
+        capitalists = new Faction("capitalistes", 50, 15);
+        loyalists = new Faction("loyalistes", 50, 15);
+        Population population = new Population();
+        population.addFaction(capitalists);
+        population.addFaction(loyalists);
+        island = new IslandBuilder()
+                .setPopulation(population)
+                .setResource(new ResourceBuilder().setTreasury(1000).build())
+                .build();
+        islandWithoutMoney = new IslandBuilder()
+                .setPopulation(population)
+                .setResource(new ResourceBuilder().setTreasury(0).build())
+                .build();
     }
 
     public void testCorruption() {
         island.corruptFaction(0, 1);
-        assertEquals(60, capitalistes.getSatisfaction());
+        assertEquals(60, capitalists.getSatisfaction());
     }
 
     public void testMultipleCorruption() {
         island.corruptFaction(0, 2);
-        assertEquals(70, capitalistes.getSatisfaction());
+        assertEquals(70, capitalists.getSatisfaction());
     }
 
     public void testCorruptionWithoutMoney() {
         islandWithoutMoney.corruptFaction(0, 1);
-        assertEquals(50, capitalistes.getSatisfaction());
+        assertEquals(50, capitalists.getSatisfaction());
     }
 
     public void testLoyalistSatisfactionAfterCorruption() {
         island.corruptFaction(0, 1);
-        assertEquals(28, loyalistes.getSatisfaction());
+        assertEquals(28, loyalists.getSatisfaction());
     }
 }

@@ -13,20 +13,6 @@ public class Population {
     }
 
     /**
-     * @deprecated Populates the factions list (used in tests should be removed)
-     */
-    public void populate() {
-        addFaction(new Faction("capitalistes", 50, 15));
-        addFaction(new Faction("communistes", 50, 15));
-        addFaction(new Faction("libéraux", 50, 15));
-        addFaction(new Faction("religieux", 50, 15));
-        addFaction(new Faction("militaristes", 50, 15));
-        addFaction(new Faction("écologistes", 50, 15));
-        addFaction(new Faction("nationalistes", 50, 15));
-        addFaction(new Faction("loyalistes", 50, 15));
-    }
-
-    /**
      * Adds a Faction to the factions list and sets its key as the given faction's name
      *
      * @param faction The faction to be added
@@ -114,10 +100,15 @@ public class Population {
     }
 
     /**
+     * Returns a faction for the given name the faction is created with the sandbox values if it does not exist
+     *
      * @param name The name of the faction to be returned
      * @return The faction corresponding to the given name
      */
     public Faction getFactionByName(String name) {
+        if (!factions.containsKey(name)) {
+            addFaction(new Faction(name, 50, 15));
+        }
         return factions.get(name);
     }
 

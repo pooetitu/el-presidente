@@ -22,11 +22,6 @@ public class Resource {
         this.foodList = new HashMap<>();
     }
 
-    public Resource(int treasury) {
-        this.treasury = treasury;
-        this.foodList = new HashMap<>();
-    }
-
     /**
      * Adds the amount of food to the current stock and removes from the treasury the necessary amount of money if there is enough money to pay
      *
@@ -72,10 +67,10 @@ public class Resource {
     /**
      * Calculate the amount of money produced by the industry
      *
-     * @param industrie The current percentage of industry on the island
+     * @param industry The current percentage of industry on the island
      */
-    public void addIndustriePayoff(int industrie) {
-        treasury += industrie * 10;
+    public void addIndustryPayoff(int industry) {
+        treasury += industry * 10;
     }
 
     /**
@@ -139,6 +134,10 @@ public class Resource {
                 .stream()
                 .mapToInt(Food::getAmount)
                 .sum();
+    }
+
+    public HashMap<Integer, Food> getFoodList() {
+        return foodList;
     }
 
     @Override

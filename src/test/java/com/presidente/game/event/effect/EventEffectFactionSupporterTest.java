@@ -1,9 +1,10 @@
 package com.presidente.game.event.effect;
 
+import com.presidente.builders.IslandBuilder;
 import com.presidente.game.Faction;
 import com.presidente.game.GameDifficulty;
 import com.presidente.game.Island;
-import com.presidente.game.Resource;
+import com.presidente.game.Population;
 import com.presidente.game.event.effect.calculation.CalculationPercentage;
 import junit.framework.TestCase;
 
@@ -28,15 +29,18 @@ public class EventEffectFactionSupporterTest extends TestCase {
         eventEffectMultipleFactions.addFaction("capitalistes");
         eventEffectMultipleFactions.addFaction("écologistes");
 
-        islandEasy = new Island(15, 15, GameDifficulty.EASY, new Resource(10));
-        islandEasy.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
+        Population population = new Population();
+        population.addFaction(new Faction("capitalistes", 50, 50));
+        islandEasy = new IslandBuilder().setPopulation(population).setDifficulty(GameDifficulty.EASY).build();
 
-        islandNormal = new Island(15, 15, GameDifficulty.NORMAL, new Resource(10));
-        islandNormal.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
-        islandNormal.getPopulation().addFaction(new Faction("écologistes", 50, 50));
+        population = new Population();
+        population.addFaction(new Faction("capitalistes", 50, 50));
+        population.addFaction(new Faction("écologistes", 50, 50));
+        islandNormal = new IslandBuilder().setPopulation(population).setDifficulty(GameDifficulty.NORMAL).build();
 
-        islandHard = new Island(15, 15, GameDifficulty.HARD, new Resource(10));
-        islandHard.getPopulation().addFaction(new Faction("capitalistes", 50, 50));
+        population = new Population();
+        population.addFaction(new Faction("capitalistes", 50, 50));
+        islandHard = new IslandBuilder().setPopulation(population).setDifficulty(GameDifficulty.HARD).build();
 
     }
 

@@ -351,7 +351,7 @@
                   }
                 },
                 {
-                  "type": "com.presidente.game.event.effect.EventEffectIndustrie",
+                  "type": "com.presidente.game.event.effect.EventEffectIndustry",
                   "data": {
                     "amount": 10.0,
                     "calculationMethod": {
@@ -408,7 +408,7 @@
                   }
                 },
                 {
-                  "type": "com.presidente.game.event.effect.EventEffectIndustrie",
+                  "type": "com.presidente.game.event.effect.EventEffectIndustry",
                   "data": {
                     "amount": 20.0,
                     "calculationMethod": {
@@ -496,7 +496,7 @@
                   }
                 },
                 {
-                  "type": "com.presidente.game.event.effect.EventEffectIndustrie",
+                  "type": "com.presidente.game.event.effect.EventEffectIndustry",
                   "data": {
                     "amount": -20.0,
                     "calculationMethod": {
@@ -598,6 +598,6 @@
     }
   ],
   "agriculture": 15,
-  "industrie": 15,
+  "industry": 15,
   "turn": 0
 }
