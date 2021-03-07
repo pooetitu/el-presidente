@@ -28,24 +28,32 @@ public class Population {
         Random rand = new Random();
         int peopleToAdd = 0;
         if (getTotalPopulation() > 0) {
-            peopleToAdd = rand.nextInt(11) / (100 * getTotalPopulation());
+            peopleToAdd = (int) (getTotalPopulation() * ((rand.nextInt(10) + 1) / 100.0));
         }
-        int percentPerFaction = 100 / factions.size();
+        double percentPerFaction = (100.0 / factions.size()) / 100.0;
         for (Faction faction : factions.values()) {
-            faction.addPeople(peopleToAdd * percentPerFaction);
+            faction.addPeople((int) Math.floor(peopleToAdd * percentPerFaction));
         }
     }
 
     /**
-     * Reduces the population according to the amount of food needed to feed everyone with the current food production
+     * If the food production is insufficient the total population is reduced either way the population is reduced according to a random percentage of the amount of people unfed
      *
      * @param agricultureProduction The amount of food produced this year
+     * @param foodRest              The amount of food that is left
      */
-    private void reducePeople(int agricultureProduction) {
-        int peopleToRemove = getTotalPopulation() - agricultureProduction / 4;
-        int percentPerFaction = 100 / factions.size();
+    private void reducePeople(int agricultureProduction, int foodRest) {
+        Random rand = new Random();
+        int peopleToRemove;
+        if (agricultureProduction / 4 < getTotalPopulation()) {
+            peopleToRemove = getTotalPopulation() - agricultureProduction / 4;
+        } else {
+            peopleToRemove = (int) (-foodRest / 4 * ((rand.nextInt(100) + 1) / 100.0));
+        }
+        double percentPerFaction = (100.0 / factions.size()) / 100.0;
         for (Faction faction : factions.values()) {
-            faction.removePeople(peopleToRemove * percentPerFaction);
+            faction.removePeople((int) Math.floor(peopleToRemove * percentPerFaction));
+            faction.setSatisfaction(faction.getSatisfaction() - peopleToRemove * 2);
         }
     }
 
@@ -59,7 +67,7 @@ public class Population {
         if (foodRest >= 0) {
             addPeople();
         } else {
-            reducePeople(agriculture * 40);
+            reducePeople(agriculture * 40, foodRest);
         }
     }
 
