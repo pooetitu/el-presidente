@@ -16,4 +16,5 @@ reliability of the written code.
 
 ## Installation
 
-You will firstly have to <a link="https://github.com/pooetitu/el-presidente/releases">download the game</a>, and you must have at least a **Java 13+** version which can be <a link="https://adoptopenjdk.net/releases.html">downloaded here</a>.
+You will firstly have to [download the game](https://github.com/pooetitu/el-presidente/releases), and you must have at
+least a **Java 13+** version which can be [downloaded here](https://adoptopenjdk.net/releases.html)
