@@ -4,6 +4,9 @@ import com.presidente.game.Island;
 
 import java.util.Arrays;
 
+/**
+ * An event which will affect the Island
+ */
 public class Event {
     /**
      * The description of the event
@@ -25,6 +28,8 @@ public class Event {
     }
 
     /**
+     * Applies the choice at the chosen index on the given Island instance
+     *
      * @param island      The island on which the effects will be applied
      * @param choiceIndex The index of the event choice to be applied
      */

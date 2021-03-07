@@ -5,7 +5,13 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
+/**
+ * This object handles the population of an Island
+ */
 public class Population {
+    /**
+     * The list of factions the key of the map is the name of the faction
+     */
     private final LinkedHashMap<String, Faction> factions;
 
     public Population() {

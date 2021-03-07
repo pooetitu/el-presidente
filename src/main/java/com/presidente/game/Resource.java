@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The resources that an Island will own
+ */
 public class Resource {
     private static final int FOOD_UNIT_COST = 8;
     private static final int FOOD_CONSUMPTION_PER_PERSON = 4;

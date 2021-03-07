@@ -5,6 +5,9 @@ import com.presidente.utils.ScenarioLoader;
 
 import java.util.LinkedList;
 
+/**
+ * The main game object it links together every game component
+ */
 public class Island {
     /**
      * An array of seasons which can be used to get a random event from the current season, it is transient to have lighter game save
@@ -103,7 +106,7 @@ public class Island {
 
     /**
      * Checks if the year is finished,
-     * adds the new amount of food from the agriculture and the money from the industrys
+     * adds the new amount of food from the agriculture and the money from the industries
      *
      * @return True if the year is finished, False if not
      */

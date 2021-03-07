@@ -1,5 +1,8 @@
 package com.presidente.game;
 
+/**
+ * This object is used to have an amount of food at a given year
+ */
 public class Food {
     /**
      * The current amount of food for this instance
