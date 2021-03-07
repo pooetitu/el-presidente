@@ -1,6 +1,8 @@
 package com.presidente.game;
 
-
+/**
+ * A faction which will have influence on the Island
+ */
 public class Faction {
     private static final int CORRUPTION_COST = 15;
     private String name;
@@ -34,7 +36,6 @@ public class Faction {
      */
     public void removePeople(int count) {
         setSupporter(supporter - count);
-        setSatisfaction(satisfaction - count * 2);
     }
 
     /**

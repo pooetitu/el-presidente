@@ -4,8 +4,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
-
 public class YearEndMenuController {
     public Button buyFoodButton;
     public Button corruptButton;
@@ -26,11 +24,11 @@ public class YearEndMenuController {
         gameController.yearEnded();
     }
 
-    public void corruptFaction() throws IOException {
+    public void corruptFaction() {
         ((CorruptionMenuController) gameController.setPane("game/corruption_menu", gameController.gamePane).getController()).setController(gameController);
     }
 
-    public void buyFood() throws IOException {
+    public void buyFood() {
         ((FoodBuyMenuController) gameController.setPane("game/food_buy_menu", gameController.gamePane).getController()).setController(gameController);
     }
 }
