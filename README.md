@@ -1,9 +1,3 @@
-<div align="center">
-<p>
-    <img width="250" src="https://github.com/pooetitu/el-presidente/blob/main/src/main/resources/com/presidente/gui/images/title.png?raw=true">
-</p>
-</div>
-
 # El-presidente
 
 ## Introduction
@@ -19,3 +13,7 @@ insurrection.
 The objective of this project is to develop a game with a clean code approach, and using different tools like git to
 have a project versioning, maven to have a project dependency management and tests to insure the stability and
 reliability of the written code.
+
+## Installation
+
+You will firstly have to <a link="https://github.com/pooetitu/el-presidente/releases">download the game</a>, and you must have at least a **Java 13+** version which can be <a link="https://adoptopenjdk.net/releases.html">downloaded here</a>.
